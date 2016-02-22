@@ -1,0 +1,266 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>太搞siao！我居然是遍及全球的煎饼果子肤质！切克闹~！‘美氪’神还原你皮肤的真面目~</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<script src="jquery-1.11.2.min.js"></script>
+		<script src="jquery.touchSwipe.min.js"></script>
+		<link rel="stylesheet" href="animate.css" type="text/css"/>
+		
+		<style>
+			*{
+				margin:0;
+				padding:0;
+				font-family:"微软雅黑";
+			}
+			#page{
+				width:100%;
+				height:100%;
+			}
+			.page{
+				width:100%;
+				height:100%;
+				position:absolute;
+				top:0;
+				left:0;
+				color:white;
+				z-index:1;
+				text-align:center;
+			}
+			.page p{
+				color:#000;
+				text-align:center;
+			}
+			.page1{
+				display:block;
+				z-index:100;
+				background:url("images/1.png");
+				background-size:cover;
+			}
+			.page2{
+				display:block;
+				z-index:97;
+				background:url("images/2.png");
+				background-size:cover;
+			}
+			.page3{
+				display:block;
+				z-index:96;
+				background:url("images/3.png");
+				background-size:cover;
+			}
+			.page4{
+				display:block;
+				z-index:95;
+				background:url("images/4.png");
+				background-size:cover;
+			}
+			.hide {
+				z-index:99;
+			}
+			.show {
+				z-index:100;
+			}
+			
+			.first,.second{
+				display:none;
+			}
+			.first{
+				margin-top:4em;
+				margin-bottom:0;
+				width:90%;
+				height:auto;
+			}
+			.specFirst{
+				width:40%;
+			}
+			.second{
+				width:80%;
+				height:auto;
+				position: relative;
+  				top: -1em;
+			}	
+			.specSecond{
+				top:-0.8em;
+			}
+			.shareWrapper{
+				width:0;
+				height:0;
+				overflow:hidden;
+			}
+			
+			.upicon {
+			  width: 80px;
+			  height: 80px;
+			  position: absolute;
+			  left: 50%;
+			  bottom: 10px;
+			  margin-left: -40px;
+			  z-index: 1;
+			  text-align:center;
+			}
+			.upicon img {
+			  width: 100%;
+			}
+			.up{
+				font-size:3em;
+				font-weight:600;
+				color:#ff3366;
+				margin-top:0.5em;
+				vertical-align:center;
+			}
+			.logoBeneath{
+				width:100%;
+				position:absolute;
+				bottom:0;
+				text-align:center;
+				font-size:0.9em;
+				z-index:1;
+			}
+			.loader {
+				margin: 10em auto;
+				z-index:10000;
+			}
+			.hidden{
+				display:none;
+			}
+			.loader--spinningDisc {
+				border: solid 0.5em #9b59b6;
+				border-right-color: transparent;
+				border-left-color: transparent;
+				padding: 0.5em;
+				width: 2em;
+				height: 2em;
+				border-radius: 50%;
+				background: #3498db;
+				background-clip: content-box;
+				animation: spinDisc 1.5s linear infinite;
+			}
+			@keyframes spinDisc {
+				50% {
+					border-top-color: #3498db;
+					border-bottom-color: #3498db;
+					background-color: #2ecc71;
+				}
+				100% {
+					transform: rotate(1turn);
+				}
+			}
+
+	
+			@media (device-height:460px) and (-webkit-min-device-pixel-ratio:2){/* 兼容iphone4 */
+
+				.page1{
+					background:url("images/1.png");
+					background-size:100% auto;
+				}
+				.page2{
+					background:url("images/2.png");
+					background-size:100% auto;
+				}
+				.page3{
+					background:url("images/3.png");
+					background-size:100% auto;
+				}
+				.page4{
+					background:url("images/4.png");
+					background-size:100% auto;
+				}
+			}
+		</style>
+		
+	</head>
+	<body>
+		<div class="shareWrapper"><img style="width:500px;height:500px;" class="sharePic" src="images/meiDoctor.png"/></div>
+		<div class="loader loader--spinningDisc"></div>
+		
+		
+		<div id="page">
+			<div class="page page1"><img class="first" src="images/pic11.png"/><img src="images/pic12.png" class="second"/></div>
+			<div class="page page2"><img class="first" src="images/pic21.png"/><img src="images/pic22.png" class="second"/></div>
+			<div class="page page3"><img class="first" src="images/pic31.png"/><img src="images/pic32.png" class="second specSecond"/></div>
+			<div class="page page4"><img class="first specFirst" src="images/pic41.png"/><img src="images/pic42.png" class="second"/></div>
+		</div>
+		<div class="upicon animated infinite bounce"><p class="up frontup">^</p></div>
+		<div style="width:160px;height:160px;margin-left:-80px;" class="upicon animated infinite bounce"><img src="images/upArrow.png" class="up backup hidden"/></div>
+		<script>
+		window.onload = function(){
+	//		$(".loader").css("z-index","1");
+			$(".upicon").css("z-index","1000");
+		}
+$(function() {      
+		var curpage=1;
+		var totalpage,nextpage,lastpage,nexttotalpage;
+
+      //Enable swiping...
+      $(document).swipe( {
+        //Generic swipe handler for all directions
+        swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+			if(direction == "up"){
+
+//判断当前页是否为最后一页
+
+        //获取总页数,以及总页数的+1后的序号，供后面for循环使用
+    totalpage = $(".page").length;
+    nexttotalpage = totalpage+1;
+    //如果是最后一页，显示第一页，并移除所有page上的所有css效果类，否则显示下一页，并移除上一页的切换动画效果
+    if(curpage == totalpage){
+    /*    for(var i=1; i<nexttotalpage;i++){
+            $(".page"+i).removeClass("hide");
+            $(".page"+i).removeClass("show");
+            $(".page"+i).removeClass("pt-page-moveFromBottomFade");
+			$(".page"+i).removeClass("pt-page-moveToTopFade");
+        }
+        $(".page1").addClass("show");
+        $(".page1").addClass("pt-page-moveFromBottomFade");
+        curpage =1;
+		*/
+		window.location.href="entrance.html";
+    }else{
+		if(curpage == "3"){
+			$(".frontup").hide();
+			$(".backup").show();
+			$(".logoBeneath").show();
+			$(".logoBeneath").css("z-index","1000");
+			
+			
+		}
+        nextpage = curpage+1;
+        lastpage = curpage-1;
+        $(".page"+curpage).removeClass("pt-page-moveFromBottomFade");
+        $(".page"+curpage).addClass("pt-page-moveToTopFade");
+        $(".page"+curpage).removeClass("show");
+        $(".page"+curpage).addClass("hide");
+        $(".page"+nextpage).removeClass("hide");
+        $(".page"+nextpage).addClass("show");
+        $(".page"+nextpage).addClass("pt-page-moveFromBottomFade");
+        $(".page"+lastpage).removeClass("pt-page-moveToTopFade");
+        curpage = nextpage;
+        $(".first").css("display","none");
+        $(".second").css("display","none");
+   //     $(".fourthPageFirst").css("display","none");
+   //     $(".fourthPageSecond").css("display","none");
+		setTimeout('$(".first").fadeIn()',800);
+		setTimeout('$(".second").fadeIn()',2000);
+	//	setTimeout('$(".fourthPageFirst").slideDown()',800);
+	//	setTimeout('$(".fourthPageSecond").slideDown()',1500);
+    }
+	
+			}
+        },
+        //Default is 75px, set to 0 for demo so any distance triggers swipe
+         threshold:2
+      });
+    });
+		$(".first").css("display","none");
+		$(".second").css("display","none");
+		setTimeout('$(".first").fadeIn()',800);
+		setTimeout('$(".second").fadeIn()',2000);
+		
+
+		var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+		document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F6e0518209d659729535d6fca974909bc' type='text/javascript'%3E%3C/script%3E"));
+
+		</script>
+	</body>
+</html>

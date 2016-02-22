@@ -1,0 +1,613 @@
+﻿<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<script src="jquery-1.11.2.min.js"></script>
+		<script src="jquery.cookie.js"></script>
+		<title>太搞siao！我居然是遍及全球的煎饼果子肤质！切克闹~！‘美氪’神还原你皮肤的真面目~</title>
+		<style>
+		*{
+			margin:0;
+			padding:0;
+			font-family:"微软雅黑";
+		}
+		html,body{
+			width:100%;
+			height:100%;
+		}
+		.cp{
+			color:#ff3366;
+		}
+		.f15{
+			font-size:1.2em;
+		}
+		.f11{
+			font-size:1.1em;
+		}
+		.back{
+			width:100%;
+			position:absolute;
+			top:1px;
+			left:0;
+			z-index:-100;
+		}
+		.content{
+			padding:0 0.6em;
+		}
+		
+		.shade{
+			position:absolute;
+			top:0;
+			left:0;
+			width:100%;
+			height:100%;
+			display:none;
+			background:rgba(0,0,0,0.8);
+		}
+		.shade img{
+			margin-top:3em;
+			margin-left:5%;
+			width:90%;
+		}
+		.title{
+			display:block;
+			margin:3em auto 1.5em;
+			width:60%;
+		}
+		
+		.starName{
+			padding-left:0.2em;
+			padding-right:0.2em;
+			font-weight:600;
+		}
+		.starPic{
+			width:85%;
+			margin:2em auto;
+			
+		}
+		.resultTitle{
+			display:block;
+			width:100%;
+			text-align:center;
+			font-size:1.2em;
+			margin:2em auto 1em;
+		}
+		#resultContent p{
+			margin-top:0.5em;
+			margin-bottom:1em;
+		}
+		.userPic{
+			width:20%;
+			float:left;
+			text-align:center;
+		}
+		.skinType{
+			width:5%;
+			float:left;
+			margin-left:0.25em;
+			margin-right:0.25em;
+			border-right:1px solid #000;
+		}
+		.typeExp{
+			width:70%;
+			float:left;
+		}
+		#userPic{
+			width:40px;
+			height:40px;
+			border:0;
+			border-radius:100%;
+			margin-bottom:0.5em;
+			margin-top:0.5em;
+		}
+		#skinPic{
+			width:40px;
+		}
+		.count{
+			width:75%;
+			padding:1em;
+			text-align:center;
+			margin:2em auto;
+		}
+		
+		
+		.befContinue{
+			font-size: 0.9em;
+		  	text-align: center;
+		  	margin-top: 2em;
+		  	margin-bottom: 1em;
+		  	color: #ff3366;
+		}
+		.subExp{
+			font-size:0.8em;
+			color:#ff3366;
+			width:100%;
+			text-align:center;
+			margin-top:2em;
+		}
+		.continueSet{
+			width:100%;
+			text-align:center;
+		}
+		.download{
+			width:50%;
+			margin-top:0.5em;
+			margin-bottom:3em;
+		}
+		.lottery{
+			font-size:0.9em;
+			width:100%;
+			text-align:center;
+		}
+		
+		.bottomPart img{
+			width:29%;
+			border:1px solid #f0f0f0;
+			border-radius:2px;
+			float:left;
+			margin:1em 1.5% 2em;
+		}
+		.shareBtn{
+			width:60%;
+			margin-top:1em;
+		}
+		.join{
+			display:block;
+			width:96%;
+			background:#EAEAEA;
+			border:#D4D4D4;
+			padding:0.5em;
+			margin-bottom:2em;
+		}
+		#trialProduct{
+			width:20%;
+			float:left;
+			bordre:#D4D4D4;
+		}
+		
+		#joinText{
+			display:inline-block;
+			float:left;
+			width:40%;
+			font-size:0.8em;
+			padding-left: 0.5em;
+ 			padding-top: 2em;
+		}
+	/*	.downloadArea{
+			display:inline-block;
+			float:right;
+			width:30%;
+			padding-top:0.8em;
+			text-align:center;
+		}
+	*/	
+		#downloadBtn{
+			width:30px;
+			
+		}
+		#downloadText{
+			color:#ff3366;
+		}
+		.userPicWrapper{
+			width:50px;
+			height:50px;
+			overflow:hidden;
+		}
+		.sharePicWrapper{
+			width:0;
+			height:0;
+			overflow:hidden; 
+		}
+
+		.downloadgif{
+			width:90%;
+			margin-left:5%;
+			margin-top:3em;
+		}
+		.foldBtn{
+			height:1px;
+			border-top:0;
+			border-bottom:1px solid #D1D1D1;
+			text-align:center;
+			margin-top:2em;
+		}
+		.foldBtn button{
+			width:40px;
+			height:40px;
+			background:#EAEAEA;
+			border:0;
+			border-radius:100%;
+			position:relative;
+			top:-20px;
+			margin-left:5px;
+			margin-right:5px;
+			
+		}
+		.fold{
+			display:none;
+		}
+		
+		
+		.btnWrapper{
+			width:60px;
+			margin-left:auto;
+			margin-right:auto;
+			text-align:center;
+			background:#fff;
+			
+		}
+		@media screen and (min-width:375px){
+			.skinType{
+				margin-left:5%;
+			}
+			.skinType p{
+				margin-top:0.2em;
+			}
+			.typeExp{
+				width:60%;
+			}
+			.typeExp p{
+				margin-top:0.2em;
+			}
+			.userPic{
+				margin-left:1em;
+			}
+			#userPic{
+				width:50px;
+				height:50px;
+				margin-top:0.5em;
+				margin-left:3%;
+			}
+
+
+		}
+		@media srceen and (max-width:320px){
+			#joinText{
+				padding-top:1em;
+			}
+			.downloadArea{
+				padding-top:0;
+			}
+			
+		}
+		
+		@media screen and (min-width:414px){
+			.skinType{
+				margin-left:5%;
+			}
+			.userPic{
+				margin-left:5%;
+			}
+			.skinType p{
+				margin-top:0.2em;
+			}
+			.typeExp{
+				width:55%;
+			}
+			.typeExp p{
+				margin-top:0;
+			}			
+			#userPic{
+				margin-top:0;
+			}
+
+		}
+		@media screen and (max-width:320px){
+
+		}
+	/*	body{
+			background:url("images/back3.png");
+			background-size:100% auto;
+			background-repeat: no-repeat;
+		}
+	*/	
+		</style>
+	</head>
+	<body>
+		<div class="sharePicWrapper"><img style="width:500px;height:500px;" src="images/meiDoctor.png"/></div>
+		<div class="shade">
+			<img src="images/wechathint.png"/>
+		</div>
+	  	<img class="back" src="images/back3.png"/>  
+		<div class="content">
+			<img class="title" src="images/resultTitle.png"/>
+			<div class="" style="text-align:center">
+				<p class="">你是<span class="starName f11"></span>！</p>
+				<img class="starPic" src=""/>
+			</div>
+			<div class="topPart">
+				<div class="userPic">
+					<img id="userPic" src=""  alt=""/>
+					<img id="skinPic" src="images/osp.png" alt=""/>
+				</div>
+				
+				<div class="skinType">
+					<p class="typechar1">D</p>
+					<p class="typechar2">R</p>
+					<p class="typechar3">N</p>
+					<p class="typechar4">T</p>
+				</div>
+				
+				<div class="typeExp">
+					<p class="typeExp1">干性(Dry)</p>
+					<p class="typeExp2">耐受性(Resistant)</p>
+					<p class="typeExp3">非色素性(Non-pigmented)</p>
+					<p class="typeExp4">紧致性(Tight)</p>
+				</div>
+				<div style="clear:both;" class=""></div>
+			</div>
+			<div class="middlePart">
+				<p class="resultTitle">自在的皮肤类型</p>
+				<div id="resultContent"></div>
+				<input class="firstTwo" type="hidden"/>
+				<input class="all" type="hidden"/>
+				<div class="foldBtn">
+					<div class="btnWrapper"><button class="unfold">展开</button><button class="fold">收起</button></div>
+				</div>
+			</div>
+			<div class="count">
+				<input class="hiddenCount" type="hidden" value="" />
+				<p class="f11">有<span class="sameCount f15 cp"></span>人和你皮肤类型相同</p>
+				<p>（共 <span class="totalCount cp"></span>人完成测试）</p>
+			</div>
+			<div class="continueSet"><img src="images/shareBtn.png" class="shareBtn"/></div>
+		<img class="downloadgif downloadArea" src="images/downloadNew.png"/>  
+		</div>
+		<script>
+
+		$(document).ready(function(){
+          
+           
+			var skintypeResults = {
+				    "OSPW": {
+				        "type": "OSPW",
+				        "cnName": "油性(Oil)、敏感性(Sensitive)、色素性(Pigmented)和皱纹性(Wrinkled)皮肤",
+				        "shortDesc": "“我真是要疯了，我的脸就像是一个灵敏感应器，稍微不注意就满满都是问题。日晒就黑，笑就皱纹，熬夜就黑眼圈，每一天都要和各种黑头，痘痘，雀斑战斗……”",
+				        "evaluation": "步步惊心的皮肤类型",
+				        "details": "<p>“我真是要疯了，我的脸就像是一个灵敏感应器，稍微不注意就满满都是问题。日晒就黑，笑就皱纹，熬夜就黑眼圈，每一天都要和各种黑头，痘痘，雀斑战斗……”<br/></p><p class='cg'><span class='cp f15'>你</span>的皮肤对外界环境的变化和你的日常行为会有很快速的反应。日光损伤，色斑，经常出现粉刺、痤疮并留下瘢痕，对多种护肤品发生红斑、痕痒、刺痛或灼烧感等反应，化妆品容易脱落，防晒霜使你感到油腻，脸泛油光……这些可能都是你经常遇到的问题。<br/></p><p class='cg'><span class='cp f15'>对</span>于你的皮肤，日常护理目标是使用含有抗氧化和抗炎成分的产品，解决油脂、色斑和皱纹。但是，很多疗效足以治疗你的皱纹和暗斑的产品，却都可能刺激你的皮肤<br/></p><p class='cg'><span class='cp f15'>如</span>果你想从根本上解决皮肤问题，那就来畅游一下美氪小站，可以通过小氪的帮助找到专属你的护肤方案。<br/></p>"
+				    },
+
+				    "OSPT": {
+				        "type": "OSPT",
+				        "cnName": "油性(Oil)、敏感性(Sensitive)、色素性(Pigmented)和紧致性(Tight)皮肤",
+				        "shortDesc": "“我真是一刻都不得闲！我的脸上不是这里冒出痤疮，就是那里出现暗斑，总有丑陋的东西挥之不去，我多么羡慕那些皮肤上什么都没有的人啊！”",
+				        "evaluation": "令人沮丧的皮肤类型",
+				        "details": "<p>“我真是一刻都不得闲！我的脸上不是这里冒出痤疮，就是那里出现暗斑，总有丑陋的东西挥之不去，我多么羡慕那些皮肤上什么都没有的人啊！”<br/></p><p class='cg'><span class='cp f15'>你</span>皮肤就好像陷入了一个恶性循环，先是出现斑点，然后就是褐色斑，然后又是斑点。有些人长痤疮，有些人长黑斑，而你的皮肤类型则是两者兼备。<br/></p><p class='cg'><span class='cp f15'>有</span>的时候你可能不知所措，因为你总是与一个又一个的痤疮战斗，单纯处理一个方面是不能完全解决你的皮肤问题的，所以你要处理你皮肤的三个主要问题——色素沉着，敏感和油脂分泌。<br/></p><p class='cg'><span class='cp f15'>畅</span>游一下美氪小站，小氪将帮助你找到合适的成分甚至产品，从专业的角度让你渐渐摆脱皮肤问题的困扰。<br/></p>"
+				    },
+				    "OSNW": {
+				        "type": "OSNW",
+				        "cnName": "油性(Oil)、敏感性(Sensitive)、非色素性(Non-pigmented)和皱纹性(Wrinkled)皮肤",
+				        "shortDesc": "“我不易晒黑但是皮肤动不动就发红，还经常脸泛油光，活脱脱一只油淋小龙虾。”",
+				        "evaluation": "龙虾型皮肤",
+				        "details": "<p>“我不易晒黑但是皮肤动不动就发红，还经常脸泛油光，活脱脱一只油淋小龙虾。”<br/></p><p class='cg'><span class='cp f15'>你</span>皮肤最大的优势就是皮肤白皙不易晒黑，但是白皙的皮肤却暴露出你脸部更多的缺陷。你会时常遭遇面部发红、青春痘、毛孔粗大、脸部脱皮、鼻子增大、皱纹、皮肤油腻等的困扰，更有甚者还被诊断出患有玫瑰痤疮（酒糟鼻）。<br/></p><p class='cg'><span class='cp f15'>和</span>朋友的照片中，你可能总是脸最红的一个。由于长时间的油脂分泌，你的鼻子也慢慢变成猪头鼻。也许已经青春不再，可是“青春痘”却如青春依旧长存。或许你已经为了改善你的皮肤，在昂贵的护肤品上花费了大量金钱，却一无所获。<br/></p><p class='cg'><span class='cp f15'>畅</span>游一下美氪小站，小氪将帮助你找到合适的成分甚至产品，从专业的角度让你渐渐摆脱皮肤问题的困扰。<br/></p>"
+				    },
+
+				    "OSNT": {
+				        "type": "OSNT",
+				        "cnName": "油性(Oil)、敏感性(Sensitive)、非色素性(Non-pigmented)和紧致性(Tight)皮肤",
+				        "shortDesc": "“我已经过了青春期了，但是我的皮肤仍然长青春痘，而且还会像小孩一样脸红，这太让我尴尬了。拜托，我已经老大不小了！我的皮肤什么时候才能成熟啊？”",
+				        "evaluation": "红光满面的皮肤类型",
+				        "details": "<p>“我已经过了青春期了，但是我的皮肤仍然长青春痘，而且还会像小孩一样脸红，这太让我尴尬了。拜托，我已经老大不小了！我的皮肤什么时候才能成熟啊？”<br/></p><p class='cg'><span class='cp f15'>你</span>皮肤的最大问题就是脸红，在社交活动中它总是把你出卖。没有任何一个人希望自己的秘密被广而告之，但是你的皮肤就就像测谎器一样，把你的情感全部写在的脸上。发言时紧张？这个全部表现在你的脸上。是否迷上了那个刚认识的人？这个也很难隐藏。<br/></p><p class='cg'><span class='cp f15'>另</span>外，你可能对多种护肤品发生过红斑、痕痒、刺痛或灼烧感等反应。你能做的只是学会如何放松，做能让你冷静下来的事情，同时要避免使用含有某些成分的护肤品。如果可能的话，还要避免使你皮肤产生炎症反应的一些生活场景。<br/></p><p class='cg'><span class='cp f15'>畅</span>游一下美氪小站，小氪将帮助你找到合适的成分甚至产品，从专业的角度让你渐渐摆脱皮肤问题的困扰。<br/></p>"
+				    },
+
+				    "ORPW": {
+				        "type": "ORPW",
+				        "cnName": "油性(Oil)、耐受性(Resistant)、色素性(Pigmented)和皱纹性(Wrinkled)皮肤",
+				        "shortDesc": "“每过十年都会带来一些新的皮肤问题吗？每天早上，当我顺手拿起镜子时，我不喜欢我所见到的：毛孔扩张、黑头粉刺、皱纹、黄褐斑。你是说皮肤保养产品？我试过了，但那些似乎都没有什么效果。”",
+				        "evaluation": "油纸型皮肤",
+				        "details": "<p>“每过十年都会带来一些新的皮肤问题吗？每天早上，当我顺手拿起镜子时，我不喜欢我所见到的：毛孔扩张、黑头粉刺、皱纹、黄褐斑。你是说皮肤保养产品？我试过了，但那些似乎都没有什么效果。”<br/></p><p class='cg'><span class='cp f15'>放</span>下那面镜子！它只能显示你已经知道的问题。不要惊讶你要面临皮肤护理方面越来越多的挑战了。除了敏感肌肤的问题以外，你几乎无法避免任何一个皮肤问题．总盯着你的脸也无济于事。<br/></p><p class='cg'><span class='cp f15'>油</span>脂过度分泌、毛孔扩张以及黑斑从你青春期开始就影响你的容颜，虽然皮肤的油质分泌随着年纪增长会减少，但它很可能留下扩张的毛孔，并能在长过痤疮的地方留下瘢痕，更重要的是，衰老过程也会导致皱纹。<br/></p><p class='cg'><span class='cp f15'>畅</span>游一下美氪小站，小氪将帮助你找到合适的成分甚至产品，从专业的角度让你渐渐摆脱皮肤问题的困扰。<br/></p>"
+				    },
+
+				    "ORPT": {
+				        "type": "ORPT",
+				        "cnName": "油性(Oil)、耐受性(Resistant)、色素性(Pigmented)和紧致性(Tight)皮肤",
+				        "shortDesc": "“我虽然有一些皮肤问题，但除了一些色斑和少量痤疮之外没什么难以处理的，我对拥有这样的皮肤相当满意。为了让皮肤看上去更棒，我可以再做点什么吗？”",
+				        "evaluation": "容光焕发的皮肤类型",
+				        "details": "<p>“我虽然有一些皮肤问题，但除了一些色斑和少量痤疮之外没什么难以处理的，我对拥有这样的皮肤相当满意。为了让皮肤看上去更棒，我可以再做点什么吗？”<br/></p><p class='cg'><span class='cp f15'>你</span>的皮肤绝对属于容易打理的类型，这一类皮肤的优点远远大于缺点。油性，耐受性以及紧致性的皮肤让你看起来很不错，也很年轻。当然，你也有痤疮、粉刺（特别是在青年时期）和一些色斑，但你的皮肤看起来仍然容光焕发。<br/></p><p class='cg'><span class='cp f15'>幸</span>运的是，你很少出现敏感类型皮肤常见的皮肤刺痒，发红以及过敏。年轻时油性皮肤让人苦恼，但是随着年龄增长，出油状况常会改善。而你讨厌的色斑，也有好的一面：造成色斑的色素加深能保护你远离皮肤癌。<br/></p><p class='cg'><span class='cp f15'>最</span>后，与其他皮肤类型忙于尝试各种抗衰老方法不同，紧致的皮肤能让你看起来年轻。<br/></p><p class='cg'><span class='cp f15'>畅</span>游一下美氪小站，小氪将帮助你找到合适的成分甚至产品，从专业的角度让你渐渐摆脱皮肤问题的困扰。<br/></p>"
+				    },
+
+
+				    "ORNW": {
+				        "type": "ORNW",
+				        "cnName": "油性(Oil)、耐受性(Resistant)、非色素性(Non-pigmented)和皱纹性(Wrinkled)皮肤",
+				        "shortDesc": "“皮肤保养何必如此小题大做？简直是浪费时间。我的皮肤同其他人一样。我真的不需要花那么多精力。只是最近我发现有些皱纹。”",
+				        "evaluation": "令人骄傲的皮肤类型",
+				        "details": "<p>“皮肤保养何必如此小题大做？简直是浪费时间。我的皮肤同其他人一样。我真的不需要花那么多精力。只是最近我发现有些皱纹。”<br/></p><p class='cg'><span class='cp f15'>你</span>的皮肤很舒适，你并不在意它。和敏感皮肤不同，你的皮肤可以耐受很多化学品而无刺激感或者发红，大部分护理产品都适合你，你可以放心尝试和使用。当其他人还在为皮肤护理发愁时，你无法想象他们为什么会这样。<br/></p><p class='cg'><span class='cp f15'>不</span>像色素沉着的皮肤类型，你不需要和黑斑做斗争。也不像干性皮肤，你很少需要保湿，除非你老了，否则油膏对你也不会有吸引力。尽管在你青春期时会经历暗疮和皮肤出油，但这也很正常，你可以像其他人一样使用一些治疗暗疮的药物。<br/></p><p class='cg'><span class='cp f15'>防</span>晒霜？你很可能没为它费过心，或许你认为大多数防晒霜感觉很油而绝少使用。问题是在人生的后期，皱纹皮肤下垂，还有其他的老化信号似乎一夜之间就会出现，使你措手不及，因为你习惯了简单的皮肤保养。当衰老来临时，这些保养的效果就不那么好了。<br/></p><p class='cg'><span class='cp f15'>畅</span>游一下美氪小站，小氪将帮助你找到合适的成分甚至产品，从专业的角度让你渐渐摆脱皮肤问题的困扰。<br/></p>"
+				    },
+				    "ORNT": {
+				        "type": "ORNT",
+				        "cnName": "油性(Oil)、耐受性(Resistant)、非色素性(Non-pigmented)和紧致性(Tight)皮肤",
+				        "shortDesc": "“我总是因为我的皮肤受到称赞，但老实说，我不能完全接受。我没有做任何特殊保养，所以它一定是遗传的。我的家人都有很好的皮肤，我想我只是幸运而已。”",
+				        "evaluation": "女神/男神皮肤类型",
+				        "details": "<p>“我总是因为我的皮肤受到称赞，但老实说，我不能完全接受。我没有做任何特殊保养，所以它一定是遗传的。我的家人都有很好的皮肤，我想我只是幸运而已。”<br/></p><p class='cg'><span class='cp f15'>祝</span>贺你赢得了皮肤彩票：无瑕疵，色调均匀，容光焕发，不易衰老。你很少考虑你的皮肤，它很容易护理，但它总是看起来不错。你不理解皮肤护理有什么值得大惊小怪的，你不会梦想突然有一大笔钱去做美容或手术。你的皮肤容易护理，不受年龄影响，适应所有化妆品。<br/></p><p class='cg'><span class='cp f15'>对</span>你而言，幸运的基因与良好的护肤习惯结合起来，就能创造无龄皮肤。适度的油性，紧致的皮肤是你远离衰老的征象，在外伤或炎症后，你的皮肤细胞没有任何产生色斑的倾向，如果你是浅肤色，你可能会有一些晒黑的麻烦，那又算什么呢？与敏感性或干燥性的皮肤不同，你基本上没有痤疮、红肿、色斑或干燥等问题的困扰。<br/></p><p class='cg'><span class='cp f15'>畅</span>游一下美氪小站，小氪将帮助你找到合适的成分甚至产品，从专业的角度让你渐渐摆脱皮肤问题的困扰。<br/></p>"
+				    },
+
+				    "DSPW": {
+				        "type": "DSPW",
+				        "cnName": "干性(Dry)、敏感性(Sensitive)、色素性(Pigmented)和皱纹性(Wrinkled)皮肤",
+				        "shortDesc": "“对于用在脸上的东西我十分谨慎。我的皮肤对所有东西都有反应。寻找皮肤保养品就像是在寻宝。我该如何摆脱这些斑点和皱纹呢？”",
+				        "evaluation": "令人绝望的皮肤类型",
+				        "details": "<p>“对于用在脸上的东西我十分谨慎。我的皮肤对所有东西都有反应。寻找皮肤保养品就像是在寻宝。我该如何摆脱这些斑点和皱纹呢？”<br/></p><p class='cg'><span class='cp f15'>你</span>的肤质让你不得有一刻放松。你的皮肤干燥、脱皮，急需保湿剂的帮助。但如果你对多种化妆品成分过敏，甚至出现皮疹、痛痒和烧灼，那么几乎没有什么产品能帮得上忙。护肤品中的化学成分如香料、清洁剂和防腐剂可以诱发过敏反应，护肤品中的天然成分如精油、椰子油、可可脂也可以引起反应。<br/></p><p class='cg'><span class='cp f15'>一</span>些用来减淡黑斑的产品常常会引发刺激，使你原本色素沉着的皮肤变红。经常有人问你是不是去了海边，但是实情却是你一直在做防晒。潮红的脸会让你看上去像被晒伤了，即使此刻正是寒冷的冬天。某些抗老化面霜可能会让你看上去更像一名烧伤患者，好一段时间红斑才会逐渐变暗呈现褐色，痊愈则需要数月。<br/></p><p class='cg'><span class='cp f15'>改</span>善肤质是一个需要谨慎并长期努力的过程，但这一目标并非不可实现，所以千万不要放弃。畅游一下美氪小站，小氪将帮助你找到合适的成分甚至产品，从专业的角度让你渐渐摆脱皮肤问题的困扰。<br/></p>"
+				    },
+
+				    "DSPT": {
+				        "type": "DSPT",
+				        "cnName": "干性(Dry)、敏感性(Sensitive)、色素性(Pigmented)和紧致性(Tight)皮肤",
+				        "shortDesc": "“脱皮、发红、黑眼圈 ，当皮肤痒的时候我几乎要发疯，因为搔抓只能使它更严重。”",
+				        "evaluation": "备受压力的皮肤类型",
+				        "details": "<p>“脱皮、发红、黑眼圈 ，当皮肤痒的时候我几乎要发疯，因为搔抓只能使它更严重。”<br/></p><p class='cg'><span class='cp f15'>你</span>可能正面对这一系列的皮肤问题：你容易患湿疹、干燥、痤疮、皮肤脱皮、红斑、瘙痒和酒糟鼻，这一类疾病带来的困扰不仅仅是外观上的不适，皮肤瘙痒、红斑、酒糟鼻或痤疮非常难受，持续的刺痛让你分神。这种类型的皮肤很难避免干燥和敏感，的确，大部分的人不愿意花费一天的时间来折腾自己的脸，几乎没有人能够想象这类型皮肤的人生命中每一分钟所承受的压力。<br/></p><p class='cg'><span class='cp f15'>即</span>使在你的脸上发出红斑、干燥和脱皮等非常缺水的信号时，你的脸还是会对各种各样的成分发生反应，使你失去寻找合适护肤成分的信心。护肤品中的香料、香皂中的去污成分、粗糙的织物和刮风的天气很容易造成情况加重，强效保湿剂可以引起痤疮。难道就没有什么好消息么？好消息就是你患色素性皮肤癌的概率会略低于其他类型，不过你还是最好定期检查。<br/></p><p class='cg'><span class='cp f15'>干</span>燥敏感型皮肤有皮肤屏障破坏的问题。由于皮肤屏障被破坏，使干燥敏感、色素沉着这些因素相互影响而导致皮肤困扰。但你并不孤独，这种类型的皮肤在亚洲人中是较为常见的。<br/></p><p class='cg'><span class='cp f15'>畅</span>游一下美氪小站，小氪将帮助你找到合适的成分甚至产品，从专业的角度让你渐渐摆脱皮肤问题的困扰。<br/></p>"
+				    },
+
+				    "DSNW": {
+				        "type": "DSNW",
+				        "cnName": "干性(Dry)、敏感性(Sensitive)、非色素性(Non-pigmented)和皱纹性(Wrinkled)皮肤",
+				        "shortDesc": "“我的皮肤是如比多变，我甚至不知道每一天的我会是什么样子。有些季节我看着还好，但是不知道什么时候我就会对某些东西起反应。有没有什么办法可以管理好我这容易发生反应的皮肤呢？”",
+				        "evaluation": "容易发生反应的皮肤类型",
+				        "details": "<p>“我的皮肤是如比多变，我甚至不知道每一天的我会是什么样子。有些季节我看着还好，但是不知道什么时候我就会对某些东西起反应。有没有什么办法可以管理好我这容易发生反应的皮肤呢？”<br/></p><p class='cg'><span class='cp f15'>你</span>确实可以控制你的反应，不过想要做到却并不容易，因为你的皮肤状况无法预测。某一天你还好好的，可是第二天，你的皮肤突然无预兆地变得很糟糕，不巧恰逢你要参加一个大型的会议或是要去赴一个重要的约会，很难解释和把握这种多变的皮肤。<br/></p><p class='cg'><span class='cp f15'>干</span>燥、脱皮、枯燥、瘙痒、面部潮红，皮肤看上去像是受了刺激，经常感觉不舒服。你很难理解的是，为什么皮肤如干燥缺水却还对那么多种产品发生反应，出现瘙痒、刺激和灼痛。干燥的皮肤使皱纹看上去更加糟糕。如果你大于三十岁，你就可以想象你的皮肤正逐渐变老。<br/></p><p class='cg'><span class='cp f15'>尽</span>管保湿霜可以让脸上的小细纹变得丰满，可是你的敏感皮肤还是不能接受大多数产品，即便是为敏感肤质设计的产品也可能不适合你。实际上，日常护理是解决你皮肤问题的关键，采用正确的方案会使你皮肤的情况变得稳定。<br/></p><p class='cg'><span class='cp f15'>畅</span>游一下美氪小站，小氪将帮助你找到合适的成分甚至产品，从专业的角度让你渐渐摆脱皮肤问题的困扰。<br/></p>"
+				    },
+
+				    "DSNT": {
+				        "type": "DSNT",
+				        "cnName": "干性(Dry)、敏感性(Sensitive)、非色素性(Non-pigmented)和紧致性(Tight)皮肤",
+				        "shortDesc": "“我的皮肤实在太...太...太干了。我觉得自己就像生活在沙漠里，我的眼皮脱皮，嘴唇干裂，无论用什么面霜皮肤都会有烧灼感，这让我的皮肤变得更糟。”",
+				        "evaluation": "燥热的皮肤类型",
+				        "details": "<p>“我的皮肤实在太...太...太干了。我觉得自己就像生活在沙漠里，我的眼皮脱皮，嘴唇干裂，无论用什么面霜皮肤都会有烧灼感，这让我的皮肤变得更糟。”<br/></p><p class='cg'><span class='cp f15'>皱</span>缩、脱皮、红斑、粗糙和憔悴——你的皮肤可能正处于极度缺水的状态。你尝试了各种补水办法，比如按照专家的建议每天补充大量的水分；你抗拒咖啡，因为咖啡具有脱水的作用；你知道自己需要使用保湿剂，即使是最昂贵的化妆品，你敏感的皮肤也会对其发生反应，这一切让你绝望。<br/></p><p class='cg'><span class='cp f15'>全</span>面了解你的皮肤是制订正确护肤策略的基础。应对这一型的皮肤问题并不容易，但请不要恐惧，即使是对你这种脆弱干燥的皮肤，我们也会帮助你来解决。<br/></p>"
+				    },
+
+				    "DRPW": {
+				        "type": "DRPW",
+				        "cnName": "干性(Dry)、耐受性(Resistant)、色素性(Pigmented)和皱纹性(Wrinkled)皮肤",
+				        "shortDesc": "“以前我从不在皮肤上花费过多精力，因为我从来没有皮肤方面的问题。我对护肤产品一点都不讲究，因为我并不需要。但当皱纹和黑斑出现后，我想已经为时晚矣。”",
+				        "evaluation": "易被忽视的皮肤类型",
+				        "details": "<p>“以前我从不在皮肤上花费过多精力，因为我从来没有皮肤方面的问题。我对护肤产品一点都不讲究，因为我并不需要。但当皱纹和黑斑出现后，我想已经为时晚矣。”<br/></p><p class='cg'><span class='cp f15'>D</span>RPW类型的年轻人很少关心关于皮肤护理的知识，通常开始出现皮肤老化的征象时，才开始关心自己的皮肤。<br/></p><p class='cg'><span class='cp f15'>对</span>于你的皮肤类型来说，皱纹是现在（或者是将来）的主要问题。你的皮肤摸上去会感到紧绷、粗糙甚至有开裂，尤其是在干燥的环境中，比如在飞机上或在像东北这样的低湿度环境中。冬天，室内开始供暖，你的皮肤会出现更严重的脱水，你的皮肤还有可能会接触羊毛和其他粗糙的衣服，从而使皱纹加重，你甚至可以看到手上的皱纹。<br/></p><p class='cg'><span class='cp f15'>在</span>你三十岁初期，你的皮肤便会开始出现老化迹象，随着年龄增长，老化加速且越来越明显。年龄大一些的DRPW皮肤类型的人，会沮丧地抱怨皮肤起皱纹。虽然基因在每个人的皮肤状况中起到一定作用，但是对皮肤多年的忽视，甚至错误的保养是皮肤问题最常见的根源。很多人会说如果那时就知道现在所知的东西，就会采取不同的行动。<br/></p><p class='cg'><span class='cp f15'>不</span>管你多大，你还是可以做些什么的，即使你是位年纪较大的人，也不要放弃，立刻行动，现在就采取措施以保护皮肤并防止皱纹形成吧。<br/></p><p class='cg'><span class='cp f15'>畅</span>游一下美氪小站，小氪将帮助你找到合适的成分甚至产品，从专业的角度让你渐渐摆脱皮肤问题的困扰。<br/></p>"
+				    },
+
+				    "DRPT": {
+				        "type": "DRPT",
+				        "cnName": "干性(Dry)、耐受性(Resistant)、色素性(Pigmented)和紧致性(Tight)皮肤",
+				        "shortDesc": "“我庆幸自己有着光滑、年轻的皮肤，我平时不需要在护肤方面花费过多精力。但是我也看到有进一步改善的空间，我该如何达到最佳状态呢？”",
+				        "evaluation": "遍及全球的皮肤类型",
+				        "details": "<p>“我庆幸自己有着光滑、年轻的皮肤，我平时不需要在护肤方面花费过多精力。但是我也看到有进一步改善的空间，我该如何达到最佳状态呢？”<br/></p><p class='cg'><span class='cp f15'>你</span>拥有一个跨越种族的皮肤类型。例如，意大利偶像索菲娅罗兰，亚裔女星露西刘玉玲，高贵的有色皮肤女性哈里贝瑞，引人注目的拉丁美女佩内洛普克鲁兹，全部都是DRPT型皮肤。<br/></p><p class='cg'><span class='cp f15'>你</span>光滑、年轻的皮肤被另一些要与皱纹作斗争的人所嫉妒。你很少为油性和痤疮暴发而烦恼，无忧无虑地度过十几岁和二十几岁的时光。虽然随着年龄增长，你的皮肤会变得略微干燥，但这很容易解决，因为你的耐受性皮肤可以轻松接受其他类型皮肤必须避免的产品。<br/></p><p class='cg'><span class='cp f15'>暴</span>晒可以引起皱纹黑斑和黑斑病，最好避免。依赖良好的基因和健康的饮食和生活方式，你享受着紧致性皮肤的祝福，持久保湿会帮助你保持皮肤的年轻，时刻警惕，保护你的皮肤远离有害因素，使用不会导致干燥的护肤品。<br/></p><p class='cg'><span class='cp f15'>畅</span>游一下美氪小站，小氪将帮助你找到合适的成分甚至产品，从专业的角度让你渐渐摆脱皮肤问题的困扰。<br/></p>"
+				    },
+
+				    "DRNW": {
+				        "type": "DRNW",
+				        "cnName": "干性(Dry)、耐受性(Resistant)、非色素性(Non-pigmented)和皱纹性(Wrinkled)皮肤",
+				        "shortDesc": "“我的皮肤一直很好，但过夜之后就变得十分干燥。每当我照镜子时都会发现新的皱纹。如何才能让我看起来更加年轻呢？”",
+				        "evaluation": "选择泛滥的皮肤类型",
+				        "details": "<p>“我的皮肤一直很好，但过夜之后就变得十分干燥。每当我照镜子时都会发现新的皱纹。如何才能让我看起来更加年轻呢？”<br/></p><p class='cg'><span class='cp f15'>年</span>轻时，DRNW型肤质的你享受着很棒的皮肤，比油性皮肤痤疮少，很少发生皮肤刺激，让你比敏感性类型的人有更多的产品可选择，很少有困扰色素性皮肤人群的黑斑和雀斑等色素沉着问题。一直到25岁之前，你的皮肤是很舒适的，你们大多数不会在皮肤护理上花太多心思。<br/></p><p class='cg'><span class='cp f15'>很</span>多这一皮肤类型的人有浅色的皮肤，这种优雅的白皙皮肤不受色斑、雀斑的侵袭，很让人羡慕。但这种皮肤比色素性皮肤更脆弱，并且除非护理得当，否则容易衰老，这便成为你下半生一个煞风景的意外。<br/></p><p class='cg'><span class='cp f15'>你</span>的皮肤是一个被“呵护”过度的皮肤类型，过剩的产品和服务突然充斥市场、美容院和美容诊所。虽然其中很多推向DRNW型肤质者的消费市场，但除非可以明确他们能对抗你的四种皮肤属性的特异性的联合作用，否则不论多昂贵，他们都是无用的。<br/></p><p class='cg'><span class='cp f15'>如</span>何取其精华，去其糟粕？如何得知哪些产品和服务是真正有效的，哪些是金玉其外，败絮其中？<br/></p><p class='cg'><span class='cp f15'>畅</span>游一下美氪小站，小氪将帮助你找到合适的成分甚至产品，从专业的角度让你渐渐摆脱皮肤问题的困扰。<br/></p>"
+				    },
+				    "DRNT": {
+				        "type": "DRNT",
+				        "cnName": "干性(Dry)、耐受性(Resistant)、非色素性(Non-pigmented)和紧致性(Tight)皮肤",
+				        "shortDesc": "“为什么要在皮肤护理上花费大量时间呢？生命如此短暂。无论如何，我认为美丽是源自内在的。我只做最简单的护理并把我的精力投入到其他事情上。”",
+				        "evaluation": "自在的皮肤类型",
+				        "details": "<p>“为什么要在皮肤护理上花费大量时间呢？生命如此短暂。无论如何，我认为美丽是源自内在的。我只做最简单的护理并把我的精力投入到其他事情上。”<br/></p><p class='cg'><span class='cp f15'>祝</span>贺你！你中了皮肤类型的头彩。你拥有别人梦寐以求的皮肤。你或许从未去过皮肤科医师的办公室。在你十几岁和二十几岁时，是所有朋友嫉妒的对象，因为你拥有最好的皮肤——极少痤疮、不油腻、几乎没有雀斑。<br/></p><p class='cg'><span class='cp f15'>可</span>能你偶尔会出现干燥性皮肤斑片，但这没什么大不了的。如果你年龄大一些，或许会注意到你的皮肤变得更干燥了，但你可以用保湿霜来对抗干燥。即使到了中年，你看起来依然非常美丽，人们常常会猜测你比实际年龄要年轻5到10岁。<br/></p><p class='cg'><span class='cp f15'>你</span>也许没有意识到自己拥有无需过多维护的皮肤类型是多么幸运。当其他人恭维你的皮肤时，你却完全不知所云。它只是皮肤，不是吗？<br/></p><p class='cg'><span class='cp f15'>畅</span>游一下美氪小站，小氪将帮助你找到合适的成分甚至产品，从专业的角度让你渐渐摆脱皮肤问题的困扰。<br/></p>"
+				    }
+				}
+
+			var uid = $.cookie().uid;
+			$.getJSON("http://112.74.78.20:8181/api/v2/skintype/result?uid="+uid,function(model){
+				$(".hiddenCount").attr("value",model.skintype);
+
+				$(".typechar1").text(model.skintype.trim().charAt(0));
+				$(".typechar2").text(model.skintype.trim().charAt(1));
+				$(".typechar3").text(model.skintype.trim().charAt(2));
+				$(".typechar4").text(model.skintype.trim().charAt(3));
+				$.each(skintypeResults,function(key,value){
+					if(model.skintype == value.type){
+				
+						type=value.type.replace(/N|R|T/g,"").toLowerCase( );
+						$("#skinPic").attr("src", "images/"+type+".png");
+						var typeExp = value.cnName.trim();
+						var arr = typeExp.split(/[、和]/);
+						$(".typeExp1").text(arr[0]);
+						$(".typeExp2").text(arr[1]);
+						$(".typeExp3").text(arr[2]);
+						$(".typeExp4").text(arr[3]);
+						$(".resultTitle").text(value.evaluation);
+						var str = value.details;
+				
+							var reg1 = /<p>.*?<\/p><p class='cg'>.*?<\/p>/g;
+							var res1=str.match(reg1);
+							$(".firstTwo").attr("value",res1);
+							$(".all").attr("value",str);
+							document.getElementById("resultContent").innerHTML =res1;
+							
+					//	document.getElementById("resultContent").innerHTML = value.details;
+						
+						
+					}
+					
+				});
+				
+			}).done(function(){
+					
+				$(".unfold").click(function(){
+					$("#resultContent").html($(".all").attr("value"));
+					$(".unfold").hide();
+					$(".fold").show();
+				});
+				$(".fold").click(function(){
+					$("#resultContent").html($(".firstTwo").attr("value"));
+					$(".unfold").show();
+					$(".fold").hide();
+				});
+				var title = "太搞siao！我居然是遍及全球的煎饼果子肤质！切克闹~！‘美氪’神还原你皮肤的真面目~";
+				var hiddenCount = $(".hiddenCount").attr("value");
+				var stararr = {"ospt":"令人沮丧的皮蛋肤质","osnt":"红光满面烤鸭肤质","orpt":"容光焕发的双皮奶肤质","ornt":"充满活力的潮汕鱼丸肤质","dspt":"备受压力的烧饼肤质","dsnw":"随时爆破的炸腐竹肤质","drpt":"遍及全球的煎饼果子肤质！切克闹~","drnt":"自在的馒头肤质","drnw":"选择泛滥的切糕的肤质，有钱任性！","drpw":"易被忽视的桂花糕肤质","dsnt":"燥热的爆米花肤质","dspw":"令人绝望的天津大麻花肤质","ornw":"傲娇的五仁月饼肤质","orpw":"爱出油的小笼包肤质","osnw":"麻辣小龙虾肤质","ospw":"步步惊心的臭豆腐肤质"}
+				$.each(stararr,function(key,value){
+					if(key == hiddenCount.toLowerCase()){
+						
+						var title = '太搞siao！我居然是'+value+'！‘美氪’神还原你皮肤的真面目~';
+
+						document.title='太搞siao！我居然是'+value+'！‘美氪’神还原你皮肤的真面目~';
+						$(".starName").html(value);
+							$(".starPic").attr("src","images/delicious/"+key+".jpg");
+							$("#userPic").attr("src","images/delicious/"+key+".jpg");
+						
+					}
+				});
+				  var stateObject = {};
+			   	//	  var title = "问题肤质迎来救星---美氪护肤，内测有礼，大牌试用送不停！";
+			          var newUrl = "http://www.meicrazy.cn/beta/delicious/index.html";
+			          history.pushState(stateObject,title,newUrl);
+				
+				
+				$.ajax({
+					type:"PUT",
+					url:"http://120.27.30.130:8080/api/promotion/" + hiddenCount,
+					beforeSend:function(){
+						
+					},
+					success:function(){
+				
+					},
+					error:function(){
+				
+					}
+				}).done(function(){
+					$.ajax({
+						type:"GET",
+						url:"http://120.27.30.130:8080/api/promotion/" + hiddenCount,
+						beforeSend:function(){
+							
+						},
+						success:function(data){
+						
+							$(".sameCount").html(data.currentCount);
+							$(".totalCount").html(data.total);
+						},
+						error:function(){
+						
+						}
+						
+					});
+				});
+				
+			});
+		});
+		
+		$(".shareBtn").click(function(){
+			$(".shade").show();
+			$(document).scrollTop(0);
+			
+		});
+		$(".shade").click(function(){
+			$(".shade").hide();
+		});
+		var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+		document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F6e0518209d659729535d6fca974909bc' type='text/javascript'%3E%3C/script%3E"));
+			$(".shareBtn").click(function(){
+				_hmt.push(['_trackEvent', "appShare_from_delicious", "click", "from_delicious"]);
+			});	
+			
+			$(".downloadArea").click(function(){
+				_hmt.push(['_trackEvent', "appDownload", "click", "from_delicious"]);
+				window.location.href="http://a.app.qq.com/o/simple.jsp?pkgname=com.meicrazy.andr";
+				
+			});
+			
+		</script>
+	</body>
+</html>	

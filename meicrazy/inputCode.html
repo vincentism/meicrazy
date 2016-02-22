@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title>美氪</title>
+    <script>
+		//<![CDATA[
+			document.write('<script src="js/header.js"> <\/script>');
+		//]]>
+	</script>
+	<style>
+		footer{
+			bottom:0;
+			position:fixed;
+			width:100%;
+			margin-left:auto;
+			margin-right:auto;
+		}
+		#patchca{
+			float:right;
+		}
+		.wrapper{
+			margin-top:1em;
+			width:96%;
+			margin-left:auto;
+			margin-right:auto;
+			background:#fff;
+		}
+		.verCode{
+			background:#fff;
+		}
+	</style>
+  </head>
+  <body>
+	<script>
+		//<![CDATA[
+		document.write('<script src="js/nav.js"> <\/script>');
+		//]]>
+	</script>  
+	<div class="wrapper">
+		<div class="center">
+		<!-- 	<div class="infoBtn">
+				<a href="phoneGet.html" class="phoneGet f12">手机找回</a><a href="emailGet.html" class="emailGet f12">邮箱找回</a>
+				<div class="blankbar"></div>
+			</div>
+		 -->
+			<div class="psforgotCon">
+				<div class="f12 mt20">获取验证码成功，请注意查收</div>
+					<input type="text" class="verCode" placeholder="请输入验证码">
+				<div class="blankbar"></div>
+			</div>
+			<div class="submitBtn">
+				<button class="mt10 btn btn-default cp f15">提交</button>
+			</div>
+			<script>
+				var uuid = $.cookie().uuid;
+				$(".submitBtn button").click(function(){
+					jQuery.support.cors = true;
+					var verCode = $(".verCode").val();
+					$.cookie("verCode",verCode);
+					var mobile = $.cookie().mobile;
+					var data ={p0:2,p1:mobile,p2:verCode,p4:uuid};
+					
+					$.ajax({
+						type:"POST",
+						url:"http://120.27.30.130:8080/api/resetpwd",
+						data:data,
+						success:function(res){
+							var model = $.parseJSON(res);
+							if(model.status == 0){
+								window.location.href="inputNewPsd.html";
+							}
+						},
+						error:function(){
+							
+						}
+						
+						
+					});
+				});
+			</script>
+		</div>
+
+	</div>	
+			<script>
+			//<![CDATA[
+			document.write('<script src="js/footer.js"> <\/script>');
+			//]]>
+		</script>
+
+  </body>
+</html>

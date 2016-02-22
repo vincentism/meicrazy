@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title>美氪</title>
+    <script>
+		//<![CDATA[
+			document.write('<script src="js/header.js"> <\/script>');
+		//]]>
+	</script>
+	<style>
+		footer{
+			bottom:0;
+			position:fixed;
+			width:100%;
+			max-width:960px;
+			margin-left:auto;
+			margin-right:auto;
+		}
+		#patchca{
+			float:right;
+		}
+		.wrapper{
+			margin-top:1em;
+			background:#fff;
+		}
+		.mobile,.verCode{
+			background:#fff;
+		}
+		.mobile{
+			border-bottom:1px solid #e6e6e6;
+		}
+	</style>
+  </head>
+  <body>
+	<script>
+		//<![CDATA[
+		document.write('<script src="js/nav.js"> <\/script>');
+		//]]>
+	</script>  
+	<div class="wrapper">
+		<div class="center">
+		<!-- 	<div class="infoBtn">
+				<a href="phoneGet.html" class="phoneGet f12">手机找回</a><a href="emailGet.html" class="emailGet f12">邮箱找回</a>
+				<div class="blankbar"></div>
+			</div>
+		 -->
+			<div class="psforgotCon">
+				<div class="f12 mt20">请输入您的手机号码或者邮箱，以便我们给你发送重置密码消息</div>
+					<input type="text" class="mobile" placeholder="手机号/E-mail"/>
+					<img id="patchca" src=""/> 
+					<!-- <script>
+						var timestamp = new Date().getTime();
+						var current_src = "http://120.27.30.130:8080/patchca?"+timestamp;
+						$("#patchca").attr("src",current_src);
+						$("#patchca").click(function(){
+							var timestamp = new Date().getTime();
+							var current_src = "http://120.27.30.130:8080/patchca?"+timestamp;	
+							$("#patchca").attr("src",current_src);
+						});
+					</script> -->
+					<input type="text" class="verCode" name="p2" placeholder="验证码" />
+				<div class="blankbar"></div>
+			</div>
+			<div class="submitBtn">
+				<button class="mt10 btn btn-default cp f15">获取验证码</button>
+			</div>
+			<script>
+			function S4() {
+				   return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+				};
+				// Generate a pseudo-GUID by concatenating random hexadecimal.
+				function guid() {
+				   return (S4()+S4()+S4()+S4()+S4()+S4()+S4()+S4());
+				};
+			var uuid=guid();	
+			
+			var timestamp = new Date().getTime();
+			var current_src = "http://120.27.30.130:8080/patchca?uuid="+uuid;
+			$("#patchca").attr("src",current_src);
+			$("#patchca").click(function(){
+				uuid = guid();
+				var timestamp = new Date().getTime();
+				var current_src = "http://120.27.30.130:8080/patchca?uuid="+uuid;	
+				$("#patchca").attr("src",current_src);
+			});
+			$.cookie("uuid",uuid,{path:"/"});
+				$(".submitBtn button").click(function(){
+					jQuery.support.cors = true;
+					var mobile = $(".mobile").val();
+					var patchca = $(".verCode").val();
+					$.cookie("mobile",mobile);
+					var data ={p0:1,p1:mobile,p2:patchca,p4:uuid};
+					
+					$.ajax({
+						type:"POST",
+						url:"http://120.27.30.130:8080/api/resetpwd",
+						data:data,
+						success:function(res){
+							var model = $.parseJSON(res);
+							if(model.status == 0){
+								window.location.href="inputCode.html";
+							}
+						},
+						error:function(){
+							alert("获取验证码失败，请重新再试");
+						}
+						
+						
+					});
+				});
+			</script>
+		</div>
+		<script>
+			//<![CDATA[
+			document.write('<script src="js/footer.js"> <\/script>');
+			//]]>
+		</script>
+	</div>	
+	
+
+  </body>
+</html>

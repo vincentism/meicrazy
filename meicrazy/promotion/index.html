@@ -1,0 +1,305 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>生有观·活有致</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<link href="css/style.css" rel="stylesheet" type="text/css">
+		<link href="css/swiper.css" rel="stylesheet" type="text/css">
+		<link href="css/jplayer.css" rel="stylesheet" type="text/css">
+		<link href="css/jplayer-style.css" rel="stylesheet" type="text/css">
+		<script src="js/jquery-1.11.2.min.js"></script>
+		<script src="js/swiper.js"></script>
+		<script src="js/ZeroClipboard.min.js"></script>
+		<script src="js/jquery.jplayer.js"></script>
+		<script src="js/jquery.jplayer.swf"></script>
+		<script type="text/javascript">
+		//<![CDATA[
+		$(document).ready(function(){
+		
+			$("#jquery_jplayer_1").jPlayer({
+				ready: function () {
+					$(this).jPlayer("setMedia", {
+						title: "Big Buck Bunny",
+						m4v: "http://www.jplayer.org/video/m4v/Big_Buck_Bunny_Trailer.m4v",
+						ogv: "http://www.jplayer.org/video/ogv/Big_Buck_Bunny_Trailer.ogv",
+						webmv: "http://www.jplayer.org/video/webm/Big_Buck_Bunny_Trailer.webm",
+						poster: "http://www.jplayer.org/video/poster/Big_Buck_Bunny_Trailer_480x270.png"
+					});
+				},
+				swfPath: "js/jplayer",
+				supplied: "webmv, ogv, m4v",
+				size: {
+					width: "100%",
+					height: "200px",
+					cssClass: "jp-video-full"
+				},
+				useStateClassSkin: true,
+				autoBlur: false,
+				smoothPlayBar: true,
+				keyEnabled: true,
+				remainingDuration: true,
+				toggleDuration: true
+			});
+		
+		});
+		//]]>
+		</script>
+		<style>
+			html,body,#jp_container_1{
+				width:100%;
+			}
+			.jp-video-play-icon{
+				margin-top:95px;
+			}
+			.jp-video .jp-video-play{
+				overflow:visible;
+			}
+			.jp-type-single{
+				width:100%;
+				height:100%;
+			}
+			#up,#down{
+				width:20px;
+				height:20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrapper">
+			<section class="topBanner">
+				<img id="topBanner" src="images/topBanner.png"/>
+			</section>
+			<section class="video">
+				<div id="jp_container_1" class="jp-video jp-video-360p" role="application" aria-label="media player">
+	<div class="jp-type-single">
+		<div id="jquery_jplayer_1" class="jp-jplayer"></div>
+		
+		<div class="jp-gui">
+			<div class="jp-video-play">
+		<!-- 	<button class="jp-video-play-icon" role="button" tabindex="0">play</button>  -->
+				<img style="width:100px;height:100px;z-index:9999;" class="jp-video-play-icon" tabindex="0" src="images/bofang.png"/>
+			</div>
+		<!-- 	<div class="jp-interface">
+				<div class="jp-progress">
+					<div class="jp-seek-bar">
+						<div class="jp-play-bar"></div>
+					</div>
+				</div>
+				<div class="jp-current-time" role="timer" aria-label="time">&nbsp;</div>
+				<div class="jp-duration" role="timer" aria-label="duration">&nbsp;</div>
+				<div class="jp-details">
+					<div class="jp-title" aria-label="title">&nbsp;</div>
+				</div>
+				<div class="jp-controls-holder">
+					<div class="jp-volume-controls">
+						<button class="jp-mute" role="button" tabindex="0">mute</button>
+						<button class="jp-volume-max" role="button" tabindex="0">max volume</button>
+						<div class="jp-volume-bar">
+							<div class="jp-volume-bar-value"></div>
+						</div>
+					</div>
+					<div class="jp-controls">
+						<button class="jp-play" role="button" tabindex="0">play</button>
+						<button class="jp-stop" role="button" tabindex="0">stop</button>
+					</div>
+					<div class="jp-toggles">
+						<button class="jp-repeat" role="button" tabindex="0">repeat</button>
+						<button class="jp-full-screen" role="button" tabindex="0">full screen</button>
+					</div>
+				</div>
+			</div>
+		 -->	
+		</div>
+		<div class="jp-no-solution">
+			<span>Update Required</span>
+			To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+		</div>
+	</div>
+</div>
+
+				<div class="videoBar">
+					<div class="icon like"><label><img src="images/like.png"/><span class="barCon">1373</span></label></div>
+					<div class="icon comment"><label><img src="images/comment.png"/><span class="barCon">85</span></label></div>
+					<div class="icon star"><label><img src="images/star.png"/><span class="barCon">收藏</span></label></div>
+					<div class="icon share"><label><img src="images/share.png"/><span class="barCon">分享</span></label></div>				
+				</div>
+				<div class="hiddenVideoBar">
+					<img class="cancel" src="images/cancel.png"/>
+					<p class="hiddenExp">据说10秒内转运的人，会马上转运哒！</p>
+					<div class="bdsharebuttonbox"><a href="#" style="display:none" class="bds_more" data-cmd="more"></a><a href="#" class="bds_tsina bdsIcon" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" style="margin-left:1em;" class="bds_qzone bdsIcon" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" style="margin-left:1em;" class="bds_sqq bdsIcon" data-cmd="sqq" title="分享到QQ好友"></a><img style="margin-left:1em;" class="shareIcon bdsIcon" id="wechatshare" src="images/wechatshare.png"/></div>
+					<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"32"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+				</div>
+				<div class="wechatCopyHint">
+					<p>链接已复制至剪贴版，若复制失败，请至地址栏长按即可复制链接发送给你的好友啦~</p> 
+				</div>
+			</section>
+			<section class="introduction mt1">
+				<p class="title">内容简介</p>
+				<p style="margin-bottom:0" class="content" id="content">观致汽车通过业内首个透明工场，将其背后的生产线，向全球公开，让用户全景感受一辆超规超配的汽车是如何制造出来的。观致汽车是一家从零开始、立志享誉世界的中国汽车公司。观致汽车致力于设计和打造出达到甚至超过国际标准的中国汽车产品，并塑造一个令中国消费者引以为傲、期待拥有的中国汽车品牌。
+				作为一家中国汽车公司，观致汽车拥有自身全部的知识产权。到目前为止，公司已提交了近1000项商标申请，获得了超过300项专利。这标志着观致汽车正引领“中国制造”向“中国创造”的历史性转变。</p>
+			</section>
+			<section class="coverflow mt1">
+				<div class="swiper-container">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide" style='background-image:url("images/guanzhi1.jpg")'></div>
+						<div class="swiper-slide" style='background-image:url("images/guanzhi2.jpg")'></div>
+						<div class="swiper-slide" style='background-image:url("images/guanzhi3.jpg")'></div>
+					</div>
+					<!-- Add Pagination -->
+					<div class="swiper-pagination"></div>
+				</div>
+				<div class="videoInstruction">
+					<p>some instructions here</p>
+				</div>
+			</section>
+			
+			    <script>
+				var swiper = new Swiper('.swiper-container', {
+					pagination: '.swiper-pagination',
+					effect: 'coverflow',
+					grabCursor: true,
+					centeredSlides: true,
+					slidesPerView: 'auto',
+					coverflow: {
+						rotate: 50,
+						stretch: 0,
+						depth: 100,
+						modifier: 1,
+						slideShadows : true
+					}
+				});
+				
+				
+				</script>
+			<section class="article mt1">
+				<div class="left"><img src="images/guanzhi1.jpg"/></div>
+				<div class="right">
+					<div >2015-04-29</div>
+					<div >观致汽车荣膺C-NCAP碰撞测试</div>
+				<!--	<div >2015年4月23日，观致3轿车在2015年度C-NCAP第一批车型的评价结果中，以60.5分的成绩获得5+星级评价，创造了自2012年版C-NCAP规则实施以来的得分新纪录。</div> -->
+				</div>
+				<div class="clear"></div>
+			</section>
+			<section class="picEntry mt1">
+				<img src="images/carlogo1.png"/><img src="images/carlogo2.png"/><img src="images/carlogo3.png"/>
+			</section>
+			<section class="ad mt1">
+				<img src="images/ad.png"/>
+			</section>
+			
+			<section class="comment mt1">
+				<div class="commentTopBar">
+				
+					<div class="commentTitle">礼论一番</div>
+					<div class="totalCounts">
+						共<span>10086</span>条
+					</div>
+					<div class="likeCounts">
+						共<span>1307</span>赞
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="commentContent">
+					<div class="commentInput">
+						<img src="http://meicrazy.qiniudn.com/user_22666_20150825171403" id="userPic"/>
+						<input type="text" placeholder="我来说两句..." id="commentInput"/><!-- <span><img src="images/search.png"/></span>  -->
+					</div>
+					<ul>
+						<li>
+							<div class="commentLiHead">
+								<img id="commentLiHead" onerror="imgError(this);" src="http://meicrazy.qiniudn.com/user_22666_20150825171403">
+							</div>
+							<div class="commentLiContent">
+								<div class="userName">?       ζ 我叫丶大蒜头</div>
+								<div class="commentLiCon">赞！学习了，谢谢楼主～</div>
+								<div class="timeBar"><span id="time">3分钟前</span><span><img class="likeBtn" src="images/like.png"/></span><span id="like">8赞</span> </div>
+							</div>
+							<div class="clear"></div>
+						</li>
+						<li>
+							<div class="commentLiHead">
+								<img id="commentLiHead" onerror="imgError(this);" src="http://meicrazy.qiniudn.com/user_22666_20150825171403">
+							</div>
+							<div class="commentLiContent">
+								<div class="userName">木木～～～</div>
+								<div class="commentLiCon">強迫症表示一天只洗一次感覺要死了！</div>
+								<div class="timeBar"><span id="time">47分钟前</span><span><img class="likeBtn" src="images/like.png"/></span><span id="like">103赞</span> </div>
+							</div>
+							
+							<div class="clear"></div>
+						</li>
+					</ul>
+				</div>
+			</section>
+		
+		</div>
+		<script>
+			$(document).ready(function(){
+				var imgError = function(imgObject){
+					$(imgObject).attr("src","/images/defaultImg.png");
+				}	
+				function show()
+				{ 
+				  var box = document.getElementById("content"); 
+				  var text = box.innerHTML; 
+				  var upArrow = '<img src="images/arrowup.png" id="up" class="center" />';
+				  var downArrow = '<img src="images/arrowdown.png" id="down" class="center" />';
+				  var newBox = document.createElement("div"); 
+				  var btn = document.createElement("a"); 
+				  btn.setAttribute("style","display:block;width:100%;text-align:center;margin-top:0.5em;");
+				  var mark = 0;
+				  newBox.innerHTML = text.substring(0,81); 
+				  btn.innerHTML = text.length > 81 ? downArrow : ""; 
+				  
+				  if(text.length > 81){
+					  mark = 0;
+				  }else{
+					  mark = 1;
+				  }
+				  btn.href = "###"; 
+				  btn.onclick = function(){ 
+					if(mark == 0)
+					{ 
+					  btn.innerHTML = upArrow; 
+					  newBox.innerHTML = text;
+					  mark = 1;
+					}
+					else
+					{ 
+					  btn.innerHTML = downArrow; 
+					  newBox.innerHTML = text.substring(0,81); 
+				      mark = 0;
+					} 
+				  } 
+				  box.innerHTML = ""; 
+				  box.appendChild(newBox); 
+				  box.appendChild(btn); 
+				} 
+				show(); 
+				
+				$(".comment img").click(function(){
+					$("#commentInput").focus();
+				});
+				
+				$(".share img").click(function(){
+					$(".hiddenVideoBar").show();
+			//		alert($("#wechatshare").offset().top);
+				});
+				$(".cancel").click(function(){
+					$(".hiddenVideoBar").hide();
+				});
+				$("#wechatshare").click(function(){
+					var offsetTop = $(this).offset().top;
+					$(".wechatCopyHint").css("top", offsetTop);
+					$(".wechatCopyHint").show();
+					setTimeout('$(".wechatCopyHint").hide()',"2000")
+				});
+				
+
+
+			});		
+			
+			
+		</script>
+	</body>
+</html>

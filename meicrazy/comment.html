@@ -1,0 +1,258 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title>美氪-产品评论</title>
+    <script>
+		//<![CDATA[
+			document.write('<script src="js/header.js"> <\/script>');
+		//]]>
+	</script>
+	<style>
+		.wrapper{
+			overflow:hidden;
+			margin-top:1em;
+		}
+	</style>
+  </head>
+  <body>
+	<script>
+		//<![CDATA[
+		document.write('<script src="js/nav.js"> <\/script>');
+		//]]>
+	</script>
+	<div class="wrapper">
+		<div class="optionCon">
+			<div class="panel panel-default">
+
+			<table class="table">
+			<thead></thead>
+			<tbody>
+			
+				<tr>
+					<td width="27%">产品打分</td>
+					<td><div class="block" id="star"></div><div style="display:none;" id="result"></div></td>
+				</tr>
+			
+			
+				<tr>			
+					<td>优点</td>
+					<td><input type="text" id="advantages" class="mt05 form-control commentText" placeholder="请输入优点"/></td>
+				</tr>
+				
+				<tr>	
+					<td>缺点</td>
+					<td><input type="text" id="disadvantages" class="mt05 form-control commentText" placeholder="请输入缺点"/></td>
+				</tr>
+				<tr>
+				<td>使用时间</td> 
+				<td>
+					<label><input type="radio" name='radio1' class="radio1" value="1" onclick="$('.testTime').hide();$('.testSeason').show();"/>我用过</label>
+					<label><input type="radio" name='radio1' class="radio1" value="2" onclick="$('.testSeason').hide();$('.testTime').show();"/>我在用</label>
+				</td>
+				</tr>
+				<tr class="testSeason mt10">
+				<td>试用季节</td> 
+				<td>
+					<label><input name="checkbox" value="春" type="checkbox"/>春</label>
+					<label><input name="checkbox" value="夏" type="checkbox"/>夏</label>
+					<label><input name="checkbox" value="秋" type="checkbox"/>秋</label>
+					<label><input name="checkbox" value="冬" type="checkbox"/>冬</label>
+				</td>
+				</tr>
+				<tr class="testTime mt10">
+				<td>试用时间</td>
+				<td>	
+					<label><input type="radio" name="radio2" value="一周内" />一周内</label>
+					<label><input type="radio" name="radio2" value="一个月内"/>一个月内</label>
+					<label><input type="radio" name="radio2" value="三个月"/>三个月</label>
+					<label><input type="radio" name="radio2" value="半年内"/>半年内</label>
+					<label><input type="radio" name="radio2" value="一年内"/>一年内</label>
+					<label><input type="radio" name="radio2" value="一年以上"/>一年以上</label>
+				</td>
+				</tr>
+				<tr>
+				<td>产品容量</td>
+				<td>
+					<label><input type="radio" name="radio3" value="正常容量" />正常容量</label>
+					<label><input type="radio" name="radio3" value="试用装/小样"/>试用装/小样</label>
+				</td>
+				</tr>
+				<tr>
+					<td>使用心得</td>
+					<td><textarea class="form-control commentArea" placeholder="请输入心得"></textarea></td>
+				</tr>
+				</tbody>
+		</table>
+		
+		</div>	
+		<div class="submitBtn">
+			<button class="btn btn-default	f12">发布</button>
+		</div>		
+		</div>
+
+	
+	
+	</div>
+<script>
+		$(document).ready(function(){
+	/*		(function(d, t, e, m){
+			    
+			    // Async Rating-Widget initialization.
+			    window.RW_Async_Init = function(){
+			                
+			        RW.init({
+			            huid: "239265",
+			            uid: "391cff27f638b2fbfbc0238d5b455456",
+			            source: "website",
+			            options: {
+			                "size": "medium",
+			                "style": "oxygen"
+			            } 
+			        });
+			        RW.render();
+			    };
+			        // Append Rating-Widget JavaScript library.
+			    var rw, s = d.getElementsByTagName(e)[0], id = "rw-js",
+			        l = d.location, ck = "Y" + t.getFullYear() + 
+			        "M" + t.getMonth() + "D" + t.getDate(), p = l.protocol,
+			        f = ((l.search.indexOf("DBG=") > -1) ? "" : ".min"),
+			        a = ("https:" == p ? "secure." + m + "js/" : "js." + m);
+			    if (d.getElementById(id)) return;              
+			    rw = d.createElement(e);
+			    rw.id = id; rw.async = true; rw.type = "text/javascript";
+			    rw.src = p + "//" + a + "external" + f + ".js?ck=" + ck;
+			    s.parentNode.insertBefore(rw, s);
+			    }(document, new Date(), "script", "rating-widget.com/"));
+				
+*/
+
+			
+			
+			$('#star').raty({
+				 hints: ['1', '2', '3', '4', '5'],
+				 path:"images",
+				 starOff: 'star-off-big.png',
+			     starOn: 'star-on-big.png',
+				 size: 24,
+				 target: '#result',
+				 targetKeep : true,
+			//	 readOnly:true,
+			//	 score:3
+			});
+		
+			
+			$(".submitBtn button").click(function(){
+				
+				function getUrlParam(name)
+				{
+				var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+				var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+				if (r!=null) return unescape(r[2]); return null; //返回参数值
+				} 
+				var product_id = getUrlParam("q");
+				
+				var score = $("#result").text();
+				
+				var userId = $.cookie().userId;
+				var skinType = $.cookie().skinType;
+				var advantages = $("#advantages")[0].value;
+				var disadvantages = $("#disadvantages")[0].value;
+				var used = $("input[name='radio1'][type='radio']:checked").val();
+				var season ="";//定义一个数组    
+				if(used==1){
+				
+					$('input[name="checkbox"]:checked').each(function(){//遍历每一个名字为interest的复选框，其中选中的执行函数    
+						season += $(this).val(); 
+					});		
+	           	}else{
+	           			season = $("input[name='radio2'][type='radio']:checked").val();		
+	           	}
+				
+				
+				
+				var capacity = $("input[name='radio3'][type='radio']:checked").val();
+				var content = $(".commentArea")[0].value;
+				
+				jQuery.support.cors = true;
+				
+				var data=
+						{
+							  "article" : {
+							    "publisherId" : userId,
+							    "skinType" : skinType,
+							    "status" : 1,
+							    "tags" : "面部",
+							    "summary" : "",
+							    "subhead" : "",
+							    "c2Id" : "",
+							    "subject" : "",
+							    "visibility" : 1,
+							    "productId" : product_id,
+							    "type" : 12,
+							    "brandId" : "",
+							    "articleId" : "",
+							    "parentId" : "",
+							    "attachments" : content,
+							    "grade" : score,
+							    "imgUrl" : "",
+							    "groupId" : "",
+							    "content" : content,
+							    "paras" : "{\"grade\":"+score+",\"skinTypeGrade\":0.0,\"advantages\":"+advantages+",\"disadvantages\":"+disadvantages+",\"used\":"+used+",\"season\":"+season+"\"sizePrice\":0,\"capacity\":"+capacity+"}"
+							  },
+							  "paras" : {
+							    "season" : season[0],
+							    "advantages" : advantages,
+							    "capacity" : capacity,
+							    "grade" : score,
+							    "sizePrice" : 0,
+							    "skinTypeGrade" : 0,
+							    "disadvantages" : disadvantages,
+							    "used" : used
+							  }
+							}						
+
+				
+			
+					  $.ajax({
+				          //提交数据的类型 POST GET
+				          type:"POST",
+				          //提交的网址
+				          url:"http://120.27.30.130:8080/api/threads",
+				          //提交的数据
+				          data : JSON.stringify(data),
+				          contentType: "application/json; charset=utf-8",
+				          //返回数据的格式
+				          datatype: "json",//"xml", "html", "script", "json", "jsonp", "text".
+				          //在请求之前调用的函数
+				          beforeSend:function(){},
+				          //成功返回之后调用的函数             
+				          success:function(data){
+				          	 window.location.href="products.html?q="+product_id;
+				          },
+				          //调用执行后调用的函数
+				          complete: function(){
+				              //HideLoading();
+				          },
+				          //调用出错执行的函数
+				          error: function(){
+				              //请求出错处理
+				              alert("发布消息失败，请重新再试");
+				          
+				          }         
+				       });
+					
+				
+					
+				/*	$.getJSON("http://120.27.30.130:8080/api/threads", data, function(modelStr){
+						var model=$.parseJSON(modelStr);
+						if(model.status==1){
+							window.location.href="products.html";	
+						}	
+					});
+				*/
+			
+			});	   
+		});
+	</script>
+  </body>
+</html>

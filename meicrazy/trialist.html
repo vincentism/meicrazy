@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title>美氪-试用活动列表</title>
+   	<script>
+		//<![CDATA[
+			document.write('<script src="js/header.js"> <\/script>');
+		//]]>
+	</script>
+
+	<style>
+		.trialist{
+			padding-top:0.5em;
+			padding-left:1%;
+			padding-right:1%;
+		}
+		.trialist ul{
+			border-bottom:1px solid #f0f0f0;
+			padding:0.5em;
+			margin-bottom:1em;
+			background:#fff;
+		}
+		.trialist ul li{
+			list-style-type:none;
+		}
+		.trialItem{
+			width:100%;
+		}
+		.trialImg{
+			padding-top:1%;
+			width:50%;
+			height:200px;
+		}
+		.instr{
+			display:inline-block;
+			vertical-align:top;
+			width:38%;
+			margin-left:1em;
+		}
+		.trialItem p{
+			display:inline-block;
+			padding-left:0.5em;
+		}
+		.loadMoreBtn{
+				width:100%;
+				height:32px;
+				line-height:32px;
+				background:#e6e6e6;
+				color:#000;
+				border:0;
+				border-radius:2px;
+			}	
+		.alignment{
+			width:65%;
+			margin-top:0.5em;
+		}	
+		@media screen and (max-width:414px){
+			.trialImg{
+				width:100%;
+				height:200px;
+			}
+			.instr{
+				width:100%;
+				padding-right:0.5em;
+			}
+			
+		}
+	</style>
+  </head>
+  <body>
+ 	<script>
+		//<![CDATA[
+		document.write('<script src="js/nav.js"> <\/script>');
+		//]]>
+	</script>
+	<div class="wrapper">
+
+			
+		<div class="trialist">
+			<ul>
+				<li>
+					<div class="trialItem">
+						<img src="" width=100% height=250px/>
+						<p>活动名称：</p><span></span>
+						<p>试用名额:&nbsp;</p><span>250</span>
+						<p>申请人数:&nbsp;</p><span>1</span>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<button class="loadMoreBtn">暂无更多</button>
+	    <script>
+		//<![CDATA[
+			document.write('<script src="js/footer.js"> <\/script>');
+		//]]>
+	</script>
+	</div>	
+	<script>
+		var imgError = function(imgObject){
+			$(imgObject).attr("src","");
+		}
+		jQuery.support.cors = true;
+		function getTrial(){
+			$.getJSON("http://120.27.30.130:8080/api/trials?",function(modelStr){
+				var model = $.parseJSON(modelStr);
+				var trialHtml = "";
+				$.each(model.trials,function(index, value){
+					var trialItem ='<ul><a href="trialEvent.html?q='+value.trial.trialId+'"><li><div class="trialItem">'+
+									'<img onerror="imgError(this);" src="'+value.trial.trialImg+'" class="trialImg"/>'+
+									'<div class="instr"><p style="margin-top:0.5em;">活动名称：&nbsp;</p><span class="alignment">'+value.trial.name+'</span><br/>'+	
+									'<hr style="margin:0.5em 0 0.5em"><p>试用名额：&nbsp;</p><span>'+value.trial.limitCount+'</span><br/>'+
+									'<p>申请人数：&nbsp;</p><span>'+value.trial.applyCount+'</span></div>'+
+									'</div></li></a></ul>';
+					trialHtml+=trialItem;
+				});
+				$(".trialist").html("<p style='padding-left:1%;font-size:1.5em;margin-bottom:0;'>免费试用</p>"+trialHtml);
+			});
+			
+		}
+		getTrial();
+	/*	$(".loadMoreBtn").click(function(){
+			p2=p2+1;
+			data1={p0:$.cookie().userId,p1:$.cookie().skinType,p2:p2,p3:'0'};
+			getTrial();
+			
+		});
+	*/
+	</script>
+
+  </body>
+</html>

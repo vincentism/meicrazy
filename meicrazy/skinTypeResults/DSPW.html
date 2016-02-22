@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+ 
+    <title>DSPW</title>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="../js/jquery-1.11.2.min.js"></script>
+<!--  	<script src="../js/star-rating.min.js" type="text/javascript"></script>  -->
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../js/bootstrap.min.js"></script>
+	
+	<link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
+<!-- 	<link href="css/star-rating.min.css" media="all" rel="stylesheet" type="text/css" /> -->
+    <!-- Bootstrap -->
+	<script src="../js/jquery.bxslider.min.js"></script>   
+	<link href="../css/bootstrap.min.css" rel="stylesheet">
+	<link href="../css/adaptive.css" rel="stylesheet" />
+	<link href="../css/jquery.bxslider.css" rel="stylesheet" />
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+	 	<style>
+
+		.toppart{
+			padding:0.5em;
+			text-align:center;
+		}
+
+		.toppart p{
+			margin-top:1em;
+		}
+		.bottompart{
+			background:#f1f2f6;
+			text-align:left;
+			text-indent:2em;
+			padding-left:.5em;
+			padding-right:.5em;
+			margin-top:1em;
+			width:80%;
+			margin-left:auto;
+			margin-right:auto;
+		}
+		
+		@media screen and (max-width:414px){
+			.bottompart{
+				width:100%;
+			}
+		}
+		.bottompart p{
+			margin-top:1em;
+		}
+
+		.hrlim p{
+			margin-top:0.75em;
+		}
+		.plim{
+			padding-left:1em;
+			padding-right:1em;
+			
+		}
+
+		.buttonpart{
+			margin:2em;
+			text-align:center;
+		}
+		.buttonpart .buttonDefault{
+			border:0;
+			width:35%;
+			max-width:200px;
+			height:40px;
+			color:#fff;
+			background-color:#959fab !important;
+			cursor:pointer;
+			border-radius:24px;			
+			-webkit-border-radius:24px;
+		}
+		.buttonpart .finishBtn{
+			border:0;
+			width:35%;
+			max-width:200px;
+			height:40px;
+			color:#fff;
+			background-color:#ff4179 !important;
+			cursor:pointer;
+			border-radius:24px;
+			-webkit-border-radius:24px;
+			margin-left:1em;
+			margin-right:1em;
+		}
+		</style> 
+	</head>
+	<body>
+		<div class="wrapper">
+		<div class="bef-nav">
+			<div class="left"><img id="logo" src="../images/logo.png" alt=""></div>
+			<div class="btn-group right" role="group" aria-label="...">
+				<button type="button" id="background" class="personalInfo btn btn-default">登陆</button>
+				<button type="button" id="background" class="personalInfo btn btn-default">注册</button>
+			<!--	<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span></button>-->
+			</div>
+			<div class="blankbar"></div>
+		
+		<nav>
+		  <div class="container-fluid" id="nav">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<!-- <div class="navbar-header">
+			  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			  </button>
+			  <a class="navbar-brand" href="#"> </a>
+			</div>
+
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> -->
+			  <ul>
+				<li><a href="../index.html">首页</a></li>
+				<li><a href="../wom-headlines.html">口碑</a></li>
+				<li><a href="#">试用</a></li>
+				<li><a href="#">更多</a></li>
+			  </ul>	
+		  </div><!-- /.container-fluid -->
+		</nav>
+		</div>	
+		
+			<div class="toppart">
+				<p class="f11">你的皮肤类型为<br/>
+				<div class="hrlim">
+					<p class="cp f15">DSPW<br/>
+					<span class="cp mt-0">(令人绝望的皮肤类型)<br/></span></p>
+				</div>
+				<div class="plim" ><p class="cg">干性(<span class="cp">D</span>ry)、敏感性(<span class="cp">S</span>ensitive)、色素性(<span class="cp">P</span>igmented)和皱纹性(<span class="cp">W</span>rinkled)皮肤<br/></p></div>
+			</div>
+			<div class="bottompart">
+				<p>“对于用在脸上的东西我十分谨慎。我的皮肤对所有东西都有反应。寻找皮肤保养品就像是在寻宝。我该如何摆脱这些斑点和皱纹呢？”<br/></p>
+				<p class="cg"><span class="cp f15">你</span>的肤质让你不得有一刻放松。你的皮肤干燥、脱皮，急需保湿剂的帮助。但如果你对多种化妆品成分过敏，甚至出现皮疹、痛痒和烧灼，那么几乎没有什么产品能帮得上忙。护肤品中的化学成分如香料、清洁剂和防腐剂可以诱发过敏反应，护肤品中的天然成分如精油、椰子油、可可脂也可以引起反应。<br/></p>
+				<p class="cg"><span class="cp f15">一</span>些用来减淡黑斑的产品常常会引发刺激，使你原本色素沉着的皮肤变红。经常有人问你是不是去了海边，但是实情却是你一直在做防晒。潮红的脸会让你看上去像被晒伤了，即使此刻正是寒冷的冬天。某些抗老化面霜可能会让你看上去更像一名烧伤患者，好一段时间红斑才会逐渐变暗呈现褐色，痊愈则需要数月。<br/></p>
+				<p class="cg"><span class="cp f15">改</span>善肤质是一个需要谨慎并长期努力的过程，但这一目标并非不可实现，所以千万不要放弃。欢迎加入美疯，我们讲给予你合理的建议，帮你提升肤质和生活的质量。<br/></p>
+			</div>
+			<div class="buttonpart">
+				<button onclick='javascript:window.location.href="../index.html"' class="finishBtn">完成测试</button>
+				<button onclick='javascript:window.location.href="../test.html"' class="buttonDefault">再测一次</button>
+			</div>
+		</div>
+	</body>
+</html>

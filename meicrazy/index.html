@@ -1,0 +1,649 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  	<meta property="wb:webmaster" content="650a2849a8306aab" />
+  	<meta property="qc:admins" content="1070531747655132121636" />
+  	<title>美氪-首页</title>
+    <script>
+		//<![CDATA[
+			document.write('<script src="js/header.js"> <\/script>');
+		//]]>
+	</script>
+	<style>
+		footer{
+			width:100%;
+			text-align:center;
+			margin-top:0;
+		}
+		hr{
+			margin-top:0;
+			margin-bottom:10px;
+		}
+		.personalInfo{
+			background:#ff3366;
+			
+		}
+		
+		.downloadbanner{
+			display:none;
+		}
+		@media screen and (max-width:414px){
+			.downloadbanner{
+				display:block;
+				heigth:100%;
+				max-height:60px;
+			}	
+		}
+
+		#logo{
+			height:100%;
+			width:auto;
+		}
+		header, .navbar-header{
+			background:#fdfdfd;
+		}
+		.navbar-brand{
+			padding-top:0.1em;
+			padding-bottom:0.1em;
+			padding-left:5em;
+		}
+		.navbar-default .navbar-nav>li>a{
+			color:#000;
+		}
+		img{
+			vertical-align:baseline;
+		}
+		.navbar-right{
+			padding-right:5em;
+		}
+		.navbar-toggle .icon-bar {
+		  display: block;
+		  width: 22px;
+		  height: 2px;
+		  border-radius: 1px;
+		  background:#e6e6e6;
+		  border:1px solid #4b5d69;
+		}
+		@media screen and (max-width:768px){
+			.navbar-brand{
+				padding-left:0.1em;
+			}
+			.navbar-right{
+				padding-right:0.1em;
+			}
+				
+		}
+		.logoutSet{
+			display:none;
+		}
+		
+		/*========== searchpart  ============*/
+		.searchpart{
+			margin-top:1em;
+			width:100%;
+			max-width:960px;
+			margin-left:auto;
+			margin-right:auto;
+			height:300px;
+			background:#fff;
+			text-align:left;
+		/*	padding-left:10em;
+			padding-right:10em;*/
+			border:1px solid #f0f0f0;
+		}
+		.searchPartWrapper{
+			max-width:960px;
+			height:100%;
+			margin-left:auto;
+			margin-right:auto;
+			background:#f0f0f0;
+		}
+		.left60{
+			float:left;
+			width:60%;
+			height:100%;
+			text-align:left;
+			background:#f0f0f0;
+		}
+		.right40{
+			width:40%;
+			height:100%;
+			float:right;
+			padding-top:80px;
+			background:#f0f0f0;
+		}
+		.left60 img{
+			width:500px;
+			height:100%;
+		}
+		.intro{
+			font-size:2em;
+			color:#ff3366
+		}
+		.right40 input{
+			width:80%;
+			height:40px;
+			padding-left:0.5em;
+			border:1px solid #e6e6e6;
+			border-right:0;
+			border-top-left-radius: 4px;
+			border-bottom-left-radius: 4px;
+			-webkit-appearance:none;
+		}
+		.iconfont-search{
+			  display: inline-block;
+			  padding: 5px;
+			  background: #fff;
+			  vertical-align: bottom;
+			  width: 40px;
+			  height: 40px;
+			  border: 1px solid #e6e6e6;
+			  border-left: 0;
+			  border-top-right-radius: 4px;
+			  border-bottom-right-radius: 4px;
+			  overflow: hidden;
+		}
+		.iconfont-search img{
+			width:100%;
+			height:100%;
+		}
+		
+		.introspan{
+			font-size:0.65em;
+			color:#000;
+			
+		}
+		@media screen and (max-width:414px){
+			.searchpart{
+				padding-left:0.1em;
+				padding-right:0.1em;
+			}
+		}
+		@media screen and (max-width:414px){
+			.left60,.right40,.left60 img{
+				width:100%;
+			}
+			.left60,.right40{
+				height:auto;
+			}
+			
+			
+			.left60 img{
+				height:auto;
+			}
+			.right40{
+				padding-top:0;
+				padding-left:1em;
+				padding-right:1em;
+				padding-bottom:1em;
+			}
+		}
+		@media screen and (width:768px){
+			.right40{
+				width:30%;
+			}
+		}
+		/*============ wrapper ================*/
+		
+		.wrapper{
+			padding-left:0.2em;
+			padding-right:0.2em;
+		}
+		
+		/*=============== qr code =======================*/
+				
+		.qr{
+			width:100px;
+			height:100px;
+			position:fixed;
+			left:90%;
+			top:75%;
+		}
+		.scan{
+			font-size:0.8em;
+			display:inline-block;
+		}
+		.qr img{
+			width:100;
+			height:100%;
+		}
+		#cancel{
+			display:inline-block;
+			width:16px;
+			height:16px;
+			float:right;
+		}
+		@media screen and (max-width:768px){
+			.qr{
+				display:none;
+			}			
+		}
+		
+		
+		/*============= article ================*/
+		
+		.articleBlock {
+		  width: 40%;
+		  border: 1px solid #e6e6e6;
+		  height: 236px;
+		  vertical-align: top;
+		  display: inline-block;
+		  margin: 0 1em 1em;
+		 }
+		 .articleWrapper{
+		 	width:100%;
+		 }
+		 .articleTitle{
+		 	width:100%;
+		 }
+		 @media screen and (max-width:414px){
+		 	.articleBlock{
+		 		width:96%;
+		 		height:200px;
+		 		margin:0 auto 0;
+		 	}
+		 	.articleWrapper{
+		 		height:150px;
+		 	}
+		 }
+	</style>
+	</head>
+	<body>
+		<div class="bef-nav">
+		 		
+	    <script>
+		//<![CDATA[
+			document.write('<script src="js/nav.js"> <\/script>');
+		//]]>
+		</script>
+	<!-- 	 <header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
+		  <div class="container">
+		    <div class="navbar-header">
+		      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
+		      <a href="http://www.meicrazy.cn/index.html" class="navbar-brand"><img id="logo" src="images/logo.png"/></a>
+		    </div>
+		    <nav id="bs-navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
+		      <ul class="nav navbar-nav">
+		        <li>
+		          <a href="http://www.meicrazy.cn/wom-headlines.html">口碑</a>
+		        </li>
+		        <li>
+		          <a href="http://www.meicrazy.cn/trialist.html">试用</a>
+		        </li> 
+		        <li>
+		          <a href="http://www.meicrazy.cn/test.html">测试</a>
+		        </li>
+		       <li>
+		          <a href="http://www.meicrazy.cn/articlelist.html">美肤必看</a>
+		        </li>
+		      </ul>
+		      <ul class="nav navbar-nav navbar-right">
+		        <li class="loginSet"><a href="http://www.meicrazy.cn/login.html">登录</a></li>
+		        <li class="loginSet"><a href="http://www.meicrazy.cn/register.html">注册</a></li>
+		        <li class="logoutSet"><a id="name" href="">name</a></li>
+		        <li class="logoutSet"><a href="">注销</a></li>
+		      </ul>
+			<script>	
+				var flag=$.cookie().flag;	
+				if (flag=="true"){
+					$("#name").html($.cookie().userName);
+					$(".loginSet").hide();
+					$(".logoutSet").show();
+				}else{
+					$(".loginSet").show();
+					$(".logoutSet").hide();
+				}
+			</script>
+		    </nav>
+		  </div>
+		</header>
+		
+	 -->	
+		</div>
+		<div class="searchpart">
+			<div class="searchPartWrapper">
+				<div class="left60">
+					<img src="images/fortest.jpg"/>
+				</div>
+				<div class="right40">
+					<p  class="intro">MEICRAZY<br/><span class="introspan">你的护肤品适合你的肤质吗,让小氪来帮你辨别</span></p>
+					<input placeholder="查找妆品或成分" onfocus="jump();" /><span class="iconfont-search"><img src="images/iconfont-search.png"></span>
+				</div>
+			</div>
+		</div>
+		
+		
+		
+		<div class="wrapper">	
+			<div class="imgUrl"></div>
+			<div class="screen2">
+				<div class="left50">
+					<p class="titleP cp">闺蜜推荐</p>
+				</div>
+				<div class="right50">
+					<p class="cg">
+						<a href="wom-headlines.html">更多</a>
+					</p>
+				</div>
+				<hr style="width: 90%; margin-left: auto; margin-right: auto;" />
+				<div class="screen2Html">
+					<div class="screen2-1">
+						<a href="/wom.html?q=">
+							<div class="repleft">
+
+							<!-- 	<img src="images/pic1.png" />  -->
+								<p class="cb"> </p> 
+							<!-- 	<span class="ratingstar fa fa-star"></span> <span
+									class="ratingstar fa fa-star"></span> <span
+									class="ratingstar fa fa-star"></span> <span
+									class="ratingstar fa fa-star"></span> <span
+									class="ratingstar fa fa-star-o"></span>
+							 -->
+							</div>
+							<div class="reprighttwo">
+								<div class="repmiddle">
+									<img
+										src="http://7u2pqn.com1.z0.glb.clouddn.com/user_349?ver=1430298916670" />
+									<p class="cb mt05">
+										蓝莓香<br />DRPT&nbsp;20~25岁
+									</p>
+									<br />
+								</div>
+								<div class="repright">
+									<span class="fa fa-heart fa-lg "></span><span class="cg f12"> </span><br />
+									<span class="fa fa-heartbeat fa-lg "></span><span
+										class=" cg f12"> </span><br /> <span
+										class="fa fa-edit fa-lg "></span><span class=" cg f12"> </span><br />
+									<span class="fa fa-comment-o fa-lg "></span><span
+										class=" cg f12">0</span>
+								</div>
+							</div>
+							<div class="blankbar"></div>
+						</a>
+					</div>
+					<div class="blankbar"></div>
+					<div class="screen2-1">
+						<div class="repleft">
+						<!-- 	<img src="images/pic1.png" />  --> 
+ 							<p class="cb"> </p>  
+						</div>
+						<div class="reprighttwo">
+							<div class="repmiddle">
+								<img
+									src="http://7u2pqn.com1.z0.glb.clouddn.com/user_349?ver=1430298916670" />
+								<p class="cb mt05">
+									蓝莓香<br />DRPT&nbsp;20~25岁
+								</p>
+								<br />
+							</div>
+							<div class="repright">
+								<span class="fa fa-heart fa-lg "></span><span class="cg f12"> </span><br />
+								<span class="fa fa-heartbeat fa-lg "></span><span
+									class=" cg f12"> </span><br /> <span
+									class="fa fa-edit fa-lg "></span><span class=" cg f12"> </span><br />
+								<span class="fa fa-comment-o fa-lg "></span><span
+									class=" cg f12">0</span>
+							</div>
+						</div>
+						<div class="blankbar"></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="screen3">
+				<div class="left50">
+					<p class="titleP cp">美肤必看</p>
+				</div>
+				<div class="right50">
+					<p class="cg">
+						<a href="articlelist.html">更多</a>
+					</p>
+				</div>
+				<hr style="width: 90%; margin-left: auto; margin-right: auto;" />
+				<div class="screen3Html">
+					<div class="screen3-1">
+						<a href="articlelist.html"> <img id="indexArticleImgUrl1"
+							src="images/bx_loader.gif" alt="" />
+							<p id="subject1">&nbsp;</p>
+						</a>
+					</div>
+				</div>
+				<div class="blankbar"></div>
+			</div>
+
+
+			<div class="screen4">
+				<div class="left50">
+					<p class="titleP cp">美妆库新增产品</p>
+				</div>
+				<div class="right50">
+					<p class="cg">
+						<a href="search.html">更多</a>
+					</p>
+				</div>
+				<hr style="width: 90%; margin-left: auto; margin-right: auto;" />
+				<div class="bxsliderWrapper">
+					<ul class="bxslider2 newproducts">
+						<!--						<li style="list-style-type:none;">
+							<a class="">
+								<img src="images/bx_loader.gif" alt=""/>
+								<p>&nbsp;</p>
+							</a>
+						</li>
+  						<li>
+							<img src="images/bx_loader.gif" alt=""/>
+							<p>&nbsp;</p>
+						</li>
+						<li>
+							<img src="images/bx_loader.gif" alt=""/>
+							<p>&nbsp;</p>
+						</li>-->
+					</ul>
+				</div>
+
+			</div>
+		
+		<div class="anchor">
+			<a href="#top"><span class="glyphicon glyphicon-eject"
+				aria-hidden="true"></span></a>
+		</div>
+	</div>
+	<div class="blankbar"></div>
+	<div class="qr">
+		<img id="cancel" src="images/cancel.png"/>
+		<img src="images/qr.png"/>
+		<span class="scan">扫码下载客户端</span>
+		<script>
+			$("#cancel").click(function(){
+				$(".qr").hide();				
+			});
+		</script>
+	</div>
+	<script>
+		//<![CDATA[
+			document.write('<script src="js/footer.js"> <\/script>');
+		//]]>
+	</script>
+	<script src="js/jquery.fullPage.min.js"></script>
+	<script type="text/javascript">  
+		//<![CDATA[
+		function jump(){
+			window.location.href="search.html";  
+			return false;
+		}
+
+		
+	/*	var winHeight="";
+		if (window.innerHeight){
+		winHeight = window.innerHeight;
+		}else if ((document.body) && (document.body.clientHeight)){
+		winHeight = document.body.clientHeight; 
+		}
+		
+		
+		$(window).resize(function(){
+			$(".backwrapper").css("height",winHeight);
+		});
+		
+	*/	
+			jQuery.support.cors = true;
+			function getj(){
+				var userId=$.cookie().userId||"1325";
+				var skinType=$.cookie().skinType||"DRNT";
+				var userName=$.cookie().userName;
+				var flag=$.cookie().flag;
+				var data = {p0:userId,p1:skinType};  
+						
+				$.getJSON("http://120.27.30.130:8080/api/articles", data, function(modelStr){
+					var model = $.parseJSON(modelStr);
+					var screen3Html="";
+					$.each(model.articles,function(index, value){
+						if(index<6){
+							var divHtml='<div class="articleBlock"><a style="text-decoration:none;" href="article.html?q='+value.articleId+'">'
+							+'<div class="articleWrapper"><img class="articlePic" style="width:100%" onload="this.style.marginTop = (parseInt(this.parentNode.style.height) - this.height)/3;this.style.marginLeft = (parseInt(this.parentNode.style.width ) - this.width)/2 " src="'+value.imgUrl+'" alt=""/></div>'
+							+'<p class="articleTitle">'+value.subject+'</p>'
+							+'</a></div>';
+							screen3Html+=divHtml;
+						}	
+					});
+					$(".screen3Html").html(screen3Html);
+				});
+				$.getJSON("http://120.27.30.130:8080/api/index", data, function(modelStr){
+					var model = $.parseJSON(modelStr);
+			//		    	var product = model.products[0].product;
+			//		    	$("#productName").html(product.name);
+			//		    	$("#productImg").attr("src","http://7u2pqk.com1.z0.glb.clouddn.com/" + product.picUrl);					    	
+					
+					var newproductsHtml ="";
+					$.each(model.products, function(key,value){
+						var liItem = '<li><a style="text-decoration:none;color:#000000;" href="products.html?q='+value.product.id+'"><img width=200 height=200 src="http://7u2pqk.com1.z0.glb.clouddn.com/'+value.product.picUrl+'"/><p style="margin-top:0.9em">'+value.product.name+'</p></a></li>';
+						newproductsHtml += liItem;
+					});
+					$(".newproducts").html(newproductsHtml);
+					$('.bxslider2').bxSlider({
+						auto:true,
+						autoControls:true,
+						maxSlides:3,
+						minSlides:3,
+						slideWidth:230,
+						slideHeight:200
+					});
+					
+				});
+
+				var data1={p0:userId,p1:skinType,p2:'1'};
+				var womsHtml="";
+				$.getJSON("http://120.27.30.130:8080/api/woms", data1, function(modelStr){
+					var model=$.parseJSON(modelStr);
+					
+					var i=1;
+					$.each(model.woms, function(index,value){
+						if(index<2){
+						
+						var imgUrl = value.value.user.imgUrl; 	
+						var advantages = value.value.comments[0].advantages||"";	
+						var disadvantages = value.value.comments[0].disadvantages||"";	
+						var content = value.value.comments[0].content;
+						if (window.innerWidth){
+							winWidth = window.innerWidth;
+						}else if ((document.body) && (document.body.clientWidth)){
+							winWidth = document.body.clientWidth;
+						}	
+						if(winWidth > 768){
+							if (content.length>65){
+								content = content.substring(0,65)+"...";
+							}
+							
+						}else if(winWidth = 768){
+							if (content.length>45){
+								content = content.substring(0,45)+"...";
+							}
+
+						}else if(winWidth < 768){
+							if (content.length>30){
+								content = content.substring(0,30)+"...";
+							}
+						}
+						
+							var userSkinType = value.value.user.skinType || "";
+							var age = value.value.user.age;
+							if(age == "?岁" ){
+								age = "";
+							}
+							var divHtml='<div class="screen2-1"><a href="wom.html?q='+value.value.comments[0].articleId+'"><div class="repleft"><img onerror="productError(this)" id="repleftimg" src="http://7u2pqk.com1.z0.glb.clouddn.com/'+value.value.product.picUrl+'"/><p class="cb">'+value.value.product.name+'</p>'
+							+'<div class="starReadOnly starReadOnly'+i+'"></div>'
+							+'</div>'
+							+'<div class="reprighttwo">'
+							+'<div class="repmiddle">'
+							+'<img onerror="imgError(this)" src="'+imgUrl+'"/>'
+							+'<p class="cb mt05">'+value.value.user.userName+'<br/>'+userSkinType+'&nbsp;'+age+'</p><br/>'
+							+'</div>'
+							+'<div class="repright">'
+							+'<span class="fa fa-heart fa-lg " ></span><span class="cg f12">'+advantages+'</span><br/>'
+							+'<span class="fa fa-heartbeat fa-lg "></span><span class=" cg f12">'+disadvantages+'</span><br/>'
+							+'<span class="fa fa-edit fa-lg "></span><span class="cg f12 alignment">'+content+'</span><br/>'
+							+'<span class="fa fa-comment-o fa-lg "></span><span class=" cg f12">'+value.value.comments[0].commentCount+'</span>'
+							+'</div>'
+							+'</div>'
+							+'<div class="blankbar"></div>'
+							+'</div>'
+							+'<div class="blankbar"></div>';
+							womsHtml+=divHtml;
+							i++;
+						}
+					});
+					$(".screen2Html").html(womsHtml);
+					
+					
+				}).done(function(){
+					var i=1;
+					var data1={p0:userId,p1:skinType,p2:'1',p3:'0'};
+					$.getJSON("http://120.27.30.130:8080/api/woms", data1, function(modelStr){
+						var model=$.parseJSON(modelStr);
+						$.each(model.woms,function(key,value){
+							var score= value.value.stat.grade;
+							var a=".starReadOnly"+i;
+							$(a).raty({ 
+								 hints: ['1', '2', '3', '4', '5'],
+								 path:"images",
+								 starOff: 'star-off.png',
+							     starOn: 'star-on.png',
+								 size: 24,
+								 readOnly:true,
+								 score:score
+							});  
+							i++;
+						});
+					});
+				});
+				}
+			getj();
+			 //]]>
+
+	var imgError = function(imgObject){
+		$(imgObject).attr("src","images/defaultImg.png");
+	}
+	var productError = function(imgObject){
+		$(imgObject).attr("src","images/defaultProduct.png");
+	}
+	
+ 
+
+
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?f456e3e90d1280a963645d03f43431a3";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+
+	
+	</script>
+</body>
+</html>

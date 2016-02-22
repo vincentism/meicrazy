@@ -1,0 +1,158 @@
+﻿<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<script src="jquery-1.11.2.min.js"></script>
+		<script src="jquery.cookie.js"></script>
+		<title>问题肤质迎来救星---美氪护肤，内测有礼，大牌试用送不停！</title>
+		
+	</head>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+			font-family:"微软雅黑";
+		}
+		html,body{
+			width:100%;
+			height:100%;
+			overflow:hidden;
+		}
+		
+		.back{
+			width:100%;
+			position:absolute;
+			top:0;
+			left:0;
+			z-index:100;
+		}
+		.content{
+			padding:0 2em;
+			text-align:center;
+		}
+		
+		.phone{
+			width:55%;
+			position:absolute;
+			top:12%;
+			left:50%;
+			margin-left:-25%;
+			z-index:-1;
+		}
+		.shade{
+			width:100%;
+			position:absolute;
+			top:45%;
+			left:0;
+			z-index:100;
+		}
+		.buttonSet{
+			width:80%;
+			position:absolute;
+			top:55%;
+			left:10%;
+			z-index:120;
+		}
+
+		
+		.continueSet{
+			width:100%;
+			text-align:center;
+		}
+		.download{
+			width:50%;
+			height:40px;
+			background:#ff3366;
+			border:0;
+			border-radius:2px;
+			color:#fff;
+			margin-top:1em;
+			font-size:1.2em;
+
+		}
+		.shareWrapper{
+			width:0;
+			height:0;
+			overflow:hidden;
+		}
+		.bottomSet{
+			width:96%;
+			margin-left:2%;
+			margin-right:2%;
+			position:absolute;
+			border:1px solid #D4D4D4;
+			bottom:0.5em;
+			left:0;
+			text-align:center;
+			z-index:9999;
+		}
+		.bottomSet img{
+			width:29%;
+			float:left;
+			margin:0 1.9% 0.2em;
+		}
+		.trialExp{
+			width:90%;
+			display:inline-block;
+			background:#fff;
+			position:relative;
+			font-size:0.9em;
+			top:-0.9em;
+			z-index:100;
+			text-align:center;
+		}
+
+		@media (device-height:568px) and (-webkit-min-device-pixel-ratio:2){/* 兼容iphone5 */
+
+
+		}
+		@media screen and (max-width:320px){
+			.download{
+				height:30px;
+				font-size:1.05em;
+			}
+		}
+		
+		
+
+	</style>
+	<body>
+		<div class="shareWrapper"><img style="width:500px;height:500px;" src="images/meiDoctor.jpg"/></div>
+		<img class="back" src="images/back1.png"/>
+
+		<div class="content">
+			<img class="phone" src="images/phone.png" alt=""/>
+			<img class="shade" src="images/shade.png" alt=""/>
+			<div class="buttonSet">
+				<p>以最聪明的方式，选择你的护肤品</p>
+		<!-- 		<div class="continueSet"><a href="http://fusion.qq.com/app_download?appid=1104617585&platform=qzone&via=QZ.MOBILEDETAIL.QRCODE&u=3046917960"><button class="download">下载美氪APP</button></a></div>   -->
+				<div class="continueSet"><button class="download">下载美氪APP</button></div>
+				
+			</div>
+			<div class="bottomSet">
+				<p class="trialExp">下载APP，参与抽奖活动，每天我们将送出</p>
+				<img src="images/product1.jpg" alt=""/>
+				<img src="images/product2.jpg" alt=""/>
+				<img src="images/product3.png" alt=""/>
+				<div style="clear:both"></div>
+			</div>
+			
+		</div>
+		
+		
+		
+	<script type="text/javascript">
+	var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+	document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F6e0518209d659729535d6fca974909bc' type='text/javascript'%3E%3C/script%3E"));
+	
+		$(".download").click(function(){
+			_hmt.push(['_trackEvent', "appDownload", "click", "from_test"]);
+			window.location.href="http://a.app.qq.com/o/simple.jsp?pkgname=com.meicrazy.andr";
+			
+		});
+		
+	</script>
+		
+		
+	</body>
+</html>

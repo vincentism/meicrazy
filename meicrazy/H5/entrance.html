@@ -1,0 +1,308 @@
+﻿<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<script src="jquery-1.11.2.min.js"></script>
+		<script src="fastclick.js"></script>
+		<script src="jquery.cookie.js"></script>
+		<title>“美氪护肤”4大科学维度剖析，快来看看你和哪位明星 撞”肤” 了？！</title>
+		
+	</head>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+			font-family:"微软雅黑";
+		}
+		html,body{
+			width:100%;
+			height:100%;
+		}
+		
+		.back{
+			width:100%;
+			position:absolute;
+			top:0;
+			left:0;
+			z-index:-100;
+		}
+		.content{
+			padding:0 2em;
+		}
+		.title{
+			margin:2em auto 0;
+			text-align:center;
+			font-weight:600;
+			font-size:1.1em;
+		}
+		.underTitle{
+			margin:0.5em auto 1em;
+			text-align:center;
+			color:#996DEA;
+			font-size:1em;
+		}
+		.shareWrapper{
+			width:0;
+			height:0;
+			overflow:hidden;
+		}		
+		.questionTitle{
+			font-size:0.8em;
+		}
+		#explain{
+			font-size:0.7em;
+			color:#666666;
+		}
+		.buttonSet button{
+			background:#EAEAEA;
+			width:66px;
+			height:24px;
+			border:1px solid #D4D4D4;
+			border-radius:2px;
+			margin:1em 0.5em;
+		}
+		.activeBtn{
+			background:#ff3366;
+			border:0;
+			color:#fff;
+		}
+		.buttonSet{
+			width:100%;
+			text-align:center;
+		}
+		.continueSet{
+			width:100%;
+			text-align:center;
+		}
+		.qnumber{
+			font-size:1.1em;
+			font-weight:600;
+		}
+		.continue{
+			width:50%;
+			height:26px;
+			background:#ff3366;
+			border:0;
+			border-radius:2px;
+			color:#fff;
+			margin-top:1em;
+
+		}
+		.redbg {
+			background:#ff3366 !important;
+			color:#fff !important;
+			border:0 !important;
+		}
+		.bluebg {
+			background:#996DEA !important;
+			color:#fff !important;
+			border:0 !important;
+		}
+		@media (device-height:568px) and (-webkit-min-device-pixel-ratio:2){/* 兼容iphone5 */
+
+			.buttonSet button{
+				margin:1em 0.5em;
+			}
+
+		}
+		@media screen and (min-width:375px){
+			.title{
+				font-size:1.3em;
+			}
+			.questionTitle{
+				font-size:1em;
+			}
+			.buttonSet button{
+				width:90px;
+				height:30px;
+				margin:1.3em 0.5em;
+			}
+			.continue{
+				height:35px;
+			}
+		}
+		
+		@media screen and (min-width:414px){
+
+			.buttonSet button{
+				width:90px;
+				height:30px;
+				margin:1.7em 0.5em;
+			}
+
+		}
+	</style>
+	<script>
+	$(function() {
+    FastClick.attach(document.body);
+	});
+	</script>
+	<body>
+		<div class="shareWrapper"><img style="width:500px;height:500px;" class="sharePic" src="images/meiDoctor.png"/></div>
+		<img class="back" src="images/back1.png"/>
+
+		<div class="content">
+			<p class="title">一起了解你的皮肤</p>
+			<p class="underTitle">选择“不清楚”，我们将提供专业测试</p>
+			<div class="">
+				<p class="questionTitle"><span class="qnumber">Q1.</span>你的性别是？</p>
+				<div class="buttonSet buttonSet0"><button onclick='$.cookie("gender","1")' class="gender">男</button><button onclick='$.cookie("gender","0")' class="gender">女</button><button onclick="javascript:void(0)" style="border:0;background:#fff;vertical-align:middle"></button></div>
+				<input type="hidden" class="set set0" value="false"/>
+			</div>
+			<div class="">
+				<p class="questionTitle"><span class="qnumber">Q2.</span>你的皮肤类型是干性还是油性？</p>
+				<p id="explain">(关于混合型肤质，实际上是油性皮肤过度护理造成的 一种皮肤问题，按照皮脂腺分泌情况来分，非油即干。)</p>
+				<div class="buttonSet buttonSet1"><button onclick="updateSkintype('O',1)" class="">油性</button><button onclick="updateSkintype('D',1)" class="">干性</button><button id="unclear" onclick="updateSkintype('',1)" class="">不清楚</button></div>
+				<input type="hidden" class="set set1" value="false"/>
+			</div>
+			<div >
+				<p class="questionTitle"><span class="qnumber">Q3.</span>你的皮肤类型是敏感性还是耐受性？</p>
+				<div class="buttonSet buttonSet2"><button onclick="updateSkintype('S',2)">敏感性</button><button onclick="updateSkintype('R',2)" class="">耐受性</button><button id="unclear" onclick="updateSkintype('',2)" class="">不清楚</button></div>
+				<input type="hidden" class="set set2" value="false"/>
+			</div>
+			<div >
+				<p class="questionTitle"><span class="qnumber">Q4.</span>你的皮肤类型是色素性还是非色素性？</p>
+				<div class="buttonSet buttonSet3"><button onclick="updateSkintype('P',3)">色素性</button><button onclick="updateSkintype('N',3)" class="">非色素性</button><button id="unclear" onclick="updateSkintype('',3)" class="">不清楚</button></div>
+				<input type="hidden" class="set set3" value="false"/>
+			</div>
+			<div >
+				<p class="questionTitle"><span class="qnumber">Q5.</span>你的皮肤类型是皱纹性还是紧致性？</p>
+				<div class="buttonSet buttonSet4"><button onclick="updateSkintype('W',4)">皱纹性</button><button onclick="updateSkintype('T',4)" class="">紧致性</button><button id="unclear" onclick="updateSkintype('',4)" class="">不清楚</button></div>
+				<input type="hidden" class="set set4" value="false"/>
+			</div>
+			
+		</div>
+		<div class="continueSet"><button class="continue">继续</button></div>	
+		
+		
+		<script>
+		  var stateObject = {};
+      	  var title = "“美氪护肤”4大科学维度剖析，快来看看你和哪位明星 撞”肤” 了？！";
+      	var newUrl = "http://www.meicrazy.cn/beta/H5/index.html?hmsr=1999";
+          history.pushState(stateObject,title,newUrl);	
+			$(function(){
+				$(".buttonSet0 button").click(function(){
+					if($(this).attr("class")=="gender"){
+					$(".set0").attr("value","true");	
+					$(".buttonSet0 button").removeClass("redbg");
+					$(this).addClass("redbg");
+					
+					}
+				});
+				$(".buttonSet1 button").click(function(){
+					if($(this).attr("id")=="unclear"){
+						$(".buttonSet1 button").removeClass("redbg");	
+						$(this).addClass("bluebg");
+					}else{
+						$(".buttonSet1 button").removeClass("bluebg");
+						$(".buttonSet1 button").removeClass("redbg")
+						$(this).addClass("redbg");
+					}
+				});
+				$(".buttonSet2 button").click(function(){
+					if($(this).attr("id")=="unclear"){
+						$(".buttonSet2 button").removeClass("redbg");	
+						$(this).addClass("bluebg");
+					}else{
+						$(".buttonSet2 button").removeClass("bluebg");
+						$(".buttonSet2 button").removeClass("redbg")
+						$(this).addClass("redbg");
+					}
+
+				});
+				$(".buttonSet3 button").click(function(){
+					if($(this).attr("id")=="unclear"){
+						$(".buttonSet3 button").removeClass("redbg");	
+						$(this).addClass("bluebg");
+					}else{
+						$(".buttonSet3 button").removeClass("bluebg");
+						$(".buttonSet3 button").removeClass("redbg")
+						$(this).addClass("redbg");
+					}
+
+				});
+				$(".buttonSet4 button").click(function(){
+					if($(this).attr("id")=="unclear"){
+						$(".buttonSet4 button").removeClass("redbg");	
+						$(this).addClass("bluebg");
+					}else{
+						$(".buttonSet4 button").removeClass("bluebg");
+						$(".buttonSet4 button").removeClass("redbg")
+						$(this).addClass("redbg");
+					}
+	
+				});
+				
+
+			});
+			
+			$(".continue").click(function(){
+				var iscomplete = "1";
+
+				$(".set").each(function(){
+					
+					if($(this).attr("value") == "false"){
+						
+						iscomplete = "0";
+					}
+				});
+				if(iscomplete == "1"){
+					window.location.href="question.html";
+				}else{
+					alert("请完整选择皮肤类型");
+				}
+				
+			});
+			
+			function S4() {
+				   return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+				};
+				// Generate a pseudo-GUID by concatenating random hexadecimal.
+				function guid() {
+				   return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
+				};
+				
+				
+				
+			var uid=guid();
+			$.cookie("uid",uid);
+			var updateSkintype =function(partSkintype,partId){
+			if(partId == 1){
+				$(".set1").attr("value","true");
+			}else if(partId ==2 ){
+				$(".set2").attr("value","true");
+			}else if(partId == 3){
+				$(".set3").attr("value","true");	
+			}else if(partId == 4){
+				$(".set4").attr("value","true");
+			}
+			
+			
+			$.ajax({
+				type:"POST",
+				url:"http://112.74.78.20:8181/api/v2/skintype/part/"+partId,
+				data:{type:partSkintype,uid:uid},
+				
+				beforeSend:function(){
+					
+				},
+				success:function(){
+				
+				},
+				error:function(){
+					
+				}
+			});
+			
+
+			
+			}
+			
+			var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+			document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F6e0518209d659729535d6fca974909bc' type='text/javascript'%3E%3C/script%3E"));
+	
+		</script>
+		
+		
+	</body>
+</html>

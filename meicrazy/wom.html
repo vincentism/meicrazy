@@ -1,0 +1,228 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title>美氪-口碑详情</title>
+  	<script>
+		//<![CDATA[
+			document.write('<script src="js/header.js"> <\/script>');
+		//]]>
+	</script>
+    <style>
+    	.wrapper{
+    		width:96%;
+    		height:100%;
+    		margin:1em auto 0;
+    		overflow:hidden;
+    	}
+    	.replybar{
+    		width:70%;
+    		margin-right:5%;
+    		float:right;
+    		text-align:left;
+    	}
+    	.whiteBck{
+    		height:100%;
+    		padding-left:0;
+    		padding-right:0;
+    	}
+    	.hiddenbar{
+    		display:none;
+    	}
+   		@media screen and (max-width:768px){
+   			.replybar{
+   				display:none;
+   			}
+   			.hiddenbar{
+   				display:block;
+   			}
+   		}
+    	
+    	@media screen and (max-width:414px){
+    	.replybar {
+    		position:fixed;
+    		bottom:0;
+    		width:100%;
+    	}
+    	}
+    </style>
+	</head>
+  <body>
+	<script>
+		//<![CDATA[
+		document.write('<script src="js/nav.js"> <\/script>');
+		//]]>
+	</script>  
+	<div class="wrapper">
+		<div class="befProduct">
+			<p><a>口碑<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a></p>
+		</div>
+		<div class="whiteBck">
+		<div class="productList">
+		<!--	<a href="">
+				<div class="repleft">
+					<img style="" src="http://7u2pqk.com1.z0.glb.clouddn.com/6739_0"/><br/>
+
+					<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+					<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+					<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+					<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+					<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+				</div>
+				<div class="repright">	
+						<ul>
+				<!-- 			<li><p class="cp f12">Fresh馥蕾诗红茶抗皱紧致修护面膜</p></li>
+							<li><p class="cb">蜜桃pie&nbsp;OSPW&nbsp;27</p></li>
+							<li><p class="cg">熬夜必备啊！！！良心产品啊！！！土豆泥一样的质感，涂在脸上很舒服，睡一觉起来皮肤状态变好很多啊，因为熬夜导致的皮肤暗沉问题也解决了啊！！！</p></li>
+							<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+				 -->
+						</ul>
+				</div>
+				<div class="blankbar"></div>
+				
+						
+		
+		<div class="womCommentsContent">
+ 	<!-- 	<img src="" alt=""/>
+			<div class="commentsListRight">
+				<p>ladybee DRPW 34 </p>
+				<p>朋友转让的一瓶，想着试试看，结果比较失望，虽然很好吸收，刚抹上去脸也觉得柔滑了，但保湿效果并不持久，大概到下午脸就又开始觉得有些干…其它效果未知，打算换掉</p>
+			</div>
+	 	<p>我们收到的评价数量不足，无法显示产品评价</p>  --> 
+		</div>
+
+		<div class="replybar">
+			<div style="width:100%;" class="input-group">
+			  <input type="text" class="form-control" id="replyContent" placeholder="我来说两句" aria-describedby="basic-addon2">
+			  <span onclick="commentSubmit();" class="input-group-addon" id="basic-addon2">发布</span>
+			</div>	
+		</div>
+		
+		</div>
+		</div>
+		<div class="replybar hiddenbar">
+			<div style="width:100%;" class="input-group">
+			  <input type="text" class="form-control" id="replyContent" placeholder="我来说两句" aria-describedby="basic-addon2">
+			  <span onclick="commentSubmit();" class="input-group-addon" id="basic-addon2">发布</span>
+			</div>	
+		</div>		
+
+	
+	<script>
+	//check the user image, if wrong, replace with the default img 
+	var imgError = function(imgObject){
+		$(imgObject).attr("src","images/noproduct.jpg");
+	}
+
+
+	function getUrlParam(name)
+	{
+	var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+	var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+	if (r!=null) return unescape(r[2]); return null; //返回参数值
+	} 
+	var product_id = getUrlParam("q");
+
+	var userId=$.cookie().userId || "1325";
+	var skinType=$.cookie().skinType;
+	
+	jQuery.support.cors = true;
+	function getj(){
+		try{
+		var womHtml="";
+		$.getJSON('http://120.27.30.130:8080/api/woms/'+product_id+'?p0='+userId+'&', function(modelStr){
+			var model=$.parseJSON(modelStr);
+			var i=1;
+			var userSkinType = model.user.skinType || "";
+			if(model.product.paras = "null"){
+				var advantages = "";
+			}else{
+				var advantages = model.product.paras.advantages ||"";
+			}
+			if(model.product.paras = "null"){
+				var disadvantages = "";
+			}else{
+				var disadvantages = model.product.paras.disadvantages ||"";
+			}
+			var age = model.user.age;
+			if(age == "?岁" ){
+				age = "";
+			}
+			
+			var womHtml='<a href="products.html?q='+model.product.product.id+'">'+
+			'<div class="repleft">'+
+			'<img onerror="imgError(this);" id="repleftimg" src="http://7u2pqk.com1.z0.glb.clouddn.com/'+model.product.product.picUrl+'"/><br/>'+
+			'<div class="starReadOnly starReadOnly'+i+'"></div>'+
+			'</div>'+
+			'<div class="repright">'+
+			'<ul>'+
+			'<li><p class="cp f12">'+model.product.product.namewithbrand+'</p></li>'+
+			'<li><p class="cb">'+model.user.userName+'&nbsp;'+ userSkinType +'&nbsp;'+age+'</p></li>'+
+			'<li><p class="cg">优点：'+advantages+'</p></li>'+
+			'<li><p class="cg">缺点：'+disadvantages+'</p></li>'+
+			'<li><p class="cg">'+model.product.woms[0].content+'</p></li>'+
+			'<span style="margin:0;" class="fa fa-comment-o fa-lg "></span>'+			
+			'</ul>'+
+			'</div>'+
+			'<div class="blankbar"></div>'+			
+			'</a>';		
+			$(".productList").html(womHtml);
+			var score= model.product.productStat.grade;
+			var a=".starReadOnly";
+			$(a).raty({ 
+				 hints: ['1', '2', '3', '4', '5'],
+				 path:"images",
+				 starOff: 'star-off.png',
+			     starOn: 'star-on.png',
+				 size: 24,
+				 readOnly:true,
+				 score:score
+			});  
+			
+		})
+
+		
+	//	var data = {p0:userId,p1:skinType};  
+		}catch(e){
+			
+		}
+	}
+	
+	function getCComents(){
+		$.getJSON('http://120.27.30.130:8080/api/comments/1201/'+product_id+'?p0=1&', function(modelStr){
+			var model=$.parseJSON(modelStr);
+			var womCCHtml="";
+			$.each(model.comments,function(index, value){
+				var userImgUrl = value.userImgUrl||"";
+				var womCCItem = '<img style="vertical-align:top;border-radius:100%;" width=30 height=30 onerror="imgError(this);" src="'+value.userImgUrl+'" alt=""/>'+
+				'<div class="commentsListRight">'+
+				'<p>'+value.userNickName+' '+value.userSkinType+' '+value.userAge+' </p>'+
+				'<p>'+value.content+'</p></div><div class="blankbar"></div>';
+				womCCHtml+=womCCItem;
+			});
+			$(".womCommentsContent").html(womCCHtml);
+			});
+	}
+	
+	getj();
+	getCComents();
+	function commentSubmit(){
+		var content=$("#replyContent").val();
+		if(content == ""|| content ==" "){
+			alert("评论内容不能为空，请重新再试");
+			return false;
+		}
+			
+		
+		var data = {p0:userId,p1:content,p2:'1201',p3:product_id}; 
+		
+		$.getJSON('http://120.27.30.130:8080/api/quickComment',data,function(modelStr){
+			var model=$.parseJSON(modelStr);
+				if(model.status=="0"){
+					getCComents();
+					$("#replyContent").val("");
+				}
+		});
+	}
+	</script>
+  </body>
+</html>

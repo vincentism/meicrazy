@@ -1,0 +1,335 @@
+<!doctype html>
+<html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+		<title>community</title>
+				<script>
+			//<![CDATA[
+				document.write('<script src="js/header.js"> <\/script>');
+			//]]>
+		</script>
+		<style>
+			body{
+				background:#f0f0f0;	
+			}
+			p{
+				margin: 0 auto;
+			}
+			ul{
+				display:inline-block;
+			}
+			li{
+				list-style-type:none;
+			}
+			.center{
+				text-align:center;
+			}
+			.rightPart{
+			  display: inline-block;
+			  font-size: 0.9em;
+			  width: 80%;
+			  margin-left: 1em;
+			}
+			.leftPart{
+				width:15%;
+				float:left;				
+			}
+			.writer,.cowriter{
+				background:#fff;
+				margin-top:1em;
+				padding:1em;
+			}
+			.only{
+				text-align:right;
+				font-size:18px;
+			}
+			.only img{
+				width:18px;
+				height:18px;
+				vertical-align:middle;
+			}
+			.mainImgPic{
+				width:100%;
+				margin-top:1em;
+				text-align:center;
+			}
+			.mainImgPic img{
+				width:90%;
+			}
+			.userPic,.mainUserPic{
+				width:40px;
+				height:40px;
+				border-radius:100%;
+				vertical-align:top;
+			}
+			.title{
+				font-weight:700;
+				margin:0.5em auto;
+			}
+			.content{
+				text-align:left;
+			}
+			.count{
+				margin-bottom:1em;
+			}
+			.mainTime{
+				margin-top:1em;
+			}
+			.mainTime,.time{
+				text-align:right;
+				font-size:10px;
+				color:#A99292;
+			}
+	
+			.replyPic{
+				width:100%;
+				height:auto;
+			}
+			.picWrapper{
+				width:100%;
+			}
+			.picWrapper img{
+				margin-top:1em;
+				width:80%;
+			}
+			.share{
+				width:100%;
+				position:fixed;
+				bottom:0;
+			}
+			.replyBtn{
+				text-align:right;
+				font-size:0.8em;
+				margin-top:0.5em;
+			}
+			.rereplyContent li{
+				margin-top:0.5em;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="writer">
+			<div class="only"><span><img src="images/iconfont-user.png"></span><span style="font-size:0.8em">楼主</span></div>
+			<div class="center">
+				<img class="mainUserPic" src=""/>
+				<p><span class="nickName">women</span>&nbsp;<span class="level">lv1</span></p>
+				<p><img class="skinTypePic" src=""/><span class="age">18</span></p>
+				<p class="title">秋冬脸颊红血丝怎么解决</p>
+				<p class="content">首先需要解释一下！脸颊的红血丝呢其实就是面部的毛细血管扩张性差，或者是你的角质层太薄也可能是你的角质层受损了！！</p>
+				<div class="mainImgPic"></div>
+				<p class="mainTime">1天前</p>
+			</div>
+		
+		</div>
+		<div class="cowriter"> 
+			<p class="count">回帖数：<span>4</span></p>
+			<ul class="cowriterContent">
+				<li>
+					<div class="leftPart"><span><img class="userPic" src=""/></span></div>
+					<div class="rightPart">
+						<p><span>xieshoutan</span>&nbsp;<span>lv1</span></p>
+						<p><span><img src=""/></span>&nbsp;<span>15~20岁</span>&nbsp;<span class="time">1天前</span></p>
+						<p>呵呵</p>
+						<div class="picWrapper">
+							<img class="replyPic" src=""/>
+						</div>
+						<hr/>
+						<div class="rereply">
+						<ul>
+							<li>
+								<p><span>快乐的小2b</span>：<span>haha</span>&nbsp;<span class="time">19小时前</span></p>
+							</li>
+							<li>
+								<p><span>xieshoutan</span>：<span>haha</span>&nbsp;<span class="time">19小时前</span></p>
+							</li>
+						</ul>
+						<p class="replyBtn">
+							更多<span>7</span>条回复
+						</p>
+					</div>
+					</div>
+					
+					
+					<hr/>
+				</li>
+				<li>
+					<div class="leftPart"><span><img class="userPic" src=""/></span></div>
+					<div class="rightPart">
+						<p><span>xieshoutan</span>&nbsp;<span>lv1</span></p>
+						<p><span><img src=""/></span>&nbsp;<span>15~20岁</span>&nbsp;<span class="time">1天前</span></p>
+						<p>呵呵</p>
+					
+						<hr/>
+						<div class="rereply">
+						<ul>
+							<li>
+								<p><span>快乐的小2b</span>：<span>haha</span>&nbsp;<span class="time">19小时前</span></p>
+							</li>
+							<li>
+								<p><span>xieshoutan</span>：<span>haha</span>&nbsp;<span class="time">19小时前</span></p>
+							</li>
+						</ul>
+						<p class="replyBtn">
+							更多<span>7</span>条回复
+						</p>
+					</div>
+					</div>
+					
+					
+					<hr/>
+				</li>
+			</ul>	
+		</div>
+		<a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.meicrazy.andr"><img class="share" src="images/articleBanner.png"/></a>
+	<script>
+			
+			function getUrlParam(name)
+			{
+			var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+			var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+			if (r!=null) return unescape(r[2]); return null; //返回参数值
+			} 
+			var articleId = getUrlParam("articleId");
+	
+	
+			jQuery.support.cors = true;
+			var data={p0:22958};
+			$.getJSON("http://120.27.30.130:8080/api/threads/"+articleId,data,function(modelStr){
+				var model =	$.parseJSON(modelStr);
+				if(model.status == 0){
+					with(model.thread){
+						if(userImgUrl == null){
+							userImgUrl = "images/defaultImg.png";
+						}
+						if(imgUrl == null || imgUrl == ""){
+							
+						}else{
+							var mainImgArr = imgUrl.split(",");
+							var mainImgSentence="";
+							$.each(mainImgArr,function(i){
+								mainImgSentence +='<img src="'+mainImgArr[i]+'"/>';
+							});
+						
+						}
+						$(".mainUserPic").attr("src",userImgUrl);
+						$(".nickName").html(userNickName);
+						$(".level").html(userLevel);
+						$(".skinTypePic").html(userSkinType);
+						$(".age").html(userAge);
+						$(".title").html(subject);
+						$(".content").html(content);
+						$(".mainTime").html(relativeTime);
+						$(".mainImgPic").html(mainImgSentence);
+					}
+				}else{
+					alert("网络异常，请重新加载！");
+				}
+			});
+			var replydata = {p0:1,p1:10};
+			var rereplylist = [];
+			$.getJSON("http://120.27.30.130:8080/api/comments/1401/"+articleId,replydata,function(modelStr){
+				var model = $.parseJSON(modelStr); 
+				if(model.status == 0){
+					$(".count").html("回帖数："+model.total);
+					var replyHtml = "";
+					$.each(model.comments,function(index,value){
+						if(value.userImgUrl == null){var userImgUrl = "images/defaultImg.png";}else{var userImgUrl = value.userImgUrl}
+						if(value.imgUrl == ""){
+							var imgSentence ='<div class="picWrapper"></div>';
+						}else{
+							var imgarr = value.imgUrl.split(",");
+							var imgSentence ="";
+							$.each(imgarr,function(i){
+								imgSentence += '<img src="'+imgarr[i]+'">'
+							});
+							 imgSentence = '<div class="picWrapper">'+imgSentence+'</div>'
+						}
+						var replyItem = '<li><div class="leftPart"><span><img class="userPic" src="'+userImgUrl+'"/></span></div>'+
+										'<div class="rightPart"><p><span>'+value.userNickName+'</span>&nbsp;<span>'+value.userLevel+'</span></p>'+
+										'<p><span><img src=""/></span>&nbsp;<span>'+value.userAge+'</span>&nbsp;<span class="time">'+value.relativeTime+'</span></p>'+
+										'<p>'+value.content+'</p>'+
+										imgSentence+
+										'<div id="rereplyContent" class="'+value.articleId+'"></div>'+
+										'</div><hr/></li>';
+						//		<p><span>xieshoutan</span>：<span>haha</span>&nbsp;<span class="time">19小时前</span></p>
+						//	<p class="replyBtn">
+						//		更多<span>7</span>条回复
+						//	</p>
+						
+						replyHtml += replyItem;
+						rereplylist.push(value.articleId);
+					});
+					$(".cowriterContent").html(replyHtml);
+					
+					
+				}else{
+					alert("网络异常，请重新加载！");
+				}
+			}).done(function(){
+				$.each(rereplylist,function(key,valueid){
+					$.getJSON("http://120.27.30.130:8080/api/comments/1402/"+valueid,{p0:1,p1:2},function(modelStr){
+						var model = $.parseJSON(modelStr);
+						
+						if(model.total == 0){
+							
+						}else if(model.total<=2){
+							var rereplyHtml = "";
+							$.each(model.comments,function(index,value){
+								var rereplyItem = '<li><p><span>'+value.userNickName+'</span>：<span>'+value.content+'</span>&nbsp;<span class="time">'+value.relativeTime+'</span></p></li>';
+								rereplyHtml += rereplyItem;
+							});
+							$("."+valueid).html('<hr/><ul class="rereplyContent">'+rereplyHtml+'</ul>');
+						}else if(model.total>2){
+							var rereplyHtml = "";
+							
+							$.each(model.comments,function(index,value){
+								var rereplyItem = '<li><p><span>'+value.userNickName+'</span>：<span>'+value.content+'</span>&nbsp;<span class="time">'+value.relativeTime+'</span></p><input type="hidden" value='+valueid+'/></li>';
+								rereplyHtml += rereplyItem;
+							});
+							$("."+valueid).html('<hr/><ul class="rereplyContent">'+rereplyHtml+'</ul><p class="replyBtn" onclick="javascript:unfold(this)">更多回复</p>');
+						}
+					
+					});
+
+				});
+				
+				
+			});
+			
+			function unfold(obj){
+				var singleclass= $(obj).parent().attr("class");
+				$.getJSON("http://120.27.30.130:8080/api/comments/1402/"+singleclass,{p0:1,p1:10},function(modelStr){
+					var model = $.parseJSON(modelStr);
+					var rereplyHtml = "";
+					
+					$.each(model.comments,function(index,value){
+						var rereplyItem = '<li><p><span>'+value.userNickName+'</span>：<span>'+value.content+'</span>&nbsp;<span class="time">'+value.relativeTime+'</span></p></li>';
+						rereplyHtml += rereplyItem;
+					});
+					$("."+singleclass).html('<hr/><ul class="rereplyContent">'+rereplyHtml+'</ul><p class="replyBtn" onclick="javascript:fold(this)">收起</p>');
+				});
+			};
+			function fold(obj){
+				var singleclass= $(obj).parent().attr("class");
+				$.getJSON("http://120.27.30.130:8080/api/comments/1402/"+singleclass,{p0:1,p1:2},function(modelStr){
+					var model = $.parseJSON(modelStr);
+					var rereplyHtml = "";
+					
+					$.each(model.comments,function(index,value){
+						var rereplyItem = '<li><p><span>'+value.userNickName+'</span>：<span>'+value.content+'</span>&nbsp;<span class="time">'+value.relativeTime+'</span></p></li>';
+						rereplyHtml += rereplyItem;
+					});
+					$("."+singleclass).html('<hr/><ul class="rereplyContent">'+rereplyHtml+'</ul><p class="replyBtn" onclick="javascript:unfold(this)">展开回复</p>');
+				});
+			};
+
+
+
+		
+		
+
+	
+	</script>
+	</body>
+</html>

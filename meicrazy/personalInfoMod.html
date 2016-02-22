@@ -1,0 +1,358 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title>美氪-资料修改</title>
+    <script>
+		//<![CDATA[
+			document.write('<script src="js/header.js"> <\/script>');
+		//]]>
+	</script>
+	<style>
+		.wrapper{
+			margin-top:1em;
+			width:96%;
+			margin-left:auto;
+			margin-right:auto;
+		}
+		footer{
+			bottom:0;
+			position:fixed;
+			width:100%;
+			max-width:960px;
+			margin-left:auto;
+			margin-right:auto;
+		}
+		ul li{
+			list-style-type:none;
+		}
+		.borderBottom1{
+			border:0;
+			border-bottom:1px solid #e6e6e6;
+		}
+		.save{
+			text-align:center;
+		}
+		#userPic{
+			width:120px;
+			height:120px;
+			margin-top:0.1em;
+			margin-left:0.1em;
+		}
+		#gender,#container{
+			width:120px;
+			margin-left:0.1em;
+			text-align:center;
+		}
+		label{
+			margin-bottom:0;
+			margin-top:0.5em;
+		}
+		@media screen and (max-width:768px){
+			.container{
+				margin-left:auto;
+				margin-right:auto;
+			}
+		}
+		
+		
+	</style>
+
+  </head>
+  <body onLoad="init()">
+	<script>
+		//<![CDATA[
+		document.write('<script src="js/nav.js"> <\/script>');
+		//]]>
+	</script>  
+	<div class="wrapper">
+
+		<div class="whiteBck">
+			<div class="">
+			<img src="images/defaultImg.png" width=100 height=100 alt="" id="userPic"/>
+			<!-- <form method="post">
+			<input type="file" name="pickfiles" value="上传头像"/>
+			</form> -->
+			<div id="container">
+			<a href="#" id="pickfiles">点击上传</a></div>
+			<div id="gender">
+			<label><input type="radio" name="gender" value="0" />女</label>&nbsp;&nbsp;
+			<label><input type="radio" name="gender" value="1" />男</label>
+			</div>
+			</div>
+			<ul class="mt10">
+				<li><input class="form-control borderBottom1 nickname" type="text" placeholder="昵称"/></li>
+				<li><input class="form-control borderBottom1 address" type="text" placeholder="地址"/></li>
+				<li><input class="form-control borderBottom1 phone" type="number" placeholder="电话"/></li>
+				<li><input class="form-control borderBottom1 birthday" type="date" placeholder="生日"/></li>
+				<li>
+				<form action="<#ZC_BLOG_HOST#>" method="post" name="creator" enctype="multipart/form-data">
+					<script language="javascript">
+					<!--
+					var where = new Array(35);
+					function comefrom(loca,locacity) { this.loca = loca; this.locacity = locacity; }
+					where[0]= new comefrom("请选择省份名","请选择城市名");
+					where[1] = new comefrom("北京 ","|东城|西城|崇文|宣武|朝阳|丰台|石景山|海淀|门头沟|房山|通州|顺义|昌平|大兴|平谷|怀柔|密云|延庆");  //欢迎来到站长特效网，我们的网址是www.zzjs.net，很好记，zz站长，js就是js特效，本站收集大量高质量js代码，还有许多广告代码下载。
+					where[2] = new comefrom("上海 ","|黄浦|卢湾|徐汇|长宁|静安|普陀|闸北|虹口|杨浦|闵行|宝山|嘉定|浦东|金山|松江|青浦|南汇|奉贤|崇明");//欢迎来到站长特效网，我们的网址是www.zzjs.net，很好记，zz站长，js就是js特效，本站收集大量高质量js代码，还有许多广告代码下载。
+					where[3] = new comefrom("天津 ","|和平|东丽|河东|西青|河西|津南|南开|北辰|河北|武清|红挢|塘沽|汉沽|大港|宁河|静海|宝坻|蓟县");
+					where[4] = new comefrom("重庆 ","|万州|涪陵|渝中|大渡口|江北|沙坪坝|九龙坡|南岸|北碚|万盛|双挢|渝北|巴南|黔江|长寿|綦江|潼南|铜梁|大足|荣昌|壁山|梁平|城口|丰都|垫江|武隆|忠县|开县|云阳|奉节|巫山|巫溪|石柱|秀山|酉阳|彭水|江津|合川|永川|南川");
+					where[5] = new comefrom("河北 ","|石家庄|邯郸|邢台|保定|张家口|承德|廊坊|唐山|秦皇岛|沧州|衡水");
+					where[6] = new comefrom("山西 ","|太原|大同|阳泉|长治|晋城|朔州|吕梁|忻州|晋中|临汾|运城");
+					where[7] = new comefrom("内蒙古 ","|呼和浩特|包头|乌海|赤峰|呼伦贝尔盟|阿拉善盟|哲里木盟|兴安盟|乌兰察布盟|锡林郭勒盟|巴彦淖尔盟|伊克昭盟");
+					where[8] = new comefrom("辽宁 ","|沈阳|大连|鞍山|抚顺|本溪|丹东|锦州|营口|阜新|辽阳|盘锦|铁岭|朝阳|葫芦岛");
+					where[9] = new comefrom("吉林 ","|长春|吉林|四平|辽源|通化|白山|松原|白城|延边");
+					where[10] = new comefrom("黑龙江 ","|哈尔滨|齐齐哈尔|牡丹江|佳木斯|大庆|绥化|鹤岗|鸡西|黑河|双鸭山|伊春|七台河|大兴安岭");
+					where[11] = new comefrom("江苏 ","|南京|镇江|苏州|南通|扬州|盐城|徐州|连云港|常州|无锡|宿迁|泰州|淮安");
+					where[12] = new comefrom("浙江 ","|杭州|宁波|温州|嘉兴|湖州|绍兴|金华|衢州|舟山|台州|丽水");
+					where[13] = new comefrom("安徽 ","|合肥|芜湖|蚌埠|马鞍山|淮北|铜陵|安庆|黄山|滁州|宿州|池州|淮南|巢湖|阜阳|六安|宣城|亳州");
+					where[14] = new comefrom("福建 ","|福州|厦门|莆田|三明|泉州|漳州|南平|龙岩|宁德");
+					where[15] = new comefrom("江西 ","|南昌市|景德镇|九江|鹰潭|萍乡|新馀|赣州|吉安|宜春|抚州|上饶");
+					where[16] = new comefrom("山东 ","|济南|青岛|淄博|枣庄|东营|烟台|潍坊|济宁|泰安|威海|日照|莱芜|临沂|德州|聊城|滨州|菏泽");
+					where[17] = new comefrom("河南 ","|郑州|开封|洛阳|平顶山|安阳|鹤壁|新乡|焦作|濮阳|许昌|漯河|三门峡|南阳|商丘|信阳|周口|驻马店|济源");
+					where[18] = new comefrom("湖北 ","|武汉|宜昌|荆州|襄樊|黄石|荆门|黄冈|十堰|恩施|潜江|天门|仙桃|随州|咸宁|孝感|鄂州");
+					where[19] = new comefrom("湖南 ","|长沙|常德|株洲|湘潭|衡阳|岳阳|邵阳|益阳|娄底|怀化|郴州|永州|湘西|张家界");
+					where[20] = new comefrom("广东  ","|广州|深圳|珠海|汕头|东莞|中山|佛山|韶关|江门|湛江|茂名|肇庆|惠州|梅州|汕尾|河源|阳江|清远|潮州|揭阳|云浮");
+					where[21] = new comefrom("广西 ","|南宁|柳州|桂林|梧州|北海|防城港|钦州|贵港|玉林|南宁地区|柳州地区|贺州|百色|河池");
+					where[22] = new comefrom("海南 ","|海口|三亚");
+					where[23] = new comefrom("四川 ","|成都|绵阳|德阳|自贡|攀枝花|广元|内江|乐山|南充|宜宾|广安|达川|雅安|眉山|甘孜|凉山|泸州");
+					where[24] = new comefrom("贵州 ","|贵阳|六盘水|遵义|安顺|铜仁|黔西南|毕节|黔东南|黔南");
+					where[25] = new comefrom("云南 ","|昆明|大理|曲靖|玉溪|昭通|楚雄|红河|文山|思茅|西双版纳|保山|德宏|丽江|怒江|迪庆|临沧");
+					where[26] = new comefrom("西藏 ","|拉萨|日喀则|山南|林芝|昌都|阿里|那曲");
+					where[27] = new comefrom("陕西 ","|西安|宝鸡|咸阳|铜川|渭南|延安|榆林|汉中|安康|商洛");
+					where[28] = new comefrom("甘肃 ","|兰州|嘉峪关|金昌|白银|天水|酒泉|张掖|武威|定西|陇南|平凉|庆阳|临夏|甘南");
+					where[29] = new comefrom("宁夏 ","|银川|石嘴山|吴忠|固原");
+					where[30] = new comefrom("青海 ","|西宁|海东|海南|海北|黄南|玉树|果洛|海西");
+					where[31] = new comefrom("新疆 ","|乌鲁木齐|石河子|克拉玛依|伊犁|巴音郭勒|昌吉|克孜勒苏柯尔克孜|博尔塔拉|吐鲁番|哈密|喀什|和田|阿克苏");
+					where[32] = new comefrom("香港 ","|香港");
+					where[33] = new comefrom("澳门 ","|澳门");
+					where[34] = new comefrom("台湾 ","|台北|高雄|台中|台南|屏东|南投|云林|新竹|彰化|苗栗|嘉义|花莲|桃园|宜兰|基隆|台东|金门|马祖|澎湖");
+					where[35] = new comefrom("其它 ","|北美洲|南美洲|亚洲|非洲|欧洲|大洋洲");
+					function select() {
+					with(document.creator.province) { var loca2 = options[selectedIndex].value; }
+					for(i = 0;i < where.length;i ++) {
+					if (where[i].loca == loca2) {
+					loca3 = (where[i].locacity).split("|");
+					for(j = 0;j < loca3.length;j++) { with(document.creator.city) { length = loca3.length; options[j].text = loca3[j]; options[j].value = loca3[j]; var loca4=options[selectedIndex].value;}}
+					break;
+					}}
+					document.creator.newlocation.value=loca2+loca4;
+					}
+					function init() {
+					with(document.creator.province) {
+					length = where.length;
+					for(k=0;k<where.length;k++) { options[k].text = where[k].loca; options[k].value = where[k].loca; }
+					options[selectedIndex].text = where[0].loca; options[selectedIndex].value = where[0].loca;
+					}
+					with(document.creator.city) {
+					loca3 = (where[0].locacity).split("|");
+					length = loca3.length;
+					for(l=0;l<length;l++) { options[l].text = loca3[l]; options[l].value = loca3[l]; }
+					options[selectedIndex].text = loca3[0]; options[selectedIndex].value = loca3[0];
+					}} //
+					-->
+					</script>
+					<div class="form-control borderBottom1">省市 <select style="margin-left:2em;" name="province" onChange = "select()"></select>　<select name="city" onChange = "select()"></select></div>
+					 <input style="display:none;" type=text name="newlocation" class="form-control borderBottom1 currentAddress" placeholder="所在地" maxlength=12 size=12 >
+					</form>
+				</li>
+			</ul>
+			<div class="save">
+				<button type="button" id="save" class="btn btn-default">保存资料</button>
+			</div>
+		</div>
+
+	</div>	
+	<script>
+	var userId	 = $.cookie().userId;
+	var tokenurl="http://120.27.30.130:8080/api/pic_user/"+userId+"/token";
+	var token="";
+	var key = "";
+	var img_url = "";
+	var callback_url = "";
+	$(document).ready(function(){
+
+		jQuery.support.cors = true;
+		$.getJSON(tokenurl,function(res){
+			//var resJson  = $.parseJSON(res);
+			token = res.uptoken;
+			key = res.key;
+			img_url = res.img_url;
+			callback_url = "http://"+res.callback_url;
+			
+		}).done(function(){
+			var uploader = Qiniu.uploader({
+			    runtimes: 'html5,flash,html4',    //上传模式,依次退化
+			    browse_button: 'pickfiles',       //上传选择的点选按钮，**必需**
+			    uptoken: token,
+			        //Ajax请求upToken的Url，**强烈建议设置**（服务端提供）
+			     //uptoken : token,
+			        //若未指定uptoken_url,则必须指定 uptoken ,uptoken由其他程序生成
+			     unique_names: false,
+			        // 默认 false，key为文件名。若开启该选项，SDK会为每个文件自动生成key（文件名）
+			     save_key: false,
+			        // 默认 false。若在服务端生成uptoken的上传策略中指定了 `sava_key`，则开启，SDK在前端将不对key进行任何处理
+			    domain: 'http://qiniu-plupload.qiniudn.com/',
+			        //bucket 域名，下载资源时用到，**必需**
+			    container: 'container',           //上传区域DOM ID，默认是browser_button的父元素，
+			    max_file_size: '100mb',           //最大文件体积限制
+			    flash_swf_url: 'js/plupload/Moxie.swf',  //引入flash,相对路径
+			    max_retries: 3,                   //上传失败最大重试次数
+			    dragdrop: true,                   //开启可拖曳上传
+			    drop_element: 'container',        //拖曳上传区域元素的ID，拖曳文件或文件夹后可触发上传
+			    chunk_size: '4mb',                //分块上传时，每片的体积
+			    auto_start: true,                 //选择文件后自动上传，若关闭需要自己绑定事件触发上传
+			    init: {
+			        'FilesAdded': function(up, files) {
+			            plupload.each(files, function(file) {
+			                // 文件添加进队列后,处理相关的事情
+			            });
+			        },
+			        'BeforeUpload': function(up, file) {
+			               // 每个文件上传前,处理相关的事情
+			        },
+			        'UploadProgress': function(up, file) {
+			               // 每个文件上传时,处理相关的事情
+			        },
+			        'FileUploaded': function(up, file, info) {
+			        	
+			        	$("#userPic").attr("src",img_url);
+			        	$.cookie("profileImgUrl",img_url);
+			        	$.getJSON(callback_url,function(res){
+							var model = $.parseJSON(res);
+			        		if(model.status == 0){
+					
+							}else{
+								alert("上传失败，请重新再试");
+							}
+						});
+
+			    		$.getJSON(tokenurl,function(res){
+			    			//var resJson  = $.parseJSON(res);
+			    			token = res.uptoken;
+			    			key = res.key;
+			    			img_url = res.img_url;
+			    			callback_url = "http://"+res.callback_url;
+			    			});
+			               // 每个文件上传成功后,处理相关的事情
+			               // 其中 info 是文件上传成功后，服务端返回的json，形式如
+			               // {
+			               //    "hash": "Fh8xVqod2MQ1mocfI4S4KpRL6D98",
+			               //    "key": "gogopher.jpg"
+			               //  }
+			               // 参考http://developer.qiniu.com/docs/v6/api/overview/up/response/simple-response.html
+			               // var domain = up.getOption('domain');
+			               // var res = parseJSON(info);
+			               // var sourceLink = domain + res.key; 获取上传成功后的文件的Url
+			        },
+			        'Error': function(up, err, errTip) {
+			               //上传出错时,处理相关的事情
+			        },
+			        'UploadComplete': function() {
+						
+			        		
+			   
+			               //队列文件处理完毕后,处理相关的事情
+			        },
+			        'Key': function(up, file) {
+			            // 若想在前端对每个文件的key进行个性化处理，可以配置该函数
+			            // 该配置必须要在 unique_names: false , save_key: false 时才生效
+			            // do something with key here
+			            return key
+			        }
+			    }
+			});
+		})
+		
+		// domain 为七牛空间（bucket)对应的域名，选择某个空间后，可通过"空间设置->基本设置->域名设置"查看获取
+		// uploader 为一个plupload对象，继承了所有plupload的方法，参考http://plupload.com/docs
+		
+
+		function S4() {
+			   return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+			};
+			// Generate a pseudo-GUID by concatenating random hexadecimal.
+			function guid() {
+			   return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
+			};
+		var uuid=guid();
+		
+		
+		$("#save").click(function(){
+			var birthday =  $(".birthday")[0].value;
+			var nickname = $(".nickname")[0].value;
+			var address = $(".address")[0].value;
+			var phone = $(".phone")[0].value;
+			var currentAddress = $(".currentAddress")[0].value;
+			var arr = currentAddress.split(" ");
+			var province = arr[0];
+			var city = arr[1];
+			
+			var gender = $('input[name="gender"]:checked ').val();
+			var data = {
+					  "postcode" : "",
+					  "birthday" : birthday+" 00:00:00"  ,
+					  "nickName" : nickname,
+					  "province" : province,
+					  "skintype" : "",
+					  "realName" : nickname,
+					  "profileImgUrl" :"http:\/\/meicrazy.qiniudn.com\/(null)",
+					  "uuid" : uuid,
+					  "city" : city,
+					  "signature" : "",
+					  "edu" : "",
+					  "job" : "",
+					  "gender" : gender,
+					  "mobile" : phone,
+					  "firstName" : nickname,
+					  "age" : 0,
+					  "income" : "",
+					  "lastName" : "",
+					  "address" : "",
+					  "userId" : userId
+					  };	
+	try{	
+		
+	  $.ajax({
+          //提交数据的类型 POST GET
+          type:"POST",
+          //提交的网址
+          url:"http://120.27.30.130:8080/api/users",
+          //提交的数据
+          data : JSON.stringify(data),
+          contentType: "application/json; charset=utf-8",
+          //返回数据的格式
+          datatype: "json",//"xml", "html", "script", "json", "jsonp", "text".
+          //在请求之前调用的函数
+          beforeSend:function(){},
+          //成功返回之后调用的函数             
+          success:function(data){
+        	  	var model=$.parseJSON(data);
+        	 	$.cookie("userName",model.user.nickName);
+				$.cookie("skinType",model.user.skintype);
+				$.cookie("userAge",model.user.age);
+				$.cookie("userId",model.user.userId);
+				$.cookie("gender",model.user.gender);
+				$.cookie("flag",true);
+          		window.location.href="personalInfo.html";
+          },
+          //调用执行后调用的函数
+          complete: function(){
+              //HideLoading();
+          },
+          //调用出错执行的函数
+          error: function(){
+              //请求出错处理
+          
+          }         
+       });
+	}catch(e){
+		console.log(e.name) ;
+		console.log(e.message);
+	}
+
+		});
+	});
+	</script>
+		
+
+  </body>
+</html>

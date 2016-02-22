@@ -1,0 +1,412 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title>美氪-申请试用</title>
+    <script>
+		//<![CDATA[
+			document.write('<script src="js/header.js"> <\/script>');
+		//]]>
+	</script>
+    <style>
+    	.wrapper{
+    		margin-top:1em;
+    	}
+    	.whiteBck{
+    		height:100%;
+    	}
+    	.submitBtn{
+    		margin-top:0.5em;
+    	}
+    	table{
+    		text-align:center;
+    	}
+    	.rightTd{
+    		width:100%;
+    	}
+		#rightTd1{
+			text-align:left;
+		}  
+		@media screen and (max-width:768px){
+			.webHint{
+				display:none;
+			}
+			.phoneHint{
+				display:inline;
+			}
+		}  	
+		
+		
+		.infoListWrapper{
+			border:1px solid #f0f0f0;
+			border-radius:4px;
+			padding-left:0.5em;
+			padding-top:0.5em;
+		}
+		.infoList{
+			width:100%;
+			margin-bottom:0.5em;
+			
+		}
+		.item{
+			display:inline-block;
+			width:15%;
+			margin-bottom:0;
+		}
+		.inputDetail{
+			display:inline-block;
+			width:60%;
+		}
+		.hint{
+			width:23%;
+			font-size:0.8em;
+			padding-left:0.5em;
+		}
+		@media screen and (max-width:768px){
+			.inputDetail{
+				width:80%;
+			}
+			.hint{
+				width:70%;
+				display:block;
+				margin-left:15%;
+			}
+		}
+		
+    </style>
+  </head>
+  <body>
+ 	<script>
+		//<![CDATA[
+		document.write('<script src="js/nav.js"> <\/script>');
+		//]]>
+	</script>
+	<div class="wrapper">
+		<div class="whiteBck">
+			<p>试用报名</p>	
+			<div class="infoListWrapper">
+			<div class="infoList">
+				<p class="item" style="text-align:center">昵称：</p><span><input class="inputDetail form-control" name="nickName" type="text"/></span><span class="hint nickNameHint"></span>
+			</div>
+			<div class="infoList">
+				<p class="item" style="text-align:center">性别：</p><span><input class="inputDetail form-control" name="gender" type="text"/></span><span class="hint genderHint"></span>
+			</div>
+			<div class="infoList">
+				<p class="item" style="text-align:center">年龄：</p><span><input class="inputDetail form-control" name="age" type="text"/></span><span class="hint ageHint"></span>
+			</div>
+			<div class="infoList">
+				<p class="item" style="text-align:center">地址：</p><span><input class="inputDetail form-control" name="city" type="text"/></span><span class="hint cityHint"></span>
+			</div>
+			<div class="infoList">
+				<p class="item" style="text-align:center">手机：</p><span><input class="inputDetail form-control" name="phone" type="text"/></span><span class="hint phoneHint"></span>
+			</div>
+			
+			
+			</div>
+	<!-- 	<div class="panel panel-default">
+
+			<table class="table">
+			<thead></thead>
+			<tbody>
+			
+				<tr>
+					<td width="20%">昵称</td>
+					<td><input class="rightTd" id="rightTd1" name="nickName" type="text"/></td>
+				 	<td class="webHint"><span class="hint">请输入不少于6个字符的昵称</span></td>
+				</tr>
+				<tr class="phoneHint">
+					<td> </td>
+					<td><span class="hint">请输入不少于6个字符的昵称</span></td>
+				</tr>
+				<tr>
+					<td width="20%">性别</td>
+					<td><input class="rightTd" name="gender" type="text"/></td>
+				</tr>
+				<tr>
+					<td width="20%">年龄</td>
+					<td><input class="rightTd" name="age" type="text"/></td>
+				</tr>
+				<tr>
+					<td width="20%">城市</td>
+					<td><input class="rightTd" name="city" type="text"/></td>
+				</tr>
+				<tr>
+					<td width="20%">手机</td>
+					<td><input class="rightTd" name="phone" type="text"/></td>
+				</tr>
+				</tbody>
+		</table>
+ -->		
+		<script>
+			
+			$("input[name='nickName']").focus(function(){
+		
+				if($(this).val()==""){
+					$(".nickNameHint").html("请输入昵称,昵称应在3~12个字符之间");
+				}else if($(this).val().length <12 && $(this).val().length > 3){
+					$(".nickNameHint").html("输入正确");
+					$(".nickNameHint").css("color","green");
+				}else{
+					$(".nickNameHint").html("昵称应在3~12个字符之间");
+					$(".nickNameHint").css("color","red");
+					return false;
+				}
+			
+			});
+			$("input[name='nickName']").blur(function(){
+				if($(this).val()==""){
+					$(".nickNameHint").html("请输入昵称,昵称应在3~12个字符之间");
+					$(".nickNameHint").css("color","red");
+					return false;
+				}else if($(this).val().length <12 && $(this).val().length > 3){
+					$(".nickNameHint").html("输入正确");
+					$(".nickNameHint").css("color","green");
+				}else{
+					$(".nickNameHint").html("昵称应在3~12个字符之间");
+					$(".nickNameHint").css("color","red");
+					return false;
+				}
+				
+			});
+			
+			
+			$("input[name='gender']").focus(function(){
+				
+				if($(this).val()==""){
+					$(".genderHint").html("请输入性别");
+				}else if($(this).val()=="男" || $(this).val()=="女"){
+					$(".genderHint").html("输入正确");
+					$(".genderHint").css("color","green");
+				}else{
+					$(".genderHint").html("输入有误，请重新再试");
+					$(".genderHint").css("color","red");
+					return false;
+				}
+			
+			});
+			$("input[name='gender']").blur(function(){
+				if($(this).val()==""){
+					$(".genderHint").html("请输入性别");
+					$(".genderHint").css("color","red");
+					return false;
+				}else if($(this).val()=="男" || $(this).val()=="女"){
+					$(".genderHint").html("输入正确");
+					$(".genderHint").css("color","green");
+				}else{
+					$(".genderHint").html("输入有误，请重新再试");
+					$(".genderHint").css("color","red");
+					return false;
+				}
+				
+			});
+			$("input[name='age']").focus(function(){
+				
+				if($(this).val()==""){
+					$(".ageHint").html("请输入年龄");
+				}else if(!isNaN($(this).val()) && $(this).val()>0 && $(this).val()<100){
+					$(".ageHint").html("输入正确");
+					$(".ageHint").css("color","green");
+				}else{
+					$(".ageHint").html("输入有误，请重新再试");
+					$(".ageHint").css("color","red");
+					return false;
+				}
+			
+			});
+			$("input[name='age']").blur(function(){
+				if($(this).val()==""){
+					$(".ageHint").html("请输入年龄");
+					$(".ageHint").css("color","red");
+					return false;
+				}else if(!isNaN($(this).val()) && $(this).val()>0 && $(this).val()<100){
+					$(".ageHint").html("输入正确");
+					$(".ageHint").css("color","green");
+				}else{
+					$(".ageHint").html("输入有误，请重新再试");
+					$(".ageHint").css("color","red");
+					return false;
+				}
+			
+				
+			});
+			$("input[name='city']").focus(function(){
+				
+				if($(this).val()==""){
+					$(".cityHint").html("请输入地址");
+				}else if(typeof($(this).val())== "string"){
+					$(".cityHint").html("输入正确");
+					$(".cityHint").css("color","green");
+				}else{
+					$(".cityHint").html("地址有误，请重新再试");
+					$(".cityHint").css("color","red");
+					return false;
+				}
+			
+			});
+			$("input[name='city']").blur(function(){
+				if($(this).val()==""){
+					$(".cityHint").html("请输入地址");
+					$(".cityHint").css("color","red");
+					return false;
+				}else if(typeof($(this).val())== "string"){
+					$(".cityHint").html("输入正确");
+					$(".cityHint").css("color","green");
+				}else{
+					$(".cityHint").html("地址有误，请重新再试");
+					$(".cityHint").css("color","red");
+					return false;
+				}
+				
+			});
+			$("input[name='phone']").focus(function(){
+				
+				if($(this).val()==""){
+					$(".c").html("请输入手机号");
+				}else if(!isNaN($(this).val()) && $(this).val().length > 8){
+					$(".phoneHint").html("输入正确");
+					$(".phoneHint").css("color","green");
+				}else{
+					$(".phoneHint").html("输入有误，请重新再试");
+					$(".phoneHint").css("color","red");
+					return false;
+				}
+			
+			});
+			$("input[name='phone']").blur(function(){
+				if($(this).val()==""){
+					$(".phoneHint").html("请输入手机号");
+					$(".phoneHint").css("color","red");
+					return false;
+				}else if(!isNaN($(this).val()) && $(this).val().length > 8){
+					$(".phoneHint").html("输入正确");
+					$(".phoneHint").css("color","green");
+				}else{
+					$(".phoneHint").html("输入有误，请重新再试");
+					$(".phoneHint").css("color","red");
+					return false;
+				}
+				
+			});
+			
+			
+		</script>
+
+		<div class=""><input name="trialRules" type="checkbox"/>我同意<a href="trialRules.html">产品试用服务条款</a></div>
+		<div class="submitBtn">
+			<button class="btn btn-default	f12">报名</button>
+		</div>
+		</div>
+	</div>	
+	<script>
+		function getUrlParam(name)
+		{
+		var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+		var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+		if (r!=null) return unescape(r[2]); return null; //返回参数值
+		} 
+		var trialId = getUrlParam("trialId");
+	</script>
+    
+	<script>
+	
+		jQuery.support.cors = true;
+		$(".submitBtn button").click(function(){
+			
+
+			var userId = $.cookie().userId;
+			if(typeof(userId) == "undefined"){
+				alert("请登录后再试");
+				return false;
+			}
+			var nickName = $("input[name='nickName']").val();
+			var gender = $("input[name='gender']").val();
+			if(gender=="男"){
+				gender = 1;
+			}else if(gender=="女"){
+				gender = 0;
+			}else{
+				gender="";
+			}
+			var age = $("input[name='age']").val();
+			var city = $("input[name='city']").val();
+			var address = $("input[name='address']").val();
+			var phone = $("input[name='phone']").val();
+			if(gender==""||nickName==""||age==""||city==""||address==""||phone==""){
+				var ifWrong = 1;
+			}else{
+				var ifWrong = 0;
+			}
+			
+			var data1 = {
+					  "userId" : userId,
+					  "gender" : gender,
+					  "realName" : nickName,
+					  "address" : address,
+					  "age" : age,
+					  "city" : city,
+					  "mobile" : phone
+					}
+		
+			
+			$.ajax({
+				type:"POST",
+				url:"http://120.27.30.130:8080/api/users",
+				data : JSON.stringify(data1),
+		        contentType: "application/json; charset=utf-8",
+		        beforeSend:function(){
+		        	if(ifWrong == 1){
+		        		return false;
+		        	}else if($("input[name='trialRules']").is(':checked') == true){
+						
+					}else{
+						alert("请先同意产品试用服务条款！");
+		        		return false;
+		        	}
+		        },
+		        success:function(){
+		        },
+		        error:function(){
+		        	alert("报名失败，请重新再试！");
+		        	return false;
+		        }
+			}).done(function(){
+				var data2 = {p0:userId, p1:trialId}
+				
+				 $.ajax({
+			          //提交数据的类型 POST GET
+			          type:"POST",
+			          //提交的网址
+			          url:"http://120.27.30.130:8080/api/subscribe",
+			          //提交的数据
+			          data : data2,
+			         
+			          //返回数据的格式
+			          datatype: "json",//"xml", "html", "script", "json", "jsonp", "text".
+			          //在请求之前调用的函数
+			          beforeSend:function(){},
+			          //成功返回之后调用的函数             
+			          success:function(data){
+			          	alert("报名成功");
+			          	window.location.href="trialist.html";
+			          },
+			          //调用执行后调用的函数
+			          complete: function(){
+			              //HideLoading();
+			          },
+			          //调用出错执行的函数
+			          error: function(){
+			              //请求出错处理
+			              alert("报名失败，请重新再试");
+			              return false;
+			          }         
+			       });
+				
+			});
+			
+
+			
+			
+		});
+	</script>
+
+  </body>
+</html>

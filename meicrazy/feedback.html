@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title>美氪-意见反馈</title>
+    <script>
+		//<![CDATA[
+			document.write('<script src="js/header.js"> <\/script>');
+		//]]>
+	</script>
+    <style>
+    	.wrapper{
+    		margin-top:1em;
+
+    	}
+    	.whiteBck{
+    		height:96%;
+    		width:96%;
+    		margin-left:2%;
+    		margin-right:2%;
+    	}
+    	.feedback{
+    		width:60%;
+    		height:500px;
+    		margin-left:auto;
+    		margin-right:auto;
+    		margin-top:4em;
+    	}
+    	.feedback textarea{
+    		width:100%;
+    		margin-left:auto;
+    		margin-right:auto;
+    		margin-top:1em;
+    		height:150px;
+    		border:1px solid #808080;
+    		border-radius:4px;
+    	}
+    	.submitBtn{
+    		margin-top:1em;
+    	}
+ 		
+    	@media screen and (max-width:768px){
+   			.feedback{
+   				width:98%;
+   				margin-top:1em;
+   			}
+   			.feedback textarea{
+    		width:100%;
+    		margin-left:auto;
+    		margin-right:auto;
+    		height:150px;
+    		border-radius:4px;
+    		}
+    	}
+    	@media screen and (max-width:320px){
+    		.feedback textarea{
+    			height:120px;
+    		}
+    	}
+    	
+    </style>
+    
+  </head>
+  <body>
+	<script>
+		//<![CDATA[
+		document.write('<script src="js/nav.js"> <\/script>');
+		//]]>
+	</script>  
+	<div class="wrapper">
+		<div class="whiteBck">
+			<div class="feedback">
+				<p>如果您对我们的服务有意见，请反馈给我们，我们将及时处理，谢谢！</p>
+					
+				<textarea placeholder="请在此留言"></textarea>
+				<div class="submitBtn">
+					<button class="btn btn-default	f12">发布</button>
+				</div>
+			</div>
+			<div>
+			
+			</div>
+			
+		</div>
+	</div>	
+	<script>
+		//<![CDATA[
+		document.write('<script src="js/footer.js"> <\/script>');
+		//]]>
+	</script>
+	
+	<script>
+	$(".submitBtn button").click(function(){
+		var content = $(".feedback textarea").val();
+		if(content == "" || content == " "){
+			alert("反馈内容不能为空，请重新再试");
+			return false;
+		}
+			
+		var data = {p0:userId, p1:"other",p2:content};
+		$.ajax({
+			type:"POST",
+			url: "http://120.27.30.130:8080/api/feedback",
+			data:data,
+			datatype:"json",
+			success:function(){
+				alert("提交成功！");
+				window.location.href="index.html";
+			},
+			error:function(){
+				alert("提交失败，请重新再试！");
+			}
+		});
+		
+	});
+	</script>
+  </body>
+</html>

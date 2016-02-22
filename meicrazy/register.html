@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title>美氪-注册</title>
+    <script>
+		//<![CDATA[
+			document.write('<script src="js/header.js"> <\/script>');
+		//]]>
+	</script>   
+	
+	<style>
+		.wrapper{
+			overflow:hidden;
+			margin-top:1em;
+			width:96%;
+			margin-left:auto;
+			margin-right:auto;
+		}
+		@media screen and (max-width:768px){
+			.registerCon input{
+				margin-top:0.5em;
+			}
+			
+		}
+	</style>
+  </head>
+  <body>
+   <header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
+		  <div class="container">
+		    <div class="navbar-header">
+		      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
+		      <a href="http://www.meicrazy.cn/index.html" class="navbar-brand"><img id="logo" src="images/logo.png"/></a>
+		    </div>
+		    <nav id="bs-navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
+		      <ul class="nav navbar-nav">
+		        <li>
+		          <a href="http://www.meicrazy.cn/wom-headlines.html">口碑</a>
+		        </li>
+		        <li>
+		          <a href="http://www.meicrazy.cn/trialist.html">试用</a>
+		        </li> 
+		        <li>
+		          <a href="http://www.meicrazy.cn/test.html">测试</a>
+		        </li>
+		       <li>
+		          <a href="http://www.meicrazy.cn/articlelist.html">美肤必看</a>
+		        </li>
+		      </ul>
+		      <ul class="nav navbar-nav navbar-right">
+		        <li class="loginSet"><a href="http://www.meicrazy.cn/login.html">登录</a></li>
+		        <li class="loginSet"><a href="http://www.meicrazy.cn/register.html">注册</a></li>
+		      </ul>
+		    </nav>
+		  </div>
+		</header>	
+	<div class="wrapper">
+		<div class="registerCon">
+				<div class="input-group">
+				  <input type="text" style="border-radius:4px;" class="form-control nickName" placeholder="昵称" aria-describedby="basic-addon1">
+				</div>
+				<div class="input-group">
+				  <input type="text" style="border-radius:4px;" class="form-control phoneNumber" placeholder="手机号/Email" aria-describedby="basic-addon1">
+				</div>
+				<div class="input-group">
+				  <input type="password" style="border-radius:4px;" class="form-control psword" placeholder="密码" aria-describedby="basic-addon1">
+				</div>
+				<button>注册</button>
+			<div class="hint"><p>注册即代表我同意 <span><a href="policy.html">服务条款</a>、<a href="privacy.html">隐私政策</a></span></p></div>
+		</div>
+	</div>
+	<script>
+		$(document).ready(function(){
+			$(".registerCon button").click(function(){
+				var nickName = $(".nickName").val();
+				var phoneNumber = $(".phoneNumber").val();
+				var psword = $(".psword").val();
+				
+				
+			
+				var data={"p0":phoneNumber,"p1":psword,"p2":"qwerty","p3":'1',"p4":nickName};
+			
+				$.ajax({
+					
+					type: "POST",
+					url: "http://120.27.30.130:8080/api/register",
+					datatype:"json",
+					data: data,
+					success:function(){
+					},
+					error: function(){
+						alert("注册失败，请重新再试");
+					}
+				}).done(function(){
+					$.getJSON('http://120.27.30.130:8080/api/login?p0='+phoneNumber+'&p1='+psword+'&', function(modelStr){	
+						
+						$.cookie("userName",modelStr.user.nickName);
+						$.cookie("skinType",modelStr.user.skintype);
+						$.cookie("userAge",modelStr.user.age);
+						$.cookie("userId",modelStr.user.userId);
+						$.cookie("flag",true);
+						alert("注册成功");
+						window.location.href="personalInfoMod.html";
+				
+				});
+				});
+				/*	$.getJSON("http://120.27.30.130:8080/api/register", data, function(modelStr){
+					var model=$.parseJSON(modelStr);
+					if(model.status!="0"){
+					psword=$.md5(psword);
+					$.getJSON('http://120.27.30.130:8080/api/login?p0='+nickName+'&p1='+psword+'&', function(modelStr){
+						//	alert(modelStr.user.skintype);
+							if(modelStr.status==0){
+								$.cookie("userName",modelStr.user.nickName);
+								$.cookie("skinType",modelStr.user.skintype);
+								$.cookie("userAge",modelStr.user.age);
+								$.cookie("userId",modelStr.user.userId);
+								$.cookie("flag",true);
+							
+							}else{
+								alert("注册过程出现错误，请重新再试");
+								window.location.href="register.html";
+							}
+						});
+					
+
+						window.location.href="personalInfoMod.html";
+					}else if(model.status == "1001"){
+						alert("您的用户名已经注册");
+					}else{
+						alert("注册失败，请重新再试");
+					}		
+				});	
+				*/
+			});
+			
+		});
+		
+	</script>
+  </body>
+</html>

@@ -1,0 +1,178 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title>美氪-试用活动</title>
+    <script>
+		//<![CDATA[
+			document.write('<script src="js/header.js"> <\/script>');
+		//]]>
+	</script>
+  	
+	<style>
+		.wrapper{
+			margin-top:1em;
+		}
+		.trialEvent{
+			width:100%;
+			background:#fff;
+			padding-left:1%;
+			padding-right:1%;
+			padding-bottom:1em;
+		}
+		.trialTrial ul li,.trialProduct ul li{
+			list-style-type:none;
+		}
+
+		.trialItem{
+			width:100%;
+			padding-top:1%;
+		}
+		.trialImg{
+			width:60%;
+			height:230px;
+		}
+		.instr{
+			display:inline-block;
+			vertical-align:top;
+			width:38%;
+		}
+		.trialItem p{
+			display:inline-block;
+			padding-left:0.5em;
+		}
+		.trialProduct{
+			border-bottom:1px solid #f0f0f0;
+			margin-bottom:0.5em;
+		}
+		.joinBtn{
+			width:100%;
+			max-width:768px;
+			height:32px;
+			background:#ff3366;
+			color:#fff;
+			line-height:32px;
+			border:0;
+			border-radius:4px;
+		}
+		.alignment{
+			width:75%;
+		}
+		@media screen and (max-width:414px){
+			.trialImg{
+				width:100%;
+				height:200px;
+			}
+			.trialItem p{
+				padding-left:0;
+			}
+
+
+			.instr{
+				width:100%;
+				padding-top:0.5em;
+				border-bottom:1px solid #f0f0f0;
+			}
+			
+		}
+	</style>
+  </head>
+  <body>
+ 	<script>
+		//<![CDATA[
+		document.write('<script src="js/nav.js"> <\/script>');
+		//]]>
+	</script>
+	<div class="wrapper">
+
+		<div class="trialEvent">
+		 <div class="trialTrial">
+		 	<p style='padding-left:1%;padding-top:0.5em;font-size:1.5em;margin-bottom:0;'>免费试用活动</p>
+		 	
+		 	<ul>
+				<li>
+					<div class="trialItem">
+						<img src="" class="trialImg" width=60% height=250px/>
+						<div class="instr">
+						<p>活动名称：&nbsp;</p><span class="trialTitle alignment"></span><br/>
+						<hr style="margin:0.5em 0 0.5em">
+						<p>试用名额：&nbsp;</p><span class="trialLimit">250</span><br/>
+						<p>申请人数：&nbsp;</p><span class="trialApply">1</span><br/>
+						<p>截止时间：&nbsp;</p><span class="trialDate"></span><br/>
+						</div>
+					</div>
+				</li>
+			</ul>
+	
+		</div>
+		<div class="trialPro">
+			<p>产品介绍</p>
+			<div class="trialProduct">
+			<ul>
+				<li>
+					<p class="productName">贝佳斯水溶矿物活颜紧致精华</p>
+					<p class="description">规格：</p>
+					<p class="productEffects">功效：</p>	
+				</li>
+			</ul>
+			</div>
+			<p>活动详情</p>
+			<p>只要在活动期间申请即可得到试用装，点击报名参加，填写相关信息即可。</p>
+			<button class="joinBtn">报名参加</button>
+		</div>
+		
+
+	</div>	
+	<script>
+		function getUrlParam(name)
+		{
+		var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+		var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+		if (r!=null) return unescape(r[2]); return null; //返回参数值
+		} 
+		var trialId = getUrlParam("q");
+	</script>
+	<script>
+		var imgError = function(imgObject){
+			$(imgObject).attr("src","");
+		}
+		jQuery.support.cors = true;
+		function getTrial(){
+			$.getJSON("http://120.27.30.130:8080/api/trials/"+trialId,function(modelStr){
+				$(".trialItem img").attr("src",modelStr.trial.trialImg);
+				$(".trialTitle").html(modelStr.trial.name);				
+				$(".trialLimit").html(modelStr.trial.limitCount);	
+				$(".trialApply").html(modelStr.trial.applyCount);	
+				$(".trialDate").html(modelStr.trial.endDate);
+				var productHtml = "";
+				$.each(modelStr.products,function(index,value){
+					if(value.description==null){
+						var description = "";
+					}else{
+						var description = value.description;
+						
+					}
+					
+					var productEffects = value.description;
+
+					if(productEffects == null){
+						productEffects = "";
+					}else{
+						productEffects = productEffects.join(" ");
+					}
+					
+					var productItem = '<li><p class="productName">'+value.productName+'</p>'+
+						'<p class="description">规格：'+description+'</p>'+
+						'<p class="productEffects">功效：'+productEffects+'</p></li>';
+					productHtml+=productItem;
+				})
+				$(".trialProduct ul").html(productHtml);
+			});
+			
+		}
+		getTrial();
+		$(".joinBtn").click(function(){
+			window.location.href="trialInfo.html?trialId="+trialId;
+		});
+	</script>
+  </body>
+</html>

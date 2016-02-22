@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title>美氪-个人信息</title>
+    <script>
+		//<![CDATA[
+			document.write('<script src="js/header.js"> <\/script>');
+		//]]>
+	</script>
+    <script>
+		if($.cookie().flag != "true"){
+			window.location.href="loginHint.html";
+		}
+    </script>
+    <style>
+    	.wrapper{
+    		margin-top:1em;
+    		width:96%;
+    		margin-left:auto;
+    		margin-right:auto;
+    	}
+    </style>
+  </head>
+  <body>
+	<script>
+		//<![CDATA[
+		document.write('<script src="js/nav.js"> <\/script>');
+		//]]>
+	</script>  
+	<div class="wrapper" style="overflow:hidden">
+
+		
+		<div class="logoutCon">
+			<div class="personalInfo center">
+			
+				<img onerror="imgError(this)" class="profileImgUrl" style="margin-top:5em;" src="" width=150 height=150/>
+				<div class="personalText">
+					<span class="userName">userName</span>
+					<img class="block" src="images/icon_m.png" width=30 height=30>
+					<p><span class="skinType">DRNT</span>&nbsp;<span class="userAge">38</span></p>
+				</div>
+				<div class="blankbar"></div>
+			</div>
+			<div class="personalOption center">
+				<button type="button" onclick="javascript:window.location.href='bag.html'"  class="mt05 btn btn-default">化妆包</button>
+				<button type="button" onclick="javascript:window.location.href='test.html'" class="mt05 btn btn-default">皮肤测试</button>
+				<br/>
+				<button type="button" onclick="javascript:window.location.href='personalInfoMod.html'" class="mt05 btn btn-default">个人资料修改</button>
+				<button type="button" class="mt05 logoutBtn btn btn-default">注销</button>
+			</div>
+		</div>
+	</div>	
+	<script>
+		$(document).ready(function(){
+			if($.cookie("flag")==true){
+				$(".loginSet").hide();
+				$(".logoutSet").show();
+				$("#userNickName").html($.cookie("userName"));
+				
+			}else{
+				
+			}
+				if($.cookie().gender==1){
+					$(".block").attr("src", "images/icon_m.png");
+				}else{
+					$(".block").attr("src","images/icon_w.png");
+
+				}
+				
+				$(".profileImgUrl").attr("src",$.cookie("profileImgUrl"));
+				$(".userName").html($.cookie("userName"));
+				$(".skinType").html($.cookie("skinType"));
+				$(".userAge").html($.cookie("userAge"));
+				$(".logoutBtn").click(function(){
+					var data = {p0:$.cookie("userId"),p1:'1'}; 
+					$.getJSON("http://120.27.30.130:8080/api/logout", data, function(modelStr){
+						var model=$.parseJSON(modelStr);
+						if(model.status==0){
+							$.cookie("flag",false);
+							window.location.href="./login.html";
+						}
+					});
+				});
+
+			
+		});
+		var imgError = function(imgObject){
+			$(imgObject).attr("src","images/defaultImg.png");
+		}
+	</script>
+  </body>
+</html>

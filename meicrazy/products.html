@@ -1,0 +1,511 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title>美氪-产品详情</title>
+    <script>
+		//<![CDATA[
+			document.write('<script src="js/header.js"> <\/script>');
+		//]]>
+	</script>
+	<style>	
+		.wrapper{
+			width:96%;
+			height:auto;
+			margin:1em auto 0;
+		}
+		.fw5{
+			font-weight:500;
+		}
+	</style>
+  </head>
+  <body>
+	<script>
+		//<![CDATA[
+		document.write('<script src="js/nav.js"> <\/script>');
+		//]]>
+	  	function imgError(imgObject){
+	  		$(imgObject).attr("src","images/noproduct.jpg");
+	  	}
+	</script>  
+	<div class="wrapper">
+
+		<div class="befProduct">
+			<p><a>产品详情&nbsp;<span class="glyphicon glyphicon-chevron-right"></span></a></p>
+		</div>
+		<div class="whiteBck">
+		<div class="left70 left">
+		<div class="productsHtml">
+		<div class="productStart">
+			<p><label class="f15 fw5 cp productName"></label></p>
+		</div>
+		
+		<div class="productReviewReason ">
+			<div class="productInfos">
+				<img onerror="imgError(this);" class="productPic" src=""/>
+				<p class="cp f12">避免成分<span class="avoidCounts"></span>种</p>
+				<div class="avoidIngredients"></div>
+				<p class="cp f12">有益成分<span class="benefitCounts"></span>种</p>
+				<div class="beneficalIngredients"></div>
+				<button class="btn btn-default" onclick="javascript:window.location.href='components.html?q='+product_id" id="productAnalysis">查看成份报告</button>
+			</div>
+		</div>
+		<div class="productInfosUser">
+			<div class="infoUser">
+				<div class="infoUserText block">
+					<div class="infoUserTextTop">
+						<p class="color43 f09">用户评分</p>
+						<p class="color43 f09">
+							全部用户&nbsp;<span class="grade">0.0</span>
+						</p>
+					</div>
+					<div class="infoUserTextDown">
+						<p class="kind color43 f09">类型：</p>
+						<p class="color43 f09">
+							功效：
+						</p>
+
+						<p class="color43 f09 price">参考价格：¥0.00</p>
+					</div>
+				</div>
+			</div>
+			<div class="f09 infoIntro">
+				<div class="textOver">
+					<p class="description">官方介绍：本产品暂无中文说明  Use: Daily 适用任何肤质</p>
+<!--  				<a href="#" class="red01 f10 textZk">点击展开</a> <a href="#" class="red01 f10 hideZk" style="display: none">点击收起</a>-->
+				</div>
+			</div>
+
+			<div class="infoNumber" data-note="product-used">
+				<div class="left left20 used">
+					<span class="number" id="used">0</span> <a onclick="javascript:void(0);" class="f15">+</a>
+					<p class="use">我用过</p>
+
+				</div>
+				<div class="left left20 using">
+					<span class="number" id="using">0</span> <a onclick="javascript:void(0);" class="f15">+</a>
+					<p class="use">我在用</p>
+				</div>
+				<div class="left left20 lastBorder wish">
+					<span class="number" id="wish">0</span> <a onclick="javascript:void(0);" class="f15">+</a>
+					<p class="use">我想试试</p>
+				</div>
+			</div>
+			<div class="blankbar"></div>
+		</div>
+	<!-- 	<div class="infoBtn">
+			<a href="javascript:void(0)" class="phoneGet f12">产品评价</a><a href="javascript:void(0)" class="emailGet f12">产品图片</a>
+			<img style="display:none;" class="productPic" src=""/>
+	
+		</div>
+	 -->	
+		</div>
+		
+		<div class="">
+	 		<div class="productComments">
+				<a href="javascript:void(0)" class="btn btn-default skinTag f12">特定皮肤用户</a><a href="javascript:void(0)" class="btn btn-default allUserTag f12">全部用户心得</a>
+			<div class="blankbar"></div>
+			</div>
+			<div class="commentsContent">
+<!--  			<img src="" alt=""/>
+				<div class="commentsListRight">
+					<p>ladybee DRPW 34 </p>
+					<p>朋友转让的一瓶，想着试试看，结果比较失望，虽然很好吸收，刚抹上去脸也觉得柔滑了，但保湿效果并不持久，大概到下午脸就又开始觉得有些干…其它效果未知，打算换掉</p>
+				</div>-->
+				<p>我们收到的评价数量不足，无法显示产品评价</p> 
+			</div>
+			
+			
+			<div class="productInfos">
+			<button style="margin-bottom:1em;" onclick="toComment();" class="btn btn-default" id="productAnalysis">我要点评</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="right30 right">
+		<p class="f15">产品推荐</p>
+		<div class="rightProducts">
+		<div >
+			<img width="90%" height="auto" src="images/loading1.jpg"/>
+			<br/>
+<!-- 		<p>ARCONA胜肽复合保湿乳</p>
+			<p>OSPT评分/全部评分 4.5/5.0</p>
+			<p>参考价格</p>
+		</div>
+
+		<div >
+			<img width="80" height="80" src="images/tip-3.jpg"/>
+			<br/>
+			<p>ARCONA胜肽复合保湿乳</p>
+			<p>OSPT评分/全部评分 4.5/5.0</p>
+			<p>参考价格</p>
+		</div>
+
+		<div >
+			<img width="80" height="80" src="images/tip-1.jpg"/>
+			<br/>
+			<p>ARCONA胜肽复合保湿乳</p>
+			<p>OSPT评分/全部评分 4.5/5.0</p>
+			<p>参考价格</p>
+		</div>
+ -->	
+		</div>
+	</div>
+	</div>	
+	<div class="blankbar"></div>
+	</div>
+	</div>
+	<script>
+	var thisUrl = document.URL;
+	function toComment(){
+		if( typeof($.cookie().userId) == "undefined"){
+			alert("登录后才能发表评论！");
+			window.location.href="login.html?from="+thisUrl;
+		}else{
+			window.location.href='comment.html?q='+product_id;
+
+		}
+	}
+  //check the user image, if wrong, replace with the default img 
+
+
+  //get the product id from the url
+    function getUrlParam(name)
+	{
+	var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+	var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+	if (r!=null) return unescape(r[2]); return null; //返回参数值
+	} 
+	var product_id = getUrlParam("q");
+    
+    $(document).ready(function(){
+  
+	var userId=$.cookie().userId ||"1325";
+	var skinType=$.cookie().skinType || "DRNT" ;	
+	
+	
+	
+	jQuery.support.cors = true;
+	function getj(){
+		
+//		alert(product_id);
+
+		var womHtml="";
+		$.getJSON('http://120.27.30.130:8080/api/products/'+product_id+'?p0=1949&', function(modelStr){
+			var model=$.parseJSON(modelStr);
+			$(".productName").html(model.product.product.namewithbrand);
+			
+			var beneficalIngredientsHtml="";
+			$.each(model.product.beneficalIngredients, function(index,value){
+				var itemHtml='<p>'+value.name+'('+value.reason+')</p>';
+				beneficalIngredientsHtml+=itemHtml;
+			});
+			$(".beneficalIngredients").html(beneficalIngredientsHtml);
+			
+			var avoidIngredientsHtml="";
+			$.each(model.product.avoidIngredients, function(index,value){
+				var itemHtml='<p>'+value.name+'('+value.reason+')</p>';
+				avoidIngredientsHtml+=itemHtml;
+			});
+			$(".avoidIngredients").html(avoidIngredientsHtml);
+			$(".productPic").attr("src","http://7u2pqk.com1.z0.glb.clouddn.com/" + model.product.product.picUrl);
+			$(".grade").html(model.product.productStat.grade);
+			
+			$(".price").html('<p>参考价格：¥'+model.product.product.currentPrice+'</p>');
+			$(".description").html(model.product.product.description);
+			$(".avoidCounts").html(model.product.avoidIngredients.length);
+			$(".benefitCounts").html(model.product.beneficalIngredients.length);
+			$("#used").html(model.product.productStat.usedCnt);
+			$("#using").html(model.product.productStat.usingCnt);
+			$("#wish").html(model.product.productStat.wantCnt);
+			if(model.product.bagStat=="1901"){
+				$(".wish a").html("-");
+			}else if(model.product.bagStat=="1902"){
+				$(".using a").html("-");
+			}else if(model.product.bagStat=="1903"){
+				$(".used a").html("-");
+			}
+			var ct1Id=model.product.product.c1Id;
+			var ct2Id=model.product.product.c2Id;
+			var newdata = {p0:"v2",p1:"aa",p2:userId};
+			$.ajax({
+				type:"POST",
+				url:"http://120.27.30.130:8080/api/init",
+				data:newdata,
+				success:function(data){
+					var brand="";
+					$.each(data.categories,function(index,value){
+						if(value.id==ct1Id){
+							$.each(value.subCategories,function(index,value){
+								if(value.key==ct2Id){
+									brand = value.value;
+								}
+							});
+						}
+    				});
+    				$(".kind").html("类型："+brand);	
+    					
+				},
+				error:function(){
+					
+				}
+				
+			});
+			
+
+		});	
+	}
+	getj();
+	function getProduct(){
+		var data ={p0:userId,p1:skinType};
+		var rightProductsHtml="";
+		$.getJSON("http://120.27.30.130:8080/api/index", data, function(modelStr){
+			var model = $.parseJSON(modelStr);
+			$.each(model.products, function(index,value){
+				if(index<4){
+				var liItem = '<div><a href="products.html?q='+value.product.id+'"><img width="80" height="80" style="margin-bottom:0.5em;" class="mt10" src="http://7u2pqk.com1.z0.glb.clouddn.com/'+value.product.picUrl+'"/>'+
+							'<br/>'+
+							'<p>'+value.product.name+'</p></a></div>';
+				rightProductsHtml += liItem;
+				}
+			});
+			$(".rightProducts").html(rightProductsHtml);	
+		});
+		
+	}
+	getProduct();
+	
+	
+	//get the comments information
+		function getComments(){
+		$.getJSON('http://120.27.30.130:8080/api/comments/2/'+product_id+'?p2='+userId+'&p0=1&', function(modelStr){
+			var model=$.parseJSON(modelStr);
+			if(model.total==0){
+				var append = "<p>我们收到的评价数量不足，无法显示产品评价</p>";
+			}else{
+				var append ="";
+			}
+			var commentsHtml="";
+			$.each(model.comments,function(index,value){
+				if(value.skinType==skinType){	
+					var userImg= value.userImgUrl || "images/defaultUserImg.png";
+					var itemHtml='<img onerror="imgError(this)" src="'+userImg+'" alt=""/>'+
+						'<div class="commentsListRight">'+
+						'<p>'+value.userNickName+' <span class="cp block">'+value.skinType+'</span> '+value.userAge+' </p>'+
+						'<p>'+value.content+'</p>'+
+						'</div>'+
+						'<div class="blankbar"></div>';
+						commentsHtml+=itemHtml;	
+						
+				}	
+/*				$(".allUserTag").click(function(){
+					$.each(model.comments,function(index,value){	
+					var itemHtml='<img src="" alt=""/>'+
+					'<div class="commentsListRight">'+
+					'<p>'+value.userNickName+' '+value.skinType+' '+value.userAge+' </p>'+
+					'<p>'+value.content+'</p>'+
+					'</div>'+
+					'<div class="blankbar"></div>';
+					commentsHtml="";
+					commentsHtml+=itemHtml;	
+					});
+				});*/
+				
+			$(".commentsContent").html(commentsHtml+append);
+			$(".skinTag").html(skinType+"用户");
+		});	
+		});		
+		}
+		getComments();
+	$(".using").click(function(){
+		
+		if($(".using a").text()=="+"){
+			var	action="1";
+		}else{
+			var	action="0";
+		}
+
+		var str = "using";		
+		var data = {p0:userId,p1:str,p2:product_id,p3:action}; 
+
+		  $.ajax({
+	          //提交数据的类型 POST GET
+	          type:"POST",
+	          //提交的网址
+	          url:"http://120.27.30.130:8080/api/bag",
+	          //提交的数据
+	       	  data: data,
+	          //返回数据的格式
+	          datatype: "json",//"xml", "html", "script", "json", "jsonp", "text".
+	          //在请求之前调用的函数
+	          beforeSend:function(){},
+	          //成功返回之后调用的函数             
+	          success:function(data){
+	        
+	          },
+	          //调用执行后调用的函数
+	          complete: function(){
+	        	
+	              //HideLoading();
+	        	  getj();
+	        	  if(action=="1"){
+	        		  $(".using a").html("-");
+	        		  $(".used a").html("+");
+	        		  $(".wish a").html("+");
+	        	  }else{
+	        		  $(".using a").html("+");
+	        	  }
+	          },
+	          //调用出错执行的函数
+	          error: function(){
+	              //请求出错处理
+	          }         
+	       });
+	});
+	$(".used").click(function(){
+		
+		if($(".used a").text()=="+"){
+			var	action="1";
+		}else{
+			var	action="0";
+		}
+		var str = "used";		
+		var data = {p0:userId,p1:str,p2:product_id,p3:action}; 
+		  $.ajax({
+	          //提交数据的类型 POST GET
+	          type:"POST",
+	          //提交的网址
+	          url:"http://120.27.30.130:8080/api/bag",
+	          //提交的数据
+	       	  data: data,
+	          //返回数据的格式
+	          datatype: "json",//"xml", "html", "script", "json", "jsonp", "text".
+	          //在请求之前调用的函数
+	          beforeSend:function(){},
+	          //成功返回之后调用的函数             
+	          success:function(data){
+	    //     	alert(1);
+	          },
+	          //调用执行后调用的函数
+	          complete: function(){
+	        	
+	              //HideLoading();
+	        	  getj();
+	        	  if(action=="1"){
+	        		  $(".using a").html("+");
+	        		  $(".used a").html("-");
+	        		  $(".wish a").html("+");
+	        	  }else{
+					  $(".used a").html("+");	        		  
+	        	  }
+	          },
+	          //调用出错执行的函数
+	          error: function(){
+	              //请求出错处理
+	          }         
+	       });
+		
+	});
+	$(".wish").click(function(){
+		
+		if($(".wish a").text()=="+"){
+			var	action="1";
+		}else{
+			var	action="0";
+		}
+		var str = "wish";		
+		
+		var data = {p0:userId,p1:str,p2:product_id,p3:action}; 
+		  $.ajax({
+	          //提交数据的类型 POST GET
+	          type:"POST",
+	          //提交的网址
+	          url:"http://120.27.30.130:8080/api/bag",
+	          //提交的数据
+	       	  data: data,
+	          //返回数据的格式
+	          datatype: "json",//"xml", "html", "script", "json", "jsonp", "text".
+	          //在请求之前调用的函数
+	          beforeSend:function(){},
+	          //成功返回之后调用的函数             
+	          success:function(data){
+	          	
+	          },
+	          //调用执行后调用的函数
+	          complete: function(){
+	        	
+	              //HideLoading();
+	        	  getj();
+	        	  if(action=="1"){
+	        		  $(".using a").html("+");
+	        		  $(".used a").html("+");
+	        		  $(".wish a").html("-");
+	        	  }else{
+					  $(".wish a").html("+");	        		  
+	        	  }
+	          },
+	          //调用出错执行的函数
+	          error: function(){
+	              //请求出错处理
+	          }         
+	       });
+	});
+		
+	
+	$(".skinTag").click(function(){
+			
+		$.getJSON('http://120.27.30.130:8080/api/comments/2/'+product_id+'?p2='+userId+'&p0=1&', function(modelStr){
+		var model=$.parseJSON(modelStr);
+		if(model.total==0){
+			var append = "<p>我们收到的评价数量不足，无法显示产品评价</p>";
+		}else{
+			var append ="";
+		}
+		var commentsHtml="";	
+		$.each(model.comments,function(index,value){	
+		if(value.skinType==skinType){	
+		var userImg= value.userImgUrl || "images/defaultUserImg.png";
+		var itemHtml='<img onerror="imgError(this)" src="'+userImg+'" alt=""/>'+
+			'<div class="commentsListRight">'+
+			'<p>'+value.userNickName+' <span class="cp block">'+value.skinType+'</span> '+value.userAge+' </p>'+
+			'<p>'+value.content+'</p>'+
+			'</div>'+
+			'<div class="blankbar"></div>';
+			commentsHtml+=itemHtml;	
+			}	
+		});
+		$(".commentsContent").html(commentsHtml+append);
+		});
+	});
+	$(".allUserTag").click(function(){
+			
+		$.getJSON('http://120.27.30.130:8080/api/comments/2/'+product_id+'?p2='+userId+'&p0=1&', function(modelStr){
+		var model=$.parseJSON(modelStr);
+		if(model.total==0){
+			var append = "<p>我们收到的评价数量不足，无法显示产品评价</p>";
+		}else{
+			var append ="";
+		}
+		var commentsHtml="";	
+		$.each(model.comments,function(index,value){	
+			var userImg= value.userImgUrl || "images/defaultUserImg.png";
+			var itemHtml='<img onerror="imgError(this)" src="'+userImg+'" alt=""/>'+
+			'<div class="commentsListRight">'+
+			'<p>'+value.userNickName+' <span class="cp block">'+value.skinType+'</span> '+value.userAge+' </p>'+
+			'<p>'+value.content+'</p>'+
+			'</div>'+
+			'<div class="blankbar"></div>';
+			commentsHtml+=itemHtml;	
+		});
+		$(".commentsContent").html(commentsHtml+append);
+		});
+	});
+	
+	});
+	</script>
+		    <script>
+		//<![CDATA[
+			document.write('<script src="js/footer.js"> <\/script>');
+		//]]>
+	</script>
+  </body>
+</html>

@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+ 
+    <title>ORPT</title>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="../js/jquery-1.11.2.min.js"></script>
+<!--  	<script src="../js/star-rating.min.js" type="text/javascript"></script>  -->
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../js/bootstrap.min.js"></script>
+	
+	<link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
+<!-- 	<link href="css/star-rating.min.css" media="all" rel="stylesheet" type="text/css" /> -->
+    <!-- Bootstrap -->
+	<script src="../js/jquery.bxslider.min.js"></script>   
+	<link href="../css/bootstrap.min.css" rel="stylesheet">
+	<link href="../css/adaptive.css" rel="stylesheet" />
+	<link href="../css/jquery.bxslider.css" rel="stylesheet" />
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+	 	<style>
+
+		.toppart{
+			padding:0.5em;
+			text-align:center;
+		}
+
+		.toppart p{
+			margin-top:1em;
+		}
+		.bottompart{
+			background:#f1f2f6;
+			text-align:left;
+			text-indent:2em;
+			padding-left:.5em;
+			padding-right:.5em;
+			margin-top:1em;
+			width:80%;
+			margin-left:auto;
+			margin-right:auto;
+		}
+		
+		@media screen and (max-width:414px){
+			.bottompart{
+				width:100%;
+			}
+		}
+		.bottompart p{
+			margin-top:1em;
+		}
+
+		.hrlim p{
+			margin-top:0.75em;
+		}
+		.plim{
+			padding-left:1em;
+			padding-right:1em;
+			
+		}
+
+		.buttonpart{
+			margin:2em;
+			text-align:center;
+		}
+		.buttonpart .buttonDefault{
+			border:0;
+			width:35%;
+			max-width:200px;
+			height:40px;
+			color:#fff;
+			background-color:#959fab !important;
+			cursor:pointer;
+			border-radius:24px;			
+			-webkit-border-radius:24px;
+		}
+		.buttonpart .finishBtn{
+			border:0;
+			width:35%;
+			max-width:200px;
+			height:40px;
+			color:#fff;
+			background-color:#ff4179 !important;
+			cursor:pointer;
+			border-radius:24px;
+			-webkit-border-radius:24px;
+			margin-left:1em;
+			margin-right:1em;
+		}
+		</style> 
+	</head>
+	<body>
+		<div class="wrapper">
+		<div class="bef-nav">
+			<div class="left"><img id="logo" src="../images/logo.png" alt=""></div>
+			<div class="btn-group right" role="group" aria-label="...">
+				<button type="button" id="background" class="personalInfo btn btn-default">登陆</button>
+				<button type="button" id="background" class="personalInfo btn btn-default">注册</button>
+			<!--	<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span></button>-->
+			</div>
+			<div class="blankbar"></div>
+		
+		<nav>
+		  <div class="container-fluid" id="nav">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<!-- <div class="navbar-header">
+			  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			  </button>
+			  <a class="navbar-brand" href="#"> </a>
+			</div>
+
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> -->
+			  <ul>
+				<li><a href="../index.html">首页</a></li>
+				<li><a href="../wom-headlines.html">口碑</a></li>
+				<li><a href="#">试用</a></li>
+				<li><a href="#">更多</a></li>
+			  </ul>	
+		  </div><!-- /.container-fluid -->
+		</nav>
+		</div>	
+		
+			<div class="toppart">
+				<p class="f11">你的皮肤类型为<br/>
+				<div class="hrlim">
+					<p class="cp f15">ORPT<br/>
+					<span class="cp mt-0">(容光焕发的皮肤类型)<br/></span></p>
+				</div>
+				<div class="plim" ><p class="cg">油性(<span class="cp">O</span>il)、耐受性(<span class="cp">R</span>esistant)、色素性(<span class="cp">P</span>igmented)和紧致性(<span class="cp">T</span>ight)皮肤<br/></p></div>
+			</div>
+			<div class="bottompart">
+				<p>“我虽然有一些皮肤问题，但除了一些色斑和少量痤疮之外没什么难以处理的，我对拥有这样的皮肤相当满意。为了让皮肤看上去更棒，我可以再做点什么吗？”<br/></p>
+				<p class="cg"><span class="cp f15">你</span>的皮肤绝对属于容易打理的类型，这一类皮肤的优点远远大于缺点。油性，耐受性以及紧致性的皮肤让你看起来很不错，也很年轻。当然，你也有痤疮、粉刺（特别是在青年时期）和一些色斑，但你的皮肤看起来仍然容光焕发。<br/></p>
+				<p class="cg"><span class="cp f15">幸</span>运的是，你很少出现敏感类型皮肤常见的皮肤刺痒，发红以及过敏。年轻时油性皮肤让人苦恼，但是随着年龄增长，出油状况常会改善。而你讨厌的色斑，也有好的一面：造成色斑的色素加深能保护你远离皮肤癌。<br/></p>
+				<p class="cg"><span class="cp f15">最</span>后，与其他皮肤类型忙于尝试各种抗衰老方法不同，紧致的皮肤能让你看起来年轻。欢迎加入美疯，我们将帮助你找到合适的产品，给予专业的意见让你更进一步，拥有更完美的皮肤。<br/></p>
+			</div>
+			<div class="buttonpart">
+				<button onclick='javascript:window.location.href="../index.html"' class="finishBtn">完成测试</button>
+				<button onclick='javascript:window.location.href="../test.html"' class="buttonDefault">再测一次</button>
+			</div>
+		</div>
+	</body>
+</html>

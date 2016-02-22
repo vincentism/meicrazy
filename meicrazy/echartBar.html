@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="js/jquery-1.11.2.min.js"></script>
+  <!--   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">  -->  
+    <title>bar</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+			text-align:center;
+			font-size:1em;
+			font-family:"微软雅黑";
+		}
+		.container{
+			display:inline-block;
+			width:100%; 
+			height:auto; 
+			overflow:hidden;
+		}
+		.barWrapper{
+			width:100%;
+			height:30px;
+			margin-bottom:1em;
+		}
+		.ConBarWrapper{
+			width:100%;
+			height:20px;
+			margin-top:1em;
+		}
+		.total{
+			display:inline-block;
+			width:80%;
+			height:18px;
+			border-radius:25px;
+			background:#f0f0f0;
+		/*	margin-top:12px;   */
+			margin-top:4px; 
+			float:right; 
+			text-align:middle;
+		}	
+		.totalFill{
+			width:0;
+			height:18px;
+			background:#7ECE6C;
+			border-radius:25px;
+		}
+		.totalTitle{
+			display:inline-block;
+			
+			float:left;
+			width:20%;
+			font-size:20px;
+		/*	padding-top:3px;	*/
+		/*	margin-right:15px; */
+
+		}
+		.totalNum{	
+			position:absolute;
+			left:-10px;
+			top:6px;
+			font-size:13px;
+			font-family:"微软雅黑";
+			color:#fff;
+			
+		}
+		.concrete{
+			display:inline-block;
+			width:80%;
+			height:13px;
+			border-radius:15px;
+			background:#f0f0f0;
+			float:right;
+			text-align:middle;
+			margin-top:2.5px;
+		}
+		.concreteTitle{
+			display:inline-block;
+			float:left;
+			width:20%;
+			vertical-align:top; 
+			font-size:15px;
+
+		}
+		.inteFill,.effectFill,.womFill{
+			width:0;
+			height:13px;
+			background:#F9A867;
+			border-radius:15px;
+		}
+
+	/*	.effectFill{
+			width:60%;
+			background:#7ECE6C;
+			
+		}
+		.womFill{
+			width:10%;
+			background:#F45151;
+		}
+	*/
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="barWrapper"><span class="totalTitle">整体</span><div class="total">
+			<div class="totalFill"></div><span class="totalNum">2.5</span>
+			</div>
+			<div style="clear:both"></div>
+			<br/>
+		</div>
+		<div class="ConBarWrapper"><span class="concreteTitle">成分</span><div class="concrete">
+			<div class="inteFill"></div>
+			</div><div style="clear:both"></div><br/>
+		</div>
+		<div class="ConBarWrapper"><span class="concreteTitle">功效</span><div class="concrete">
+			<div class="effectFill"></div>
+			</div><div style="clear:both"></div><br/>
+		</div>
+		<div class="ConBarWrapper"><span class="concreteTitle">口碑</span><div class="concrete">
+			<div class="womFill"></div>
+			</div><div style="clear:both"></div><br/>
+		</div>
+	</div>
+	<script>
+		function getUrlParam(name)
+		{
+		var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+		var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+		if (r!=null) return unescape(r[2]); return null; //返回参数值
+		} 
+		var product_id = getUrlParam("pid");
+		var user_id = getUrlParam("uid");
+		var user_skintype = getUrlParam("skintype");
+	//	alert(user_skintype);
+	  jQuery.support.cors = true;
+	  var data={pid : product_id, uid : user_id,skintype:user_skintype};
+
+	  //get the data from match 
+	  $.getJSON("http://120.27.30.130:8080/api/match", data, function(modelStr){
+		  if(modelStr.productUserIndex <= 1.5){
+				$(".totalFill").css("background","#F45151");
+			}else if(modelStr.productUserIndex > 1.5 && modelStr.productUserIndex <=3.5){
+				$(".totalFill").css("background","#F9A867");
+			}else if(modelStr.productUserIndex > 3.5 && modelStr.productUserIndex <=5){
+				$(".totalFill").css("background","#7ECE6C");
+			}
+		  
+		  	var totalPercent = modelStr.productUserIndex / 5 * 100 + "%" ;
+			
+		  	
+		  	$(".totalNum").html(Math.round(modelStr.productUserIndex*100)/100);
+		  	
+		  	$(".totalFill").css("width",totalPercent);
+			var width = $(".totalFill").offset().left + $(".totalFill").width() - 60;
+			$(".totalNum").css("left",width);
+		  	$.each(modelStr.aspects,function(index,value){
+		  		if(value.key =="成份"){
+					var intePercent = value.value / 5 * 100 + "%" ;
+					$(".inteFill").css("width",intePercent);
+					if(value.value <= 1.5){
+						$(".inteFill").css("background","#F45151");
+					}else if(value.value > 1.5 && value.value <=3.5){
+						$(".inteFill").css("background","#F9A867");
+					}else if(value.value > 3.5 && value.value <=5){
+						$(".inteFill").css("background","#7ECE6C");
+					}
+		  		}
+		  		if(value.key =="口碑"){
+					var womPercent = value.value / 5 * 100 + "%" ;
+					$(".womFill").css("width",womPercent);
+					if(value.value <= 1.5){
+						$(".womFill").css("background","#F45151");
+					}else if(value.value > 1.5 && value.value <=3.5){
+						$(".womFill").css("background","#F9A867");
+					}else if(value.value > 3.5 && value.value <=5){
+						$(".womFill").css("background","#7ECE6C");
+					}
+		  		}
+		  		if(value.key =="功效"){
+					var effectPercent = value.value / 5 * 100 + "%" ;
+					$(".effectFill").css("width",effectPercent);
+					if(value.value <= 1.5){
+						$(".effectFill").css("background","#F45151");
+					}else if(value.value > 1.5 && value.value <=3.5){
+						$(".effectFill").css("background","#F9A867");
+					}else if(value.value > 3.5 && value.value <=5){
+						$(".effectFill").css("background","#7ECE6C");
+					}
+		  		}
+			});		
+		});
+			
+	</script>
+</body>
+</html>

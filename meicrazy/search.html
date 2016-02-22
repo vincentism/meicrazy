@@ -1,0 +1,539 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title>美氪-搜索</title>
+    <script>
+		//<![CDATA[
+			document.write('<script src="js/header.js"> <\/script>');
+		//]]>
+	</script>   
+	
+   <style>
+
+   .whiteBck{
+   	height:90%;
+   	padding-left:0;
+   	padding-right:0;
+   	background:#f0f0f0;
+   }
+   p{
+   	margin:0 !important;
+   }
+   
+   span:hover{
+   	cursor:pointer;
+   }
+   .searchCon{
+   		padding:1em 2%;
+   		text-align:left;
+   		margin-bottom:1em;
+   		
+   }
+   .choice p span{
+   		height:32px;
+   		line-height:32px;
+   		margin-right:0.2em;
+   		border:1px solid #e6e6e6;
+   }
+	.searchCon button{
+		display:inline-block;
+		-webkit-apprearance:none;
+	}
+	.searchCon p, .funcArea{
+		margin:0;
+		display:inline-block;
+	}
+	.searchCon p{
+		width:80%;
+	}
+	.searchResults{
+		padding:1em;
+	}
+	.suggest{
+		font-size:1.2em;
+		width:100%;
+		margin-bottom:1em;
+	}
+	.choice p{
+		width:100%;
+	}
+	.singlePart{
+		padding:0.2em;
+		margin-top:0.2em;
+		margin-bottom:0.2em;
+	}
+	.singlePart p span{
+		margin-right:0.5em;
+		margin-left:1em;
+	}
+	.funcArea{
+		width:10%;
+		float:right;
+	}
+	.brandChoice,.effectsChoice,.kindChoice{
+		width:100%;
+		max-width:960px;
+		height:80%;
+		overflow-y:scroll;
+		position:absolute;
+		top:15%;
+		display:none;
+		font-size:1em;
+		line-height:2em;
+		border:1px solid #e6e6e6;
+		border-radius:4px;
+		background:#fff;
+		z-index:100;
+		padding:2em;
+		margin:0 auto;
+	}
+	#cancelBtn{
+		position:absolute;
+		top:1em;
+		left:93%;
+	}
+	.brandChoice span,.effectsChoice span,.kindChoice span{
+		margin-right:2em;
+	}
+	.enName{
+		font-size:0.9em;
+		color:#6f7881;
+	}
+   	.char{
+   		display:block;
+   		font-size:1.5em;
+   		margin:0.5em 0;
+   	}
+   	.choiceStore,.effectsStore,.kindStore{
+   		display:none;
+   	}
+   	.buttonSet{
+   		width:100%;
+   		text-align:center;
+   	}
+   	.cancelBtn,.choiceSubmitBtn,.effectsSubmitBtn,.kindSubmitBtn{
+   		width:20%;
+   		height:34px;
+   		border:1px solid #e6e6e6;
+   		border-radius:4px;
+   		margin:1em 1em; 
+   	}
+   	.brandMore,.kindMore,.effectsMore{
+   		width:50px;
+   		border:0;
+   		border-radius:2px;
+   	}
+   	
+   	/*===========search Results part=============*/
+   		.product{
+   			width:80%;
+   			margin-top:2em;
+   			margin-bottom:0.5em;
+   		}
+   		.enName{
+   			width:95%;
+   			display:inline-block;
+	        white-space:nowrap;    
+	        word-break:keep-all;    
+	        overflow:hidden;    
+	        text-overflow:ellipsis;  
+	        
+   		}
+   		hr{
+   			margin-top:15px;
+   		
+   		}
+   		@media screen and (max-width:768px){
+   			.product{
+   				width:100%;
+   			}
+   		}
+   		@media screen and (max-width:320px){
+   			.searchResults img{
+   				width:70px;
+   				height:70px;
+   			}
+   			.searchResults{
+   				padding-left:1%;
+   				padding-right:1%;
+   				font-size:0.9em;
+   			}
+   		}
+   </style>
+  </head>
+  <body>
+	<script>
+		//<![CDATA[
+		document.write('<script src="js/nav.js"> <\/script>');
+		//]]>
+	</script>  
+	<div class="wrapper">
+			<div class="brandChoice"></div>
+			<div class="effectsChoice"></div>
+			<div class="kindChoice"></div>
+	<div class="whiteBck">	
+	<div class="searchCon">
+		<div class="choice">
+			<p><span style="border:0;font-size:1.2em;">所有选择></span><span class="brandBoard"></span><span class="kindBoard"></span><span class="effectsBoard"></span><span class="priceBoard"></span></p>
+		</div>
+		<div style="padding-left:0;margin-left:0" class="inputPart input-group">
+			<input type="text" placeholder="找到适合你的化妆品" class="searchText form-control"/>
+		</div>		
+		<div class="brandPart singlePart">
+			<p>品牌：<span>AFU阿芙</span><span>ALBION奥比虹</span><span>innisfree悦诗风吟</span><span>Kiehl’s科颜氏</span></p>
+
+			<div class="choiceStore"></div>
+			<div class="effectsStore"></div>
+			<div class="kindStore"></div>
+			<div class="funcArea">
+				<button class="brandMore">更多</button>
+				<div class="blankbar"></div>
+			</div>
+		</div>
+		<div class="kindPart singlePart">
+			<p>种类：<span>面霜</span><span>面膜</span><span>精华</span><span>眼霜</span><span>粉底</span><span>BB霜</span></p>
+
+			<div class="funcArea"><button class="kindMore">更多</button>
+			<div class="blankbar"></div>
+			</div>
+		</div>
+		<div class="effectPart singlePart">
+			<p>功效：<span>保湿</span><span>美白</span><span>控油</span><span>修护</span><span>抗皱</span></p>
+
+			<div class="funcArea">
+				<button class="effectsMore">更多</button>
+				<div class="blankbar"></div>
+			</div>
+		</div>
+		<div class="pricePart singlePart">
+			<p>价格：<span>0-50</span><span>50-100</span><span>100-200</span><span>200-500</span><span>50-1000</span><span>1000以上</span></p>
+		
+				<div class="blankbar"></div>
+		
+		</div>
+		
+	 <div >
+	 	<button class="searchBtn">搜索</button>
+	 <!-- 	<button class="reset">清空</button>  -->
+	 </div>
+	</div>
+
+	
+			
+
+	<div class="searchResults">
+		<div class="suggest">热门推荐产品</div>
+
+<!--  		<div class="product">
+				<img src="images/tip-1.jpg"/>
+				<p style="display:inline-block;"><span>韩律极尽面霜</span><br/><span>避免成份：1种&nbsp;有益成分：1种</span><br/><span>ORNT/全部评分：0.0/0.0 </span><br/>
+				<span>参考价格：￥0.0</span>
+				</p>
+			</div>
+			
+		
+
+			<div class="product">
+				<img src="images/tip-1.jpg"/>
+				<p style="display:inline-block;"><span>韩律极尽面霜</span><br/><span>避免成份：1种&nbsp;有益成分：1种</span><br/><span>ORNT/全部评分：0.0/0.0 </span><br/>
+				<span>参考价格：￥0.0</span>
+				</p>
+			</div>
+
+
+			<div class="product">
+				<img src="images/tip-1.jpg"/>
+				<p style="display:inline-block;"><span>韩律极尽面霜</span><br/><span>避免成份：1种&nbsp;有益成分：1种</span><br/><span>ORNT/全部评分：0.0/0.0 </span><br/>
+				<span>参考价格：￥0.0</span>
+				</p>
+			</div>
+
+
+			<div class="product">
+				<img src="images/tip-1.jpg"/>
+				<p style="display:inline-block;"><span>韩律极尽面霜</span><br/><span>避免成份：1种&nbsp;有益成分：1种</span><br/><span>ORNT/全部评分：0.0/0.0 </span><br/>
+				<span>参考价格：￥0.0</span>
+				</p>
+			</div>
+
+
+			<div class="product">
+				<img src="images/tip-1.jpg"/>
+				<p style="display:inline-block;"><span>韩律极尽面霜</span><br/><span>避免成份：1种&nbsp;有益成分：1种</span><br/><span>ORNT/全部评分：0.0/0.0 </span><br/>
+				<span>参考价格：￥0.0</span>
+				</p>
+			</div>
+		
+			<div class="center">
+				<p>点击加载更多<span class="glyphicon glyphicon-chevron-down"></p>
+			</div>
+		
+		</div>
+		<div class="blankbar"></div>
+		-->
+	</div>
+	</div>
+	</div>
+
+    <script>
+	function addBorder(className){
+		var isempty = $('.'+className).html();
+		if(!isempty){
+			$('.'+className).css("border","0");
+			$('.'+className).css("background","#fff");
+		}else{
+			$('.'+className).css("border","1px solid #e6e6e6");
+			$('.'+className).css("background","#f0f0f0");
+		}	
+	}
+	addBorder("brandBoard");
+	addBorder("kindBoard");
+	addBorder("effectsBoard");
+	addBorder("priceBoard");
+    
+    $(document).ready(function(){
+    	
+    	
+    	 var userId = $.cookie().userId || "1325";
+    	 var skinType = $.cookie().skinType || "OSPW";
+    	 jQuery.support.cors = true;
+    		function getj(){
+    			var newdata = {p0:"v2",p1:"aa",p2:userId};
+    			$.ajax({
+    				type:"POST",
+    				url:"http://120.27.30.130:8080/api/init",
+    				data:newdata,
+    				success:function(data){
+    					var brandHtml="";
+    					var effectsHtml="";
+    					var kindHtml="";
+    					var i = 1;
+    					$.each(data.searchOptions.brands,function(key,value){
+        					$.each(value,function(index,value){
+	        					var brandItem = '<span>'+value.value+'</span>';
+	        					brandHtml += brandItem;
+        					});
+        					brandHtml = brandHtml+'<div class="char char'+i+'"></div>';
+        					i = i + 1;
+    					});
+    					brandHtml='<img id="cancelBtn" src="images/cancel.png"/><div class="char char0">A</div>'+brandHtml + '<div class="buttonSet" ><button class="cancelBtn">取消</button><button class="choiceSubmitBtn">确定</button></div>';
+        				$(".brandChoice").html(brandHtml);	
+        				$(".char25").hide();
+        		    	$("#cancelBtn,.cancelBtn").click(function(){
+        		    		$(".brandChoice").hide();
+        		    		$(".effectsChoice").hide();
+        		    		$(".kindChoice").hide();
+        		    	});	
+        		    	var kindHtml1 ="";
+        		    	var kindHtml2 = "";
+        		    	var kindHtml3 = "";
+        		    	$.each(data.categories[0].subCategories,function(key,value){
+        		    		var kindItem ='<span>' + value.value + '</span>';
+        		    		kindHtml1 += kindItem;
+        		    		
+        		    	});
+        		    	kindHtml1 = '<div class="char">面部护理</div>' + kindHtml1;
+						$.each(data.categories[1].subCategories,function(key,value){
+        		    		var kindItem ='<span>' + value.value + '</span>';
+        		    		kindHtml2 += kindItem;
+        		    		      		    		
+						});
+						kindHtml2 = '<div class="char">眼唇护理</div>' + kindHtml2;  
+						$.each(data.categories[2].subCategories,function(key,value){
+        		    			var kindItem ='<span>' + value.value + '</span>';
+        		    		kindHtml3 += kindItem;
+        		    		
+						});
+						kindHtml3 = '<div class="char">彩妆</div>' + kindHtml3;
+						$(".kindChoice").html(kindHtml1+kindHtml2+kindHtml3+'<div class="buttonSet" ><button class="cancelBtn">取消</button><button class="kindSubmitBtn">确定</button></div>');
+						
+        		    	$.each(data.searchOptions.effects,function(key,value){
+        		    		$.each(value,function(index,value){
+        		    			var effectsItem = '<span>'+value.value+'</span>';
+        		    			effectsHtml += effectsItem;
+        		    		});
+        		    		effectsHtml = effectsHtml+'<div class="char char'+i+'"></div>';
+        					i = i + 1;
+        		    		
+        		    	});
+        		    	 effectsHtml = '<div class="char char0">彩妆及工具: </div>' + effectsHtml + '<div class="buttonSet" ><button class="cancelBtn">取消</button><button class="effectsSubmitBtn">确定</button></div>'
+        		    	 $(".effectsChoice").html(effectsHtml);
+    				},
+    				error:function(){
+    					
+    				}
+    				
+    			}).done(function(){
+       				var charArr = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","V","W","X","Y","Z"];
+       				var effectsArr = ["彩妆及工具: ","眼唇护理: ","面部护理: ","香氛: "];
+    				var i = 1;
+    				$.each(charArr,function(){
+    					$(".char"+i).html(charArr[i]);
+    					i= i + 1;
+    				});
+    				$(".char26").html("眼唇护理: ");
+    				$(".char27").html("面部护理: ");
+    				$(".char28").html("香氛: ");
+    				$(".cancelBtn").click(function(){
+    					$(".brandChoice").hide();
+    		    		$(".effectsChoice").hide();
+    		    		$(".kindChoice").hide();
+    				});
+    				$(".brandChoice span").click(function(){
+    					$(".brandChoice span").css("border","0");
+    					$(this).css("border","1px solid #e6e6e6");
+    					$(".choiceStore").text($(this).text());
+    				});
+    				$(".choiceSubmitBtn").click(function(){
+    					$(".brandBoard").text($(".choiceStore").text());
+    					$(".brandChoice").hide();
+    				});
+    				
+    				$(".effectsChoice span").click(function(){
+    					$(".effectsChoice span").css("border","0");
+    					$(this).css("border","1px solid #e6e6e6");
+    					$(".effectsStore").text($(this).text());
+    				});
+    				$(".effectsSubmitBtn").click(function(){
+    					$(".effectsBoard").text($(".effectsStore").text());
+    					$(".effectsChoice").hide();
+    				});
+    				
+    				$(".kindChoice span").click(function(){
+    					$(".kindChoice span").css("border","0");
+    					$(this).css("border","1px solid #e6e6e6");
+    					$(".kindStore").text($(this).text());
+    				});
+    				$(".kindSubmitBtn").click(function(){
+    					$(".kindBoard").text($(".kindStore").text());
+    					$(".kindChoice").hide();
+    				});
+    			});
+  
+    		
+    
+  
+    		}
+    		getj();
+    	var suggestData = {p0:userId,p1:skinType,v:"1",start:'1',price:"[0 TO 5000]",rows:'10',wt:'json',indent:"true?"};
+    	$.getJSON("http://120.27.30.130:8080/api/products",suggestData,function(modelStr){
+    		var model = $.parseJSON(modelStr);
+    		var productsHtml="";
+   			
+   			$.each(model.products,function(index, value){
+   			//	if(index<10){
+   				var enName = value.enName?value.enName:"";
+   				if(value.price = '0'){
+   					var price = '<span>暂无价格</span>';
+   				}else{
+   					var price = '<span>参考价格：￥'+value.price+'</span>';
+   				}
+   				var imgPic="http://7u2pqk.com1.z0.glb.clouddn.com/"+value.picUrl||"images/noproduct.jpg";
+   				var productsItem='<div class="product"><a href="products.html?q='+value.id+'">'+
+   				'<img onerror="javascript:imgError(this);" src="'+imgPic+'"/>'+
+   				'<p style="line-height:1.5em"><span class="cp">'+value.name+'</span>&nbsp;&nbsp;<span class="enName">'+enName+'</span><br/><span>避免成份：'+value.avoidCount+'种&nbsp;有益成分：'+value.beneficialCount+'种</span><br/>'+
+   				price+
+   				'</p></a><div class="blankbar"></div><hr/>'+
+   				'</div><div class="blankbar"></div>';
+   		//		'<div class="blankbar"></div>';
+   				productsHtml+=productsItem;
+   		//		}
+   			});
+   			$(".searchResults").html('<div class="suggest">热门推荐产品</div>'+productsHtml+'<div class="blankbar"></div>');
+
+   		});
+    	
+    	
+    		
+    		
+    		
+    	$(".searchBtn").click(function(){
+    			
+    		var textSearch = $(".searchText")[0].value;
+       		var brandValue = $(".brandBoard").text(); 	
+       		var kindValue = $(".kindBoard").text(); 	
+      		var effectsValue = $(".effectsBoard").text();
+     /*		$("#effects option:selected").each(function(){
+      			effects+=$(this).text();	
+      		});
+     */
+    //		var price = $(".priceBoard").text() || "0 TO 5000";
+     		var price = "0 TO 5000"; 
+    //		alert(price);
+    		var qString='text='+textSearch+'&brandValue='+brandValue+'&cate2Id='+kindValue+'&text='+effectsValue+'&price=['+price+']';
+    		
+    //		var userId = $.cookie().userId;
+    //		var skinType = $.cookie().skinType;
+    			var data ={p0:userId,p1:skinType,q:qString,start:'1',rows:'10',wt:'json',indent:true};
+    			try{
+           		$.getJSON('http://120.27.30.130:8080/api/products',data,function(modelStr){
+           			var model=$.parseJSON(modelStr);
+           			var productsHtml="";
+           			
+           			$.each(model.products,function(index, value){
+           			//	if(index<10){
+           				var enName = value.enName?value.enName:"";
+           				if(value.price = '0'){
+           					var price = '<span>暂无价格</span>';
+           				}else{
+           					var price = '<span>参考价格：￥'+value.price+'</span>';
+           				}
+           				var imgPic="http://7u2pqk.com1.z0.glb.clouddn.com/"+value.picUrl||"images/noproduct.jpg";
+           				var productsItem='<div class="product"><a href="products.html?q='+value.id+'">'+
+           				'<img onerror="javascript:imgError(this);" src="'+imgPic+'"/>'+
+           				'<p style="line-height:1.5em"><span class="cp">'+value.name+'</span>&nbsp;&nbsp;<span class="enName">'+enName+'</span><br/><span>避免成份：'+value.avoidCount+'种&nbsp;有益成分：'+value.beneficialCount+'种</span><br/>'+
+           				price+
+           				'</p></a><div class="blankbar"></div><hr/>'+
+           				'</div><div class="blankbar"></div>';
+           		//		'<div class="blankbar"></div>';
+           				productsHtml+=productsItem;
+           		//		}
+           			});
+           			$(".searchResults").html(productsHtml+'<div class="blankbar"></div>');
+
+           		});
+           		
+    		}catch(e){
+        		console.log(e.name + ": " + e.message);	
+        	} 
+    	return false;
+    	});
+    });
+ 	
+   
+	var imgError = function(imgObject){
+		$(imgObject).attr("src","images/noproduct.jpg");
+	}
+
+    </script>
+ <script>
+		$(".brandMore").click(function(){
+			$(".brandChoice").css("display","block");
+		});
+		$(".effectsMore").click(function(){
+			$(".effectsChoice").css("display","block");
+		});
+		$(".kindMore").click(function(){
+			$(".kindChoice").css("display","block");
+		});
+		$(".brandPart p span").click(function(){
+			$(".brandBoard").html($(this).text());
+			addBorder("brandBoard");
+			
+		});
+		$(".kindPart p span").click(function(){
+			$(".kindBoard").html($(this).text());
+			addBorder("kindBoard");
+		});
+		$(".effectPart p span").click(function(){
+			$(".effectsBoard").html($(this).text());
+			addBorder("effectsBoard");
+		});
+		$(".pricePart p span").click(function(){
+			$(".priceBoard").html($(this).text());
+			addBorder("priceBoard");
+		});
+	</script>
+  
+  </body>
+</html>

@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title>美氪-登陆</title>
+    <script>
+		//<![CDATA[
+			document.write('<script src="js/header.js"> <\/script>');
+		//]]>
+	</script>
+		
+	<style>
+		.wrapper{
+			overflow:hidden;
+			margin-top:1em;
+			width:96%;
+			margin-left:auto;
+			margin-right:auto;
+		}
+		#userName{
+			-webkit-appearance:none;
+		}
+		#psword{
+			margin-top:1em;
+			-webkit-appearance:none;
+		}
+	</style>
+	
+  </head>
+  <body>
+  	 <header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
+		  <div class="container">
+		    <div class="navbar-header">
+		      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
+		      <a href="http://www.meicrazy.cn/index.html" class="navbar-brand"><img id="logo" src="images/logo.png"/></a>
+		    </div>
+		    <nav id="bs-navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
+		      <ul class="nav navbar-nav">
+		        <li>
+		          <a href="http://www.meicrazy.cn/wom-headlines.html">口碑</a>
+		        </li>
+		        <li>
+		          <a href="http://www.meicrazy.cn/trialist.html">试用</a>
+		        </li> 
+		        <li>
+		          <a href="http://www.meicrazy.cn/test.html">测试</a>
+		        </li>
+		       <li>
+		          <a href="http://www.meicrazy.cn/articlelist.html">美肤必看</a>
+		        </li>
+		      </ul>
+		      <ul class="nav navbar-nav navbar-right">
+		        <li class="loginSet"><a href="http://www.meicrazy.cn/login.html">登录</a></li>
+		        <li class="loginSet"><a href="http://www.meicrazy.cn/register.html">注册</a></li>
+		      </ul>
+		    </nav>
+		  </div>
+		</header>
+  
+	<div class="wrapper">
+		
+		
+		
+		<div class="loginCon">
+			<form class="">
+				<div class="input-group">
+				  <input type="text" id="userName" class="form-control" placeholder="用户名/Email" aria-describedby="basic-addon1">
+				</div>
+				<div class="input-group">
+				  <input type="password" id="psword" class="form-control" placeholder="密码" aria-describedby="basic-addon1">
+				</div>
+			</form>
+			<button>登陆</button>
+			<a href="phoneGet.html"><p>忘记密码？</p></a>
+			
+			<div class="loginOther">
+				<p>或从以下方式登陆</p>
+				<a href="http://120.27.30.130:8080/auth/weibo"><img src="images/login_ico1.png" width="42" height="42"></a> <a href="http://120.27.30.130:8080/auth/qq"><img src="images/login_ico2.png" width="42" height="42"></a>
+			</div>
+		</div>
+
+	</div>	
+	<script type="text/javascript">  
+		//<![CDATA[
+			function getUrlParam(name)
+			{
+			var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+			var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+			if (r!=null) return unescape(r[2]); return null; //返回参数值
+			} 
+			var from = getUrlParam("from");
+			if(from != "" && from != null){
+				var nextPage = from;
+			}else{
+				var nextPage = "personalInfo.html";
+			}
+			
+			
+			
+			$(document).ready(function(){
+				$(".loginCon button").click(function(){
+					jQuery.support.cors = true;
+					var userName=$("#userName")[0].value;
+					var psword=$("#psword")[0].value;
+					psword=$.md5(psword);
+  
+					$.getJSON('http://120.27.30.130:8080/api/login?p0='+userName+'&p1='+psword+'&', function(modelStr){
+					//	alert(modelStr.user.skintype);
+						
+						if(modelStr.status==0){
+							$.cookie("userName",modelStr.user.nickName);
+							$.cookie("skinType",modelStr.user.skintype);
+							$.cookie("userAge",modelStr.user.age);
+							$.cookie("profileImgUrl",modelStr.user.profileImgUrl);
+							$.cookie("userId",modelStr.user.userId);
+							$.cookie("flag",true);
+							window.location.href= nextPage;
+						}else{
+							alert("用户名或密码错误!");
+						}
+					});
+					
+				});
+			});
+			
+			 //]]>
+	</script>	
+  </body>
+</html>

@@ -1,0 +1,299 @@
+﻿			*{
+				margin:0;
+				border:0;
+				font-family:"微软雅黑";
+			}
+			html,body,.wrapper{
+				width:100%;
+			}
+			.wrapper{
+				overflow:hidden;
+			}
+			
+			body{
+				background:#f0f0f0;
+			}
+			.mt1{
+				margin-top:1em;
+			}
+			.topBanner{
+				width:100%;
+				height:50px;
+			}
+			#topBanner{
+				width:100%;
+				height:100%;
+			}
+			.videoBar{
+				width;100%;
+				height:50px;
+				background:#fff;
+				padding-top:0.5em;
+			}
+			.hiddenVideoBar{
+				width:100%;
+				height:5em;
+				background:#fff;
+				border-top:1px solid #e6e6e6;
+				padding-top:0.5em;
+				display:none;
+				
+			}
+			.bdsharebuttonbox{
+				margin-left:2em;
+	
+			}
+
+			.hiddenExp{
+				font-size:0.5em;
+				margin-top:0.5em;
+				margin-bottom:0.5em;
+				margin-left:2.5em;
+			}
+			.shareIcon{
+				width:34px;
+				height:34px;
+				display:inline-block;
+				margin-top:0.25em;
+		
+			}
+			.cancel{
+				float:right;
+				width:30px;
+				height:30px;
+				margin-right:1em;
+			}
+			.introduction{
+				background:#fff;
+				padding:0.5em;
+			}
+			.title{
+				font-size:1em;
+				margin-bottom:0.5em;
+			}
+			.content{
+				color:grey;
+				font-size:0.8em;
+			}
+			.hideArrow{
+				width:100%;
+				text-align:center;
+			}
+			.article{
+				background:#fff;
+				padding-left:0.5em;
+				padding-top:0.5em;
+				padding-bottom:0.5em;
+			
+			}
+			.left,.right{
+				width:45%;
+				float:left;
+			}
+			.left img{
+				width:100%;
+			}
+			.right{
+				margin-left:2%;
+				font-size:0.6em;
+			}
+			.picEntry{
+				width:100%;
+				height:60px;
+				padding-top:1em;
+				padding-bottom:1em;
+				background:#fff;
+			}
+			.picEntry img{
+				width:30%;
+				height:100%;
+				float:left;
+				margin-right:1%;
+				margin-left:1%;
+				border:2px solid #C0D9D9;
+			}
+			.ad{
+				width:100%;
+				height:100px;
+			}
+			.ad img{
+				width:100%;
+				height:100%;
+			}
+			.comment{
+				background:#fff;
+			}
+			.icon{
+				
+				display:inline-block;
+				width:20%;
+				
+			}
+			.like{
+				margin-left:10%;
+			}
+			.icon span{
+				display:inline-block;
+				font-size:0.7em;
+				vertical-align:top;
+				margin-top:8px;
+			}
+			.icon img{
+				display:inline-block;
+				width:32px;
+				height:32px;
+			}
+			.commentTopBar,.commentContent{
+				padding:0.5em;
+				
+			}
+			.wechatCopyHint{
+				display:none;
+				position:absolute;
+				top:60%;
+				left:50%;
+				width:280px;
+				margin-left:-140px;
+				background:rgba(0,0,0,0.8);
+				
+			}
+			.wechatCopyHint p {
+				color:#fff;
+				font-size:0.9em;
+				padding:1em;
+			}
+			.commentTitle{
+				display:inline-block;
+				float:left;
+			}
+			.totalCounts{
+				display:inline-block;
+				float:right;
+				font-size:0.8em;
+				padding-left:1em;
+				padding-right:0.5em;
+			}
+			.likeCounts{
+				display:inline-block;
+				float:right;
+				font-size:0.8em;
+				padding-right:1em;
+				border-right:1px solid #000;
+			}
+			.commentInput{
+				margin-bottom:1em;
+
+			}
+			.commentInput img{
+				width:32px;
+				height:32px;
+				border-radius:100%;
+			}
+			#commentInput{
+				width:80%;
+				height:24px;
+				display:inline-block;
+				border:1px solid #e6e6e6;
+				background:#f0f0f0;
+				vertical-align:top;
+				margin-top:2px;
+				-webkit-appearance:none;
+				border:0;
+				border-radius:2px;
+				
+			}
+			
+	/*		.commentBtn{
+				display:inline-block;
+				width:10%;
+				height:36px;
+				line-height:24px;
+				margin-top: 0.1em;
+ 				vertical-align: top;
+			}
+			
+	*/		
+			.commentContent ul{
+				padding-left:0;
+			}
+			.commentContent ul li{
+				margin-top:1em;
+				list-style:none;
+			}
+			.commentLiHead {
+				margin-right: 10px;
+				width: 32px;
+				float: left;
+			}
+			.commentLiCon {
+				margin-top: 5px;
+			}
+			#commentLiHead{
+			  width: 32px;
+			  height: 32px;
+			  border-radius: 100%;
+			  background-color: #434a54;
+			}
+			.commentLiContent{
+				width:80%;
+				float:left;
+			}
+			.userName{
+				font-size:0.8em;
+				color: #949fab;
+			}
+			.timeBar{
+				font-size:0.8em;
+				padding:0.8em 0;
+				border-bottom:1px solid #f0f0f0;
+			}
+			#time{
+				color: #949fab;
+				margin-right:1em;
+			}
+			#like{
+				color: #949fab;
+				margin-right:1em;
+			}
+			.clear{
+				clear:both;
+			}
+			
+			.coverflow{
+				width:100%;
+				height:230px;
+				background:#fff;
+				padding-top:0.5em;
+				padding-bottom:0.1em;
+			}
+			.swiper-container {
+				width: 100%;
+				height:200px;
+				padding-top: 5px;
+				padding-bottom: 30px;
+			}
+			.swiper-slide {
+				background-position: center;
+				background-size: cover;
+				width: 50px;
+				height: 50px;
+
+			}
+			
+			.videoInstruction{
+				display:none;
+				width:100%;
+				height:2em;
+				position:relative;
+				top:-4em;
+				background:rgba(255,255,255,0.5);
+				z-index:1000;
+			}
+			
+			.likeBtn{
+				width:20px;
+				height:20px;
+				position:relative;
+				top:0.35em;
+			}
+			

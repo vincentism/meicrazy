@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title>美氪-口碑列表</title>
+    <script>
+	//<![CDATA[
+	document.write('<script src="js/header.js"> <\/script>');
+	//]]>
+	</script>
+	<style>
+		.loadMoreBtn{
+			width:100%;
+			height:32px;
+			line-height:32px;
+			background:#e6e6e6;
+			color:#000;
+			border:0;
+			border-radius:2px;
+		}
+		.productList{
+			margin-top:0.5em;
+			padding-left:0.2em;
+			padding-right:0.2em;
+		}
+	</style>
+	</head>
+  	<body>
+  	  	<script>
+			//<![CDATA[
+			document.write('<script src="js/nav.js"> <\/script>');
+			//]]>
+		</script>
+  		<div class="wrapper">
+
+	<!-- 	<div class="befProduct">
+			<p><a>全部分类&nbsp;<span class="glyphicon glyphicon-chevron-down"></span></a></p>
+		</div>
+	-->
+		<div class="productList">
+		<!-- 	<a href="">
+				<div class="repleft">
+					<img src="http://7u2pqk.com1.z0.glb.clouddn.com/6739_0"/><br/>
+
+					<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+					<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+					<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+					<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+					<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+				</div>
+				<div class="repright">	
+						<ul>
+							<li><p class="cp f12">Fresh馥蕾诗红茶抗皱紧致修护面膜</p></li>
+							<li><p class="cb">蜜桃pie&nbsp;OSPW&nbsp;27</p></li>
+							<li><p>优点：</p></li>
+							<li><p>缺点：</p></li>
+							<li><p class="cg">熬夜必备啊！！！良心产品啊！！！土豆泥一样的质感，涂在脸上很舒服，睡一觉起来皮肤状态变好很多啊，因为熬夜导致的皮肤暗沉问题也解决了啊！！！</p></li>
+							<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+						</ul>
+				</div>
+				<div class="blankbar"></div>
+			</a>
+		 -->				
+		</div>
+		<button class="loadMoreBtn">加载更多</button>
+	    <script>
+		//<![CDATA[
+			document.write('<script src="js/footer.js"> <\/script>');
+		//]]>
+	</script>
+	</div>	
+	<script>
+	var imgError = function(imgObject){
+		$(imgObject).attr("src","images/noproduct.jpg");
+	}
+    var p2=1;     
+    var userId = $.cookie().userId || "1325";
+    var skinType = $.cookie().skinType || "DRNT";
+    var data1={p0:userId,p1:skinType,p2:p2,p3:'0'};
+	           
+	jQuery.support.cors = true;
+	function getj(){
+		
+		$.getJSON("http://120.27.30.130:8080/api/woms", data1, function(modelStr){
+			var model=$.parseJSON(modelStr);
+			if(model.total == 0){
+				$(".loadMoreBtn").html("暂无更多");
+			}
+			var womsHtml="";
+			var i=1;
+			$.each(model.woms, function(index,value){
+				var userSkinType = value.value.user.skinType || "";
+				var advantages= value.value.comments[0].advantages||"";
+				var disadvantages = value.value.comments[0].disadvantages||"";
+				var age = value.value.user.age;
+				if(age == "?岁" ){
+					age = "";
+				}
+				var divHtml=
+				'<div class="productListCard">'
+				+'<div class="repleft">'
+				+'<img id="repleftimg" onerror="imgError(this);" src="http://7u2pqk.com1.z0.glb.clouddn.com/'+value.value.product.picUrl+'"/><br/>'
+				+'<div class="starReadOnly starReadOnly'+i+'"></div>'
+				+'</div>'
+				+'<div class="repright">'
+				+'<ul>'
+				+'<li><a href="wom.html?q='+value.key+'"><p class="cp f12">'+value.value.product.name+'</p></a></li>'
+				+'<li><p class="cb">'+value.value.user.userName+'&nbsp;'+userSkinType+'&nbsp;'+age+'</p></li>'
+				+'<li><p class="cg">优点：'+advantages+'</p></li>'
+				+'<li><p class="cg">缺点：'+disadvantages+'</p></li>'
+				+'<li><p class="cg">'+value.value.comments[0].content+'</p></li>'
+				+'<span style="margin:0;" class="fa fa-comment-o fa-lg "></span>&nbsp;'+value.value.comments[0].commentCount
+				+'</ul>'			
+				+'</div>'		
+				+'<div class="blankbar"></div>'
+				+'</div>';
+				womsHtml+=divHtml;
+				$(".productList").append(divHtml);
+				var score= value.value.stat.grade;
+				var a=".starReadOnly"+i;
+				$(a).raty({ 
+					 hints: ['1', '2', '3', '4', '5'],
+					 path:"images",
+					 starOff: 'star-off.png',
+				     starOn: 'star-on.png',
+					 size: 24,
+					 readOnly:true,
+					 score:score
+				});  
+				i++;
+			});
+			
+			//$(".productList").append(womsHtml);
+			
+		})
+		}
+	getj();
+	
+		$(".loadMoreBtn").click(function(){
+		//	$("loadMoreBtn").html("加载中…");
+			p2=p2+1;
+			data1={p0:userId,p1:skinType,p2:p2,p3:'0'};
+			getj();
+			
+		});
+	/*	window.onscroll=function(){
+			
+			if($(document).scrollTop()>=$(document).height()-$(window).height()-5 ){
+				p2=p2+1;
+				data1={p0:$.cookie().userId,p1:$.cookie().skinType,p2:p2,p3:'0'};
+				getj();
+			}
+			
+		}
+	*/
+	</script>
+  </body>
+</html>

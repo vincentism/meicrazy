@@ -1,0 +1,259 @@
+﻿<!DOCTYPE HTML>
+<html>
+	<head>
+	    <script>
+			//<![CDATA[
+				document.write('<script src="js/header.js"> <\/script>');
+			//]]>
+		</script>
+		<title>美氪-皮肤测试</title>
+		<style>
+		*{
+			margin:0;
+			padding:0;
+			font-family:"微软雅黑";
+		}
+		html,body{
+			width:100%;
+			height:100%;
+		}
+		label{
+			display:block;
+			margin-bottom:1em;
+		}
+		.back{
+			width:100%;
+			position:absolute;
+			top:0;
+			left:0;
+			z-index:-100;
+		}
+		.content{
+			padding:1em 0.8em;
+			max-width:960px;
+			margin:1em auto 0;
+			background:#fff;
+			
+		}
+		.checkboxStyle{
+			width:380px;
+			margin-left:auto;
+			margin-right:auto;
+			text-align:left;
+		}
+		
+		.title{
+			margin:3em auto 1.5em;
+			text-align:center;
+			font-weight:600;
+			font-size:1.4em;
+		}
+		.shareWrapper{
+			width:0;
+			height:0;
+			overflow:hidden;
+		}		
+		.questionTitle{
+			font-size:1em;
+			display:inline-block;
+			margin-bottom:1em;
+			text-align:left;
+		}
+		.checkboxSet{
+			font-size:0.9em;
+			padding-top:0.5em;
+			padding-bottom:1em;	
+			padding-left:1em;
+			padding-right:1em;
+			text-align:left;
+		}
+		.checkboxSet input{
+			margin:0.8em 0.5em;
+
+		}
+
+		.buttonSet{
+			width:100%;
+			text-align:center;
+
+		}
+		.buttonSet button{
+			width:55px;
+			height:25px;
+			margin:1em 0.2em;
+			background:#EAEAEA;
+			font-size:0.7em;
+			border:1px solid #D4D4D4;
+		}
+		.continueSet{
+			width:96%;
+			max-width:960px;
+			text-align:center;
+			padding-bottom:2em;
+			margin:0 auto;
+			background:#fff;
+		}
+		.submit{
+			width:50%;
+			height:35px;
+			max-width:380px;
+			background:#ff3366;
+			border:0;
+			border-radius:2px;
+			color:#fff;
+			margin-top:1em;
+
+		}
+		.qnumber{
+			font-size:1.1em;
+			font-weight:600;
+		}
+		.acontent{
+			
+		}
+		.hiddenInput {
+			opacity: 0;
+			position: absolute;
+			z-index: -1;
+		}
+
+		input[type=checkbox]+span {
+			/* your style goes here */
+			display: inline-block;
+			height: 1.5em;
+			width: 1.5em;
+			border:1px solid #D4D4D4;
+			border-radius: 4px;
+			background:#EAEAEA;       
+		}
+
+		/* active style goes here */
+		input[type=checkbox]:checked+span {
+			background-color: #ff3366;
+			
+		}
+		
+		input[type=radio]+span {
+			/* your style goes here */
+			display: inline-block;
+			height: 1.5em;
+			width: 1.5em;
+			border:1px solid #D4D4D4;
+			border-radius: 4px;
+			background:#EAEAEA;       
+		}
+
+		/* active style goes here */
+		input[type=radio]:checked+span {
+			background-color: #ff3366;
+			
+		}
+		
+		.styleSpan{
+		 	margin-right:2%;
+		 	margin-top:0;
+		 	position:relative;
+		 	top:-2px;
+		 	width:9%;
+		 	vertical-align:top;
+		 	display:inline-block;
+		
+		}
+		.acontent{
+			width:89%;
+			display:inline-block;
+		}
+		</style>
+	</head>
+	<body>
+	    <script>
+			//<![CDATA[
+				document.write('<script src="js/nav.js"> <\/script>');
+			//]]>
+		</script>	
+		<div class="content">
+			<p class="title">皮肤类型测试</p>
+		</div>	
+		<div class="continueSet"><button class="submit">提交</button></div>
+		<script>
+
+			$(document).ready(function(){
+				var qid = "";
+
+				var data = {type:1,uid:uid} 
+				$.getJSON("http://112.74.78.20:8181/api/v2/skintype/questions",data,function(model){
+					if(model.total == 0){
+						window.location.href="result.html";
+					}
+					var i = 1;
+					var j = 1;
+					$.each(model.questions,function(index,value){
+						var questionHtml = "";
+						var qid = value.qid;
+						if(value.qType == 0){
+							
+							$.each(value.answers,function(index,value){
+								
+								var questionItem = '<label for="cbox'+j+'"><input value="'+value.aid+'" class="hiddenInput" onclick="submit('+qid+','+value.aid+',this);" name="'+i+'" id="cbox'+j+'" type="radio"/><span class="styleSpan"></span><span class="acontent">'+value.content+'</span></label>';
+								j = j+1;
+								questionHtml += questionItem;
+							});
+							questionHtml ='<div class="checkboxStyle"><p class="questionTitle"><span class="qnumber">Q'+i+'.</span>'+value.content+'</p><div class="checkboxSet">'+questionHtml +'</div><input class="isfill" value="false" type="hidden"/></div>';
+							$(".content").append(questionHtml);	
+							i = i+1;
+						}else{
+							
+							$.each(value.answers,function(index,value){
+								var questionItem = '<label for="cbox'+j+'"><input value="'+value.aid+'" name="checkInput" class="hiddenInput" onclick="submit('+qid+','+value.aid+',this);" id="cbox'+j+'" type="checkbox"/><span class="styleSpan checkStyleSpan"></span><span class="acontent">'+value.content+'</span></label>';
+								j = j+1;
+								questionHtml += questionItem;
+							});
+							questionHtml ='<div class="checkboxStyle"><p class="questionTitle"><span class="qnumber">Q'+i+'.</span>'+value.content+'（多选）</p><div class="checkboxSet">'+questionHtml +'</div><input class="isfill" value="false" type="hidden"/></div>';
+							$(".content").append(questionHtml);	
+							i = i+1;
+						}
+					});
+				});
+			});
+			var uid = $.cookie().uid;
+			var submit = function(qid,aid,obj){
+			if(aid == 118){
+				$(".checkStyleSpan").css("background","#EAEAEA");
+				$(obj).next().css("background","#FF3366");
+				
+			 }else if(aid == 111 || aid == 112 || aid == 113 || aid == 114 || aid == 115 || aid == 116 || aid == 117){
+				 $(obj).next().css("background","#FF3366");
+			//	 $("#cbox16").next().css("background","#EAEAEA");
+				 $("input[name='checkInput'][value='118']").next().css("background","#EAEAEA");
+			 }	
+				
+				$.ajax({
+					type:"POST",
+					url:"http://112.74.78.20:8181/api/v2/skintype/questions/"+qid, 
+					data:{answers:aid,uid:uid},
+					success:function(){
+						 $(obj).parent().parent().next().attr("value","true");
+					},
+					error:function(){
+						alert("网络异常，请稍后再试");
+					}
+				});
+			}
+			$(".submit").click(function(){
+				var iscomplete = "1";
+				$(".isfill").each(function(){
+					if($(this).attr("value") == "false"){
+						iscomplete = "0";
+					}
+				});
+				if(iscomplete == "1"){
+					window.location.href="result.html";
+				}else{
+					alert("请完成皮肤测试题");
+				}
+			});
+
+			
+		</script>
+	</body>
+</html>	
